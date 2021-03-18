@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "pirate_grungeregular";
+    src: url("css/fonts/pirategrunge-webfont.woff2") format("woff2"),
+      url("css/fonts/pirategrunge-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "pirate_inlineregular";
+    src: url("css/fonts/pirateinline-webfont.woff2") format("woff2"),
+      url("css/fonts/pirateinline-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "pirate_inline__grungeregular";
+    src: url("css/fonts/pirateinlinegrunge-webfont.woff2") format("woff2"),
+      url("css/fonts/pirateinlinegrunge-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "pirate_regularregular";
+    src: url("css/fonts/pirateregular-webfont.woff2") format("woff2"),
+      url("css/fonts/pirateregular-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "pirate_shadowregular";
+    src: url("css/fonts/pirateshadow-webfont.woff2") format("woff2"),
+      url("css/fonts/pirateshadow-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "pirate_shadow_grungeregular";
+    src: url("css/fonts/pirateshadowgrunge-webfont.woff2") format("woff2"),
+      url("css/fonts/pirateshadowgrunge-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  h1,
+  h2,
+  h3,
+  p,
+  a,
+  span,
+  strong,
+  ul,
+  li,
+  div,
+  nav,
+  section,
+  header,
+  article,
+  footer,
+  button,
+  input {
+    @apply font-sans;
+  }
+
+  body {
+    @apply relative;
+  }
+
+  nav {
+    @apply text-lg laptop:text-xl;
+  }
+
+  h1 {
+    @apply font-bold text-3xl laptop:text-5xl;
+  }
+
+  h2 {
+    @apply font-bold text-2xl tablet:text-3xl desktop:text-4xl;
+  }
+
+  h3 {
+    @apply font-bold text-2xl tablet:text-3xl laptop:text-3xl;
+  }
+
+  span {
+    @apply text-sm tablet:text-lg;
+  }
+
+  p,
+  strong {
+    @apply text-xl tablet:text-1.5xl desktop:text-2xl;
+  }
+
+  li {
+    @apply text-lg laptop:text-1.5xl;
+  }
+}
+
+@variants responsive {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow-md {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 15px 30px rgba(0, 0, 0, 0.11), 0 5px 15px rgba(0, 0, 0, 0.08);
+  }
+
+  .text-shadow-none {
+    text-shadow: none;
+  }
+
+  .clip-bottom-point {
+    clip-path: polygon(0% 0%, 100% 0, 100% 93%, 50% 100%, 0 93%);
+  }
+
+  .clip-top-point-up {
+    clip-path: polygon(0% 7%, 50% 0, 100% 7%, 100% 100%, 0 100%);
+  }
+
+  .clip-top-point-down {
+    clip-path: polygon(0% 0%, 50% 7%, 100% 0%, 100% 100%, 0 100%);
+  }
+
+  .clip-plan-header {
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 80%,
+      98% 100%,
+      98% 80%,
+      2% 80%,
+      2% 100%,
+      0% 80%
+    );
+  }
+}
