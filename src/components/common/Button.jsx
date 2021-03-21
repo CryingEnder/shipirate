@@ -7,7 +7,7 @@ function Button({ label, fontColor, fontSize }) {
       <button
         className={`${
           fontColor ? `${fontColor} ` : ""
-        }rounded-2xl shadow-md font-semibold bg-yellow-pirate ring ring-yellow-pirate-ring hover:bg-yellow-pirate-hover hover:ring-yellow-pirate-hover-ring focus:outline-none px-4 py-1 tablet:px-5 tablet:py-1.5`}
+        }rounded-2xl shadow-md font-semibold bg-yellow-pirate ring ring-yellow-pirate-ring transition-colors hover:bg-yellow-pirate-hover hover:ring-yellow-pirate-hover-ring focus:outline-none px-4 py-1`}
         type="button"
       >
         <p className={fontSize ? fontSize : ""}>{label}</p>
