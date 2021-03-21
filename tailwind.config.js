@@ -16,6 +16,7 @@ module.exports = {
           "pirate-hover": "#fcca44",
           "pirate-ring": "#ffdd81",
           "pirate-hover-ring": "#fed568",
+          "old-gold": "#ffdd81",
         },
         blue: {
           water: "#8af6d2",
@@ -26,7 +27,9 @@ module.exports = {
             4: "#20a99c",
           },
           dark: "#16143b",
+          "dark-hover": "#312d7a",
           bird: "#477b9e",
+          grayish: "#9c9abf",
         },
         red: {
           faded: "#f48989",
@@ -37,6 +40,7 @@ module.exports = {
           cloud: "#5189a8",
           "bluegray-300": "#cbd5e1",
           "bluegray-500": "#475569",
+          "faded-50": "rgba(229, 231, 235, 0.5)",
         },
       },
       fontFamily: {
@@ -54,11 +58,16 @@ module.exports = {
       letterSpacing: {
         "wide-2": ".04em",
       },
+      backgroundImage: (theme) => ({
+        "checkbox-unchecked": "url('./src/css/images/checkbox-unchecked.svg')",
+        "checkbox-checked": "url('./src/css/images/checkbox-checked.svg')",
+      }),
       borderRadius: {
         x2: "3rem",
         "x1.5": "2.5rem",
       },
       borderWidth: {
+        1: "1px",
         6: "6px",
         7: "7px",
       },
@@ -73,6 +82,7 @@ module.exports = {
         "3/20": "15%",
         "1/10": "10%",
         "1/20": "5%",
+        "-18": "-4.5rem",
       },
       keyframes: {
         "opacity-slow": {
@@ -95,6 +105,9 @@ module.exports = {
   variants: {
     extend: {
       scale: ["active"],
+      backgroundColor: ["focus", "checked"],
+      backgroundImage: ["checked", "hover"],
+      borderColor: ["checked"],
     },
   },
   plugins: [],
