@@ -5,6 +5,8 @@ import React, { Fragment } from "react";
 // import PlanSection from "./components/PlanSection";
 // import Testimonials from "./components/Testimonials";
 // import Footer from "./components/Footer";
+import LoginForm from "./components/LoginForm";
+import SignupForm from "./components/SignupForm";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Testimonials />
       </main>
       <Footer /> */}
+      <LoginForm />
+      {/* <SignupForm /> */}
     </Fragment>
   );
 }
