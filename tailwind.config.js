@@ -40,7 +40,9 @@ module.exports = {
           cloud: "#5189a8",
           "bluegray-300": "#cbd5e1",
           "bluegray-500": "#475569",
-          "faded-50": "rgba(229, 231, 235, 0.5)",
+        },
+        white: {
+          "faded-50": "rgba(255, 255, 255, 0.7)",
         },
       },
       fontFamily: {
