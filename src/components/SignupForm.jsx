@@ -2,6 +2,7 @@ import React from "react";
 import Button from "./common/Button";
 import Input from "./common/Input";
 import FormContainer from "./common/FormContainer";
+import InputLabel from "./common/InputLabel";
 
 function LoginForm(props) {
   return (
@@ -9,16 +10,15 @@ function LoginForm(props) {
       <Input type="text" placeholder="Full name" id="name" />
       <Input type="email" placeholder="E-mail" id="email" />
       <Input type="password" placeholder="Password" id="password" />
-      <div className="pt-6 flex flex-row justify-center items-center">
+      <InputLabel
+        styles="pt-6"
+        htmlFor="terms"
+        linkLabel={true}
+        label={"I agree with T&Cs"}
+      >
         <Input type="checkbox" id="terms" />
-        <label
-          className="cursor-pointer text-base hover:underline ml-2"
-          htmlFor="terms"
-        >
-          <a href="/">{"I agree with T&Cs"}</a>
-        </label>
-      </div>
-      <Button label="Register" fontColor="text-blue-dark" fontSize="text-xl" />
+      </InputLabel>
+      <Button type="submit" label="Register" fontSize="text-xl" />
     </FormContainer>
   );
 }
