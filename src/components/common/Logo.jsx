@@ -19,10 +19,14 @@ function Logo({ styles, fontColor, fontSize }) {
 
 Logo.defaultProps = {
   styles: "",
+  fontColor: "",
+  fontSize: "",
 };
 
 Logo.propTypes = {
   styles: PropTypes.string,
+  fontColor: PropTypes.string,
+  fontSize: PropTypes.string,
 };
 
 export default Logo;
