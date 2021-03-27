@@ -2,16 +2,18 @@ import React from "react";
 import Button from "./common/Button";
 import Input from "./common/Input";
 import FormContainer from "./common/FormContainer";
-import InputLabel from "./common/InputLabel";
 
 function LoginForm(props) {
   return (
     <FormContainer>
-      <Input type="email" placeholder="E-mail" id="email" />
-      <Input type="password" placeholder="Password" id="password" />
-      <InputLabel htmlFor="remember" label="Remember me">
-        <Input className="appearance-none" type="checkbox" id="remember" />
-      </InputLabel>
+      <Input htmlFor="email" label="E-mail" type="email" id="email" />
+      <Input label="Password" type="password" id="password" />
+      <Input
+        label="Remember me"
+        className="appearance-none"
+        type="checkbox"
+        id="remember"
+      />
       <Button type="submit" label="Login" fontSize="text-xl" />
       <a className="text-base hover:underline" href="/">
         Forgot your Password?

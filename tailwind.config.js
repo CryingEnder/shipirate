@@ -96,6 +96,7 @@ module.exports = {
         "opacity-slow": "opacity-slow .2s ease-in-out",
       },
       scale: {
+        70: ".7",
         115: "1.15",
         120: "1.2",
       },
