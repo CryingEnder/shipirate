@@ -1,8 +1,10 @@
 module.exports = {
+  //to be updated to jit mode (issue with tailwind intellisense extension atm)
   purge: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class", //'false', 'media' or 'class'
   theme: {
     screens: {
+      "tablet-small": "500px",
       tablet: "640px",
       laptop: "1024px",
       desktop: "1280px",
@@ -10,14 +12,6 @@ module.exports = {
     },
     extend: {
       colors: {
-        yellow: {
-          badge: "#ffdf89",
-          pirate: "#fed053",
-          "pirate-hover": "#fcca44",
-          "pirate-ring": "#ffdd81",
-          "pirate-hover-ring": "#fed568",
-          "old-gold": "#ffdd81",
-        },
         blue: {
           water: "#8af6d2",
           sky: {
@@ -28,11 +22,9 @@ module.exports = {
           },
           dark: "#16143b",
           "dark-hover": "#312d7a",
+          light: { 1: "#b2e8e6", 2: "#98d3d1" },
           bird: "#477b9e",
           grayish: "#9c9abf",
-        },
-        red: {
-          faded: "#f48989",
         },
         gray: {
           25: "#fbfdff",
@@ -41,8 +33,25 @@ module.exports = {
           "bluegray-300": "#cbd5e1",
           "bluegray-500": "#475569",
         },
+        green: {
+          normal: "#02cc7b",
+          hover: "#00c677",
+          ring: "#00bc71",
+          "hover-ring": "#00b56c",
+        },
+        red: {
+          faded: "#f48989",
+        },
         white: {
           "faded-50": "rgba(255, 255, 255, 0.7)",
+        },
+        yellow: {
+          badge: "#ffdf89",
+          pirate: "#fed053",
+          "pirate-hover": "#fcca44",
+          "pirate-ring": "#ffdd81",
+          "pirate-hover-ring": "#fed568",
+          "old-gold": "#ffdd81",
         },
       },
       fontFamily: {
@@ -110,7 +119,11 @@ module.exports = {
       scale: ["active"],
       backgroundColor: ["focus", "checked"],
       backgroundImage: ["checked", "hover"],
-      borderColor: ["checked"],
+      borderColor: ["checked", "hover"],
+      borderWidth: ["hover"],
+      borderStyle: ["hover"],
+      borderRadius: ["hover"],
+      ringColor: ["hover"],
     },
   },
   plugins: [],
