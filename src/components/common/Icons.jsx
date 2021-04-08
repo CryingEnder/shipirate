@@ -16,6 +16,14 @@ function AngleRight({ ...props }) {
   );
 }
 
+function ArrowBack({ ...props }) {
+  return (
+    <svg {...props} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="m12 6.5h-3.59l1.3-1.29a1 1 0 0 0 -1.42-1.42l-3 3a1 1 0 0 0 0 1.42l3 3a1 1 0 0 0 1.42-1.42l-1.3-1.29h3.59a5 5 0 1 1 -5 5 1 1 0 0 0 -2 0 7 7 0 1 0 7-7z" />
+    </svg>
+  );
+}
+
 function ArrowLeft({ ...props }) {
   return (
     <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -78,6 +86,7 @@ function MenuButton({ ...props }) {
 }
 
 export {
+  ArrowBack,
   AngleLeft,
   AngleRight,
   ArrowLeft,

@@ -5,6 +5,7 @@ import customerOne from "../css/images/customer-1.jpg";
 import customerSix from "../css/images/customer-6.jpg";
 import customerThree from "../css/images/customer-3.jpg";
 import customerTwo from "../css/images/customer-2.jpg";
+import creditCard from "../css/images/credit-card.svg";
 import deviceFeature from "../css/images/deviceFeature.webp";
 import deviceFeatureOld from "../css/images/deviceFeature.jpg";
 import deviceFeatureRetina from "../css/images/deviceFeature@2x.webp";
@@ -35,9 +36,10 @@ import key from "../css/images/key.svg";
 import linkedin from "../css/images/linkedin.svg";
 import locationFeature from "../css/images/locationFeature.jpg";
 import locationFeatureRetina from "../css/images/locationFeature@2x.jpg";
-import logo from "./../css/images/logo.svg";
+import logo from "../css/images/logo.svg";
 import ocean from "../css/images/ocean.svg";
 import paymentMethods from "../css/images/payments.png";
+import paypal from "../css/images/paypal.svg";
 import popular from "../css/images/popular.svg";
 import secureFeature from "../css/images/secureFeature.webp";
 import secureFeatureOld from "../css/images/secureFeature.png";
@@ -58,6 +60,7 @@ export {
   customerSix,
   customerThree,
   customerTwo,
+  creditCard,
   deviceFeature,
   deviceFeatureOld,
   deviceFeatureRetina,
@@ -91,6 +94,7 @@ export {
   logo,
   ocean,
   paymentMethods,
+  paypal,
   popular,
   secureFeature,
   secureFeatureOld,
