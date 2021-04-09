@@ -10,11 +10,11 @@ function PaymentMethod({ method }) {
   else if (method === "paypal") paymentMethod = paypal;
 
   return (
-    <div
-      className={`hover:border-2 hover:border-solid hover:border-blue-dark hover:rounded-xl cursor-pointer flex flex-row items-center justify-center`}
-    >
-      <img src={paymentMethod} alt="Payment method" />
-    </div>
+    <img
+      className={`border-2 border-solid rounded-xl border-transparent hover:border-blue-dark cursor-pointer`}
+      src={paymentMethod}
+      alt="Payment method"
+    />
   );
 }
 
