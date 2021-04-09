@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useEffect } from "react";
 import Container from "./common/Container";
 import Input from "./common/Input";
 import Button from "./common/Button";
@@ -6,15 +6,25 @@ import PaymentMethod from "./common/PaymentMethod";
 import { ArrowBack } from "./common/Icons";
 
 function PaymentForm(props) {
+  useEffect(() => {
+    document.body.className =
+      "bg-gradient-to-r from-blue-light-1 to-blue-light-2 h-screen";
+    return () => {
+      document.body.className = null;
+    };
+  }, []);
+
   return (
     <Container
-      tag="section" //fix bg color on scroll
+      tag="section"
       stylesInside="flex flex-col justify-center items-center"
-      stylesOutside="pt-3 bg-gradient-to-b from-blue-light-1 to-blue-light-2 h-screen"
+      stylesOutside="pt-3"
     >
-      <h1 className="text-2xl text-blue-dark">Your total is $250</h1>
-      <h2 className="text-lg text-blue-bird">Choose a payment method:</h2>
       <form className="max-w-lg p-4 flex flex-col space-y-6">
+        <header className="text-center">
+          <h1 className="text-2xl text-blue-dark">Your total is $250</h1>
+          <h2 className="text-lg text-blue-bird">Choose a payment method</h2>
+        </header>
         <div className="grid grid-cols-1 gap-2 tablet-small:grid-cols-2">
           <PaymentMethod method="creditCard" />
           <PaymentMethod method="paypal" />

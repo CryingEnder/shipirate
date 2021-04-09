@@ -22,7 +22,7 @@ module.exports = {
           },
           dark: "#16143b",
           "dark-hover": "#312d7a",
-          light: { 1: "#b2e8e6", 2: "#98d3d1" },
+          light: { 1: "#b2e8e6", 2: "#87bab8" },
           bird: "#477b9e",
           grayish: "#9c9abf",
         },
