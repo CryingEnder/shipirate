@@ -13,17 +13,17 @@ import PaymentMethod from "./components/common/PaymentMethod";
 function App() {
   return (
     <Fragment>
-      {/* <Navbar />
-      <LoginForm />
+      {/* <LoginForm /> */}
       <SignupForm />
+      <Navbar />
       <Hero />
       <main>
         <Features />
         <PlanSection />
         <Testimonials />
       </main>
-      <Footer /> */}
-      <PaymentForm />
+      <Footer />
+      {/* <PaymentForm /> */}
     </Fragment>
   );
 }
