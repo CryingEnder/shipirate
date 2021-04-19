@@ -14,7 +14,7 @@ function App() {
   return (
     <Fragment>
       {/* <LoginForm /> */}
-      <SignupForm />
+      {/* <SignupForm />
       <Navbar />
       <Hero />
       <main>
@@ -22,8 +22,8 @@ function App() {
         <PlanSection />
         <Testimonials />
       </main>
-      <Footer />
-      {/* <PaymentForm /> */}
+      <Footer /> */}
+      <PaymentForm />
     </Fragment>
   );
 }
