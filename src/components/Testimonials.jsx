@@ -140,7 +140,7 @@ function Testimonials(props) {
               onAnimationEnd={() => setOpacityAnimation("")}
             />
             <p
-              className={"font-semibold " + opacityAnimation}
+              className={`font-semibold ${opacityAnimation}`}
               onAnimationEnd={() => setOpacityAnimation("")}
             >
               {userTestimonials[currentUser].message}
