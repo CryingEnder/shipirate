@@ -9,22 +9,24 @@ import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
 import PaymentForm from "./components/PaymentForm";
 import PaymentMethod from "./components/common/PaymentMethod";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
-    <Fragment>
-      {/* <LoginForm /> */}
-      {/* <SignupForm />
-      <Navbar />
-      <Hero />
-      <main>
-        <Features />
-        <PlanSection />
-        <Testimonials />
-      </main>
-      <Footer /> */}
-      <PaymentForm />
-    </Fragment>
+    // <Fragment>
+    //   {/* <LoginForm />
+    //   <SignupForm /> */}
+    //   <Navbar />
+    //   <Hero />
+    //   <main>
+    //     <Features />
+    //     <PlanSection />
+    //     <Testimonials />
+    //   </main>
+    //   <Footer />
+    //   {/* <PaymentForm /> */}
+    // </Fragment>
+    <NotFound />
   );
 }
 

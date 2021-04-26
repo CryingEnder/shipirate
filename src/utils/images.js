@@ -50,6 +50,7 @@ import testimonialsLogo from "../css/images/testimonials.svg";
 import tierOne from "../css/images/tier-one.svg";
 import tierThree from "../css/images/tier-three.svg";
 import tierTwo from "../css/images/tier-two.svg";
+import treasure from "../css/images/treasure.svg";
 import twitter from "../css/images/twitter.svg";
 
 export {
@@ -105,5 +106,6 @@ export {
   tierOne,
   tierThree,
   tierTwo,
+  treasure,
   twitter,
 };
