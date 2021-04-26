@@ -45,7 +45,7 @@ function HeroPicture({ ...props }) {
         type="image/jpg"
         srcSet={`${heroImgLightSmallOld} 200w, ${heroImgLightMediumOld} 616w, ${heroImgLightLargeOld} 946w, ${heroImgLightLargerOld} 1195w, ${heroImgLightOld} 1440w`}
       />
-      <img src={heroImgLight} className="w-full" alt="A pirate ship" />
+      <img src={heroImgLightOld} className="w-full" alt="A pirate ship" />
     </picture>
   );
 }
