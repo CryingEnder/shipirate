@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 function Button({
   label,
   labelIcon: LabelIcon,
+  labelIconSize,
   fontColor,
   fontSize,
   type,
@@ -11,6 +12,7 @@ function Button({
 }) {
   if (!fontColor) fontColor = "text-blue-dark";
   if (!type) type = "button";
+  if (!labelIconSize) labelIconSize = "w-6";
   return (
     <a href="#">
       <button
@@ -26,7 +28,7 @@ function Button({
         {LabelIcon && (
           <div className="flex flex-row justify-center items-center space-x-1">
             <LabelIcon
-              className={`w-6 fill-current ${fontColor}`}
+              className={`${labelIconSize} fill-current ${fontColor}`}
               alt="Label icon"
             />
             <p className={fontSize ? fontSize : ""}>{label}</p>
@@ -40,6 +42,7 @@ function Button({
 
 Button.defaultProps = {
   labelIcon: "",
+  labelIconSize: "",
   fontColor: "",
   fontStyle: "",
   styles: "",
@@ -49,6 +52,7 @@ Button.defaultProps = {
 Button.propTypes = {
   label: PropTypes.string.isRequired,
   labelIcon: PropTypes.any,
+  labelIconSize: PropTypes.string,
   fontColor: PropTypes.string,
   fontSize: PropTypes.string,
   styles: PropTypes.string,
