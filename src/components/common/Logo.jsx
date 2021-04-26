@@ -10,7 +10,7 @@ function Logo({ styles, fontColor, fontSize, phoneLogoSize }) {
       <img
         className={`${
           phoneLogoSize ? `${phoneLogoSize} ` : ""
-        }tablet:w-10 laptop:w-12`}
+        }w-10 laptop:w-12`}
         src={logo}
         alt="A pirate ship logo"
       />
