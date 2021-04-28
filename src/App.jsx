@@ -24,9 +24,10 @@ function App() {
     //     <Testimonials />
     //   </main>
     //   <Footer />
-    //   {/* <PaymentForm /> */}
     // </Fragment>
-    <NotFound />
+    // <PaymentForm />
+    <LoginForm />
+    // <NotFound />
   );
 }
 
