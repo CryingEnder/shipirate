@@ -31,7 +31,7 @@ function Navbar(props) {
               specialStyle:
                 "py-1 px-3 rounded-xl dark:bg-purple-700 bg-blue-sky-3",
             },
-            "Login",
+            { content: "Login", linkPath: "/login" },
           ]}
         />
         <MenuButton
