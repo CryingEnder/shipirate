@@ -4,8 +4,6 @@ import { logo } from "./../../utils/images";
 import PropTypes from "prop-types";
 
 function Logo({ styles, fontColor, fontSize, phoneLogoSize }) {
-  if (!fontColor) fontColor = "text-gray-100";
-  if (!fontSize) fontSize = "text-2xl tablet:text-3xl";
   return (
     <Link to="/" className={`flex flex-row items-center space-x-3 ${styles}`}>
       <img
@@ -26,8 +24,8 @@ function Logo({ styles, fontColor, fontSize, phoneLogoSize }) {
 
 Logo.defaultProps = {
   styles: "",
-  fontColor: "",
-  fontSize: "",
+  fontColor: "text-gray-100",
+  fontSize: "text-2xl tablet:text-3xl",
   phoneLogoSize: "",
 };
 

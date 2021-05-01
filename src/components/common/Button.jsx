@@ -13,10 +13,6 @@ function Button({
   isGreen,
   goBack,
 }) {
-  if (!fontColor) fontColor = "text-blue-dark";
-  if (!type) type = "button";
-  if (!labelIconSize) labelIconSize = "w-6";
-
   let history = goBack ? useHistory() : "";
   const doGoBack = history
     ? () => {
@@ -81,13 +77,14 @@ function Button({
 
 Button.defaultProps = {
   labelIcon: "",
-  labelIconSize: "",
+  labelIconSize: "w-6",
   linkPath: "/",
   goBack: false,
-  fontColor: "",
+  fontColor: "text-blue-dark",
   fontStyle: "",
   styles: "",
   isGreen: false,
+  type: "button",
 };
 
 Button.propTypes = {
