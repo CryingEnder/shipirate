@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 function List({ items, itemsStyle, title, titleStyle, ...props }) {
@@ -17,7 +18,9 @@ function List({ items, itemsStyle, title, titleStyle, ...props }) {
               : itemsStyle
           }
         >
-          <a href="/">{i.content ? i.content : i}</a>
+          <Link to={i.linkPath ? i.linkPath : "/"}>
+            {i.content ? i.content : i}
+          </Link>
         </li>
       ))}
     </ul>

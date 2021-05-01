@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { logo } from "./../../utils/images";
 import PropTypes from "prop-types";
 
@@ -6,7 +7,7 @@ function Logo({ styles, fontColor, fontSize, phoneLogoSize }) {
   if (!fontColor) fontColor = "text-gray-100";
   if (!fontSize) fontSize = "text-2xl tablet:text-3xl";
   return (
-    <a className={`flex flex-row items-center space-x-3 ${styles}`} href="/">
+    <Link to="/" className={`flex flex-row items-center space-x-3 ${styles}`}>
       <img
         className={`${
           phoneLogoSize ? `${phoneLogoSize} ` : ""
@@ -19,7 +20,7 @@ function Logo({ styles, fontColor, fontSize, phoneLogoSize }) {
       >
         Shipirate VPN
       </h1>
-    </a>
+    </Link>
   );
 }
 

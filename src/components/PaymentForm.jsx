@@ -104,16 +104,20 @@ function PaymentForm(props) {
             label="Save the card for future purchases"
             className="cursor-pointer text-base ml-2"
           />
-          <div className="flex flex-row flex-wrap justify-between">
+          <div className="flex flex-col justify-center items-start space-y-6 tablet-small:space-y-0 tablet-small:flex-row tablet-small:justify-between">
             <Button
-              styles="mb-4 mr-4"
               fontColor="text-gray-25"
               type="submit"
               isGreen={true}
               label={`Pay $${250}`}
               fontSize="text-xl"
             />
-            <Button label="Go back" labelIcon={ArrowBack} fontSize="text-xl" />
+            <Button
+              goBack={true}
+              label="Go back"
+              labelIcon={ArrowBack}
+              fontSize="text-xl"
+            />
           </div>
         </div>
         <div
@@ -132,16 +136,20 @@ function PaymentForm(props) {
             />
             <Input label="No" type="radio" id="paypalno" name="paypalbilling" />
           </div>
-          <div className="flex flex-row flex-wrap justify-between">
+          <div className="flex flex-col justify-center items-start space-y-6 tablet-small:space-y-0 tablet-small:flex-row tablet-small:justify-between">
             <Button
-              styles="mb-4 mr-4"
               fontColor="text-gray-25"
               type="submit"
               isGreen={true}
               label={`Pay $${250}`}
               fontSize="text-xl"
             />
-            <Button label="Go back" labelIcon={ArrowBack} fontSize="text-xl" />
+            <Button
+              goBack={true}
+              label="Go back"
+              labelIcon={ArrowBack}
+              fontSize="text-xl"
+            />
           </div>
         </div>
       </form>

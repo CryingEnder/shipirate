@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Button from "./common/Button";
 import Input from "./common/Input";
 import FormContainer from "./common/FormContainer";
@@ -15,11 +16,11 @@ function LoginForm(props) {
         id="remember"
       />
       <Button type="submit" label="Login" fontSize="text-xl" />
-      <a className="text-base hover:underline" href="/">
+      <Link to="/" className="text-base hover:underline">
         Forgot your Password?
-      </a>
+      </Link>
       <p className="text-xl font-semibold pt-6">Are you new?</p>
-      <Button label="Sign up" fontSize="text-xl" />
+      <Button label="Sign up" fontSize="text-xl" linkPath="/signup" />
     </FormContainer>
   );
 }

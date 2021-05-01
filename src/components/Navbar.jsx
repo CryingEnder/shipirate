@@ -51,7 +51,7 @@ function Navbar(props) {
           "What is VPN?",
           "Features",
           "Servers",
-          "Login",
+          { content: "Login", linkPath: "/login" },
         ]}
       />
     </Container>

@@ -23,6 +23,7 @@ function NotFound(props) {
         label="Go home"
         labelIcon={ArrowBack}
         labelIconSize="w-6 tablet:w-8 laptop:w-10"
+        linkPath="/"
         fontSize="text-xl tablet:text-2xl laptop:text-3xl"
       />
     </div>

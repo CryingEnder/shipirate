@@ -11,7 +11,7 @@ function LoginForm(props) {
       <Input type="password" label="Password" id="password" />
       <Input
         styles="pt-6"
-        linkLabel={true}
+        linkPath={"/"}
         label={"I agree with T&Cs"}
         type="checkbox"
         id="terms"

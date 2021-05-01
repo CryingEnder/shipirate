@@ -1,14 +1,8 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-function Input({
-  label,
-  styles,
-  linkLabel,
-  href,
-  checkboxLabelFontSize,
-  ...props
-}) {
+function Input({ label, styles, linkPath, checkboxLabelFontSize, ...props }) {
   const transformOn = "transition-all transform -translate-y-5 text-xs";
   const transformOff = "transition-all transform translate-y-0 text-base";
   const [labelTransformClass, setLabelTransformClass] = useState(transformOff);
@@ -21,7 +15,15 @@ function Input({
   }
 
   function handleInput(e) {
-    setInputState(e.target.value);
+    let inputValue = e.target.value;
+    setInputState(inputValue);
+    // console.log(inputValue.length % 4 === 0);
+    // if (
+    //   inputValue.length > 0 &&
+    //   inputValue.length < 16 &&
+    //   inputValue.length % 4 === 0
+    // )
+    //   e.target.value += " ";
   }
 
   return (
@@ -46,14 +48,14 @@ function Input({
         />
       )}
       {props.type === "checkbox" || props.type === "radio" ? (
-        linkLabel ? (
+        linkPath ? (
           <label
             className="cursor-pointer text-base pl-2 hover:underline text-blue-dark"
             htmlFor={props.id}
           >
-            <a target="_blank" href={href}>
+            <Link target="_blank" to={linkPath}>
               {label}
-            </a>
+            </Link>
           </label>
         ) : (
           <label
@@ -78,8 +80,7 @@ function Input({
 Input.defaultProps = {
   checkboxLabelFontSize: "",
   label: "",
-  linkLabel: false,
-  href: "/",
+  linkPath: "",
   styles: "",
 };
 
@@ -87,8 +88,7 @@ Input.propTypes = {
   id: PropTypes.string.isRequired,
   checkboxLabelFontSize: PropTypes.string,
   label: PropTypes.string,
-  linkLabel: PropTypes.bool,
-  href: PropTypes.string,
+  linkPath: PropTypes.string,
   styles: PropTypes.string,
 };
 

@@ -1,33 +1,43 @@
 import React, { Fragment } from "react";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Features from "./components/Features";
-import PlanSection from "./components/PlanSection";
-import Testimonials from "./components/Testimonials";
-import Footer from "./components/Footer";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
+import Home from "./components/Home";
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
 import PaymentForm from "./components/PaymentForm";
-import PaymentMethod from "./components/common/PaymentMethod";
 import NotFound from "./components/NotFound";
 
 function App() {
   return (
-    // <Fragment>
-    //   {/* <LoginForm />
-    //   <SignupForm /> */}
-    //   <Navbar />
-    //   <Hero />
-    //   <main>
-    //     <Features />
-    //     <PlanSection />
-    //     <Testimonials />
-    //   </main>
-    //   <Footer />
-    // </Fragment>
-    // <PaymentForm />
-    <LoginForm />
-    // <NotFound />
+    <Router>
+      {/*TODO: redirect to payment etc to not rerender all the components? */}
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/login">
+          <Home>
+            <LoginForm />
+          </Home>
+        </Route>
+        <Route path="/signup">
+          <Home>
+            <SignupForm />
+          </Home>
+        </Route>
+        <Route path="/checkout">
+          <PaymentForm />
+        </Route>
+        <Route path="/404">
+          <NotFound />
+        </Route>
+        <Redirect to="/404" />
+      </Switch>
+    </Router>
   );
 }
 
