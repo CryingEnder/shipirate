@@ -18,7 +18,7 @@ function FormContainer({ children }) {
           />
         </Link>
         <Logo
-          styles="absolute transition-all top-3 tablet:-top-16"
+          styles="hidden tablet:absolute tablet:transition-all tablet:flex tablet:-top-16"
           fontColor="text-blue-dark"
           fontSize="text-2xl tablet:text-3xl laptop:text-4xl"
           phoneLogoSize="w-8"
