@@ -7,7 +7,6 @@ import Testimonials from "./Testimonials";
 import Footer from "./Footer";
 
 function Home({ children }) {
-  console.log("I'm rendered!");
   return (
     <Fragment>
       {children}
