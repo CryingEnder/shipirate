@@ -8,11 +8,14 @@ class Container extends Component {
       stylesInside,
       tag: Tag,
       marginBottom,
-      ...rest
+      ...props
     } = this.props;
 
     return (
-      <Tag className={`w-full ${stylesOutside ? stylesOutside : ""}`} {...rest}>
+      <Tag
+        className={`w-full ${stylesOutside ? stylesOutside : ""}`}
+        {...props}
+      >
         <div
           className={`${
             marginBottom && Tag !== "nav" && Tag !== "footer"
