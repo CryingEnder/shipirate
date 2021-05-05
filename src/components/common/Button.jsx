@@ -12,6 +12,7 @@ function Button({
   styles,
   isGreen,
   goBack,
+  ...props
 }) {
   let history = goBack ? useHistory() : "";
   const doGoBack = history
@@ -25,6 +26,7 @@ function Button({
       {!goBack && (
         <Link to={linkPath}>
           <button
+            {...props}
             className={`${fontColor ? `${fontColor} ` : ""}${
               styles ? `${styles} ` : ""
             }${
@@ -49,6 +51,7 @@ function Button({
       )}
       {goBack && (
         <button
+          {...props}
           onClick={doGoBack}
           className={`${fontColor ? `${fontColor} ` : ""}${
             styles ? `${styles} ` : ""

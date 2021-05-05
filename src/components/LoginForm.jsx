@@ -4,9 +4,9 @@ import Button from "./common/Button";
 import Input from "./common/Input";
 import FormContainer from "./common/FormContainer";
 
-function LoginForm(props) {
+function LoginForm({ toggleState, goToSignUp, ...props }) {
   return (
-    <FormContainer>
+    <FormContainer toggleState={toggleState}>
       <Input htmlFor="email" label="E-mail" type="email" id="email" />
       <Input label="Password" type="password" id="password" />
       <Input
@@ -20,7 +20,7 @@ function LoginForm(props) {
         Forgot your Password?
       </Link>
       <p className="text-xl font-semibold pt-6">Are you new?</p>
-      <Button label="Sign up" fontSize="text-xl" linkPath="/signup" />
+      <Button onClick={goToSignUp} label="Sign up" fontSize="text-xl" />
     </FormContainer>
   );
 }

@@ -1,22 +1,44 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
 import Logo from "./Logo";
 import { Cross } from "./Icons";
 
-function FormContainer({ children }) {
-  const [isVisible, setIsVisible] = useState("visible");
+function FormContainer({ children, toggleState, ...props }) {
+  const ref = useRef(null);
+  const visible = "visible opacity-100 animate-opacity-slow";
+  const notVisible = "hidden opacity-0";
+  const [isVisible, setIsVisible] = useState(notVisible);
+
+  function closeWindow() {
+    setIsVisible(notVisible);
+  }
+
+  function handleClickOutside(e) {
+    if (ref.current && !ref.current.contains(e.target))
+      setIsVisible(notVisible);
+  }
+
+  useEffect(() => {
+    if (toggleState) {
+      setIsVisible(visible);
+    }
+    document.addEventListener("click", handleClickOutside, true);
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  }, [toggleState, ref]);
 
   return (
     <div
-      className={`z-20 flex flex-row justify-center bg-white-faded-50 items-center fixed h-screen w-full ${isVisible}`}
+      className={`${isVisible} z-20 flex flex-row justify-center bg-white-faded-50 items-center fixed h-screen w-full`}
     >
-      <div className="relative flex flex-col justify-center items-center p-12 text-blue-dark rounded-3xl shadow-xl bg-gradient-to-t from-blue-sky-2 to-blue-water max-w-xs">
-        <Link to="/">
-          <Cross
-            className="absolute w-5 fill-current m-4 top-0 right-0 cursor-pointer transition-colors hover:text-gray-25"
-            onClick={() => setIsVisible("hidden")}
-          />
-        </Link>
+      <div
+        ref={ref}
+        className={`relative flex flex-col justify-center items-center p-12 text-blue-dark rounded-3xl shadow-xl bg-gradient-to-t from-blue-sky-2 to-blue-water max-w-xs`}
+      >
+        <Cross
+          className="absolute w-5 fill-current m-4 top-0 right-0 cursor-pointer transition-colors hover:text-gray-25"
+          onClick={closeWindow}
+        />
         <Logo
           styles="hidden tablet:absolute tablet:transition-all tablet:flex tablet:-top-16"
           fontColor="text-blue-dark"

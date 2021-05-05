@@ -2,7 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-function List({ items, itemsStyle, title, titleStyle, ...props }) {
+function List({
+  items,
+  itemsStyle,
+  title,
+  titleStyle,
+  doToggleWindow,
+  ...props
+}) {
   return (
     <ul {...props}>
       {title && (
@@ -18,7 +25,12 @@ function List({ items, itemsStyle, title, titleStyle, ...props }) {
               : itemsStyle
           }
         >
-          <Link to={i.linkPath ? i.linkPath : "/"}>
+          <Link
+            onClick={
+              i.toggleWindow ? doToggleWindow : (e) => e.preventDefault()
+            }
+            to={i.linkPath ? i.linkPath : "/"}
+          >
             {i.content ? i.content : i}
           </Link>
         </li>
@@ -38,6 +50,7 @@ List.propTypes = {
   itemsStyle: PropTypes.string,
   title: PropTypes.string,
   titleStyle: PropTypes.string,
+  doToggleWindow: PropTypes.func,
 };
 
 export default List;
