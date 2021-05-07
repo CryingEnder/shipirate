@@ -6,10 +6,9 @@ import PlanSection from "./PlanSection";
 import Testimonials from "./Testimonials";
 import Footer from "./Footer";
 
-function Home({ children }) {
+function Home(props) {
   return (
     <Fragment>
-      {children}
       <Navbar />
       <main>
         <Hero />
