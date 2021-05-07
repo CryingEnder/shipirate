@@ -7,8 +7,8 @@ function LoginForm({ toggleState, ...props }) {
   return (
     <FormContainer toggleState={toggleState}>
       <Input type="text" label="Full name" id="name" />
-      <Input type="email" label="E-mail" id="email" />
-      <Input type="password" label="Password" id="password" />
+      <Input type="email" label="E-mail" id="emailnew" />
+      <Input type="password" label="Password" id="passwordnew" />
       <Input
         styles="pt-6"
         linkPath={"/"}
