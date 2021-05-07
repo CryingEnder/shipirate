@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Check, Cross } from "./Icons";
 import {
   ocean,
@@ -10,7 +11,6 @@ import {
 import Button from "./Button";
 import Badge from "./Badge";
 import { showTwoDecimals } from "./../../utils/showTwoDecimals";
-import PropTypes from "prop-types";
 
 function Plan({
   planFeatures,
@@ -87,7 +87,11 @@ function Plan({
         </ul>
         <div className="relative rounded-b-xl overflow-hidden">
           <div className="absolute left-0 right-0 bottom-1/10 mx-auto">
-            <Button label="Buy now" fontColor="text-blue-bird" />
+            <Button
+              linkPath="/checkout"
+              label="Buy now"
+              fontColor="text-blue-bird"
+            />
           </div>
           <img src={ocean} alt="Ocean" />
         </div>
