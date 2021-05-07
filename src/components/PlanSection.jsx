@@ -7,6 +7,7 @@ function PlanSection(props) {
     <Container
       tag="section"
       stylesInside="flex-col justify-evenly items-start space-y-28 p-3 tablet:p-0 laptop:flex laptop:flex-row laptop:space-y-0 laptop:mx-auto"
+      id="plans"
     >
       <Plan
         planFeatures={[
@@ -37,7 +38,7 @@ function PlanSection(props) {
           { available: true, feature: "Lorem ipsum dolor sit amet" },
         ]}
         numberOfMonths={12}
-        discountPercentage={10}
+        discountPercentage={20}
         price={10}
         currency="$"
       />

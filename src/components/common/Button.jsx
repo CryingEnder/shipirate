@@ -23,7 +23,7 @@ function Button({
 
   return (
     <Fragment>
-      {!goBack && (
+      {!goBack && linkPath.search("#") !== 0 && (
         <Link to={linkPath}>
           <button
             {...props}
@@ -48,6 +48,32 @@ function Button({
             {!LabelIcon && <p className={fontSize ? fontSize : ""}>{label}</p>}
           </button>
         </Link>
+      )}
+      {!goBack && linkPath.search("#") === 0 && (
+        <a href={linkPath}>
+          <button
+            {...props}
+            className={`${fontColor ? `${fontColor} ` : ""}${
+              styles ? `${styles} ` : ""
+            }${
+              type === "submit" && isGreen
+                ? "bg-green-normal ring ring-green-ring transition-colors hover:bg-green-hover hover:ring-green-hover-ring "
+                : "bg-yellow-pirate ring ring-yellow-pirate-ring transition-colors hover:bg-yellow-pirate-hover hover:ring-yellow-pirate-hover-ring "
+            }rounded-2xl shadow-md font-semibold focus:outline-none px-4 py-2`}
+            type={type}
+          >
+            {LabelIcon && (
+              <div className="flex flex-row justify-center items-center space-x-1">
+                <LabelIcon
+                  className={`fill-current ${labelIconSize}`}
+                  alt="Label icon"
+                />
+                <p className={fontSize ? fontSize : ""}>{label}</p>
+              </div>
+            )}
+            {!LabelIcon && <p className={fontSize ? fontSize : ""}>{label}</p>}
+          </button>
+        </a>
       )}
       {goBack && (
         <button

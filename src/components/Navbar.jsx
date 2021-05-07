@@ -56,6 +56,7 @@ function Navbar(props) {
                 content: "Get VPN",
                 specialStyle:
                   "py-1 px-3 rounded-xl dark:bg-purple-700 bg-blue-sky-3",
+                linkPath: "#plans",
               },
               { content: "Login", toggleWindow: true },
             ]}
@@ -74,6 +75,7 @@ function Navbar(props) {
               content: "Get VPN",
               specialStyle:
                 "transition-colors hover:text-gray-200 laptop:bg-blue-sky-3 laptop:py-1 laptop:px-3 laptop:rounded-xl dark:bg-purple-700",
+              linkPath: "#plans",
             },
             "What is VPN?",
             "Features",

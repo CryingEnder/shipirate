@@ -25,14 +25,18 @@ function List({
               : itemsStyle
           }
         >
-          <Link
-            onClick={
-              i.toggleWindow ? doToggleWindow : (e) => e.preventDefault()
-            }
-            to={i.linkPath ? i.linkPath : "/"}
-          >
-            {i.content ? i.content : i}
-          </Link>
+          {i.linkPath && i.linkPath.search("#") === 0 ? (
+            <a href={i.linkPath}>{i.content ? i.content : i}</a>
+          ) : (
+            <Link
+              onClick={
+                i.toggleWindow ? doToggleWindow : (e) => e.preventDefault()
+              }
+              to={i.linkPath ? i.linkPath : "/"}
+            >
+              {i.content ? i.content : i}
+            </Link>
+          )}
         </li>
       ))}
     </ul>

@@ -17,7 +17,11 @@ function Hero(props) {
             The rougher the Internet, the smoother we defend you!
           </h1>
           <p className="font-medium">Set sail online with our VPN.</p>
-          <Button label="Embark now" fontSize="tablet:text-xl" />
+          <Button
+            label="Embark now"
+            fontSize="tablet:text-xl"
+            linkPath="#plans"
+          />
           <div className="tablet:flex tablet:flex-row tablet:items-center">
             <CheckBox className="w-4 mr-1.5 mb-0.5 inline-block tablet:mb-0" />
             <span className="font-medium">30-day money-back guarantee</span>
