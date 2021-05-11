@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
@@ -7,6 +7,10 @@ function Input({ label, styles, linkPath, checkboxLabelFontSize, ...props }) {
   const transformOff = "transition-all transform translate-y-0 text-base";
   const [labelTransformClass, setLabelTransformClass] = useState(transformOff);
   const [inputState, setInputState] = useState("");
+
+  useEffect(() => {
+    if (inputState) setLabelTransformClass(transformOn);
+  }, [inputState]);
 
   function toggleTransform() {
     if (labelTransformClass === transformOff)
