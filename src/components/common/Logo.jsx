@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { logo } from "./../../utils/images";
 import PropTypes from "prop-types";
 
-function Logo({ styles, fontColor, fontSize, phoneLogoSize }) {
+function Logo({ styles, fontColor, fontSize, phoneLogoSize, disableClick }) {
+  function scrollUp() {
+    window.scrollTo(0, 0);
+  }
+
   return (
-    <Link to="/" className={`flex flex-row items-center space-x-3 ${styles}`}>
+    <Link
+      onClick={disableClick ? (e) => e.preventDefault() : scrollUp}
+      to="/"
+      className={`flex flex-row items-center space-x-3 ${styles}`}
+    >
       <img
         className={`${
           phoneLogoSize ? `${phoneLogoSize} ` : ""
@@ -27,6 +35,7 @@ Logo.defaultProps = {
   fontColor: "text-gray-100",
   fontSize: "text-2xl tablet:text-3xl",
   phoneLogoSize: "",
+  disableClick: false,
 };
 
 Logo.propTypes = {
@@ -34,6 +43,7 @@ Logo.propTypes = {
   fontColor: PropTypes.string,
   fontSize: PropTypes.string,
   phoneLogoSize: PropTypes.string,
+  disableClick: PropTypes.bool,
 };
 
 export default Logo;
