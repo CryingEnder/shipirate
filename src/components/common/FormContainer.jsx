@@ -40,7 +40,8 @@ function FormContainer({ children, toggleState, ...props }) {
           onClick={closeWindow}
         />
         <Logo
-          styles="hidden tablet:absolute tablet:transition-all tablet:flex tablet:-top-16"
+          disableClick={true}
+          styles="hidden cursor-default tablet:absolute tablet:transition-all tablet:flex tablet:-top-16"
           fontColor="text-blue-dark"
           fontSize="text-2xl tablet:text-3xl laptop:text-4xl"
           phoneLogoSize="w-8"
