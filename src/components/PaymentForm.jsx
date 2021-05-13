@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Container from "./common/Container";
 import Input from "./common/Input";
 import Button from "./common/Button";
@@ -15,6 +15,8 @@ function PaymentForm(props) {
   const [opacityAnimation, setOpacityAnimation] = useState("");
   const [cardBorder, setCardBorder] = useState(borderOff);
   const [paypalBorder, setPaypalBorder] = useState(borderOff);
+  const total = 0;
+  const currency = "$";
 
   useEffect(() => {
     document.body.className =
@@ -52,7 +54,10 @@ function PaymentForm(props) {
     >
       <form className="w-full tablet-small:max-w-lg p-4 flex flex-col space-y-6">
         <header className="text-center w-full">
-          <h1 className="text-2xl text-blue-dark">Your total is $250</h1>
+          <h1 className="text-2xl text-blue-dark">
+            Your total is {currency}
+            {total}
+          </h1>
           <h2 className="text-lg text-blue-bird">Choose a payment method</h2>
         </header>
         <div className="grid grid-cols-1 gap-2 tablet-small:grid-cols-2">
@@ -109,7 +114,7 @@ function PaymentForm(props) {
               fontColor="text-gray-25"
               type="submit"
               isGreen={true}
-              label={`Pay $${250}`}
+              label={`Pay ${currency}${total}`}
               fontSize="text-xl"
             />
             <Button
@@ -141,7 +146,7 @@ function PaymentForm(props) {
               fontColor="text-gray-25"
               type="submit"
               isGreen={true}
-              label={`Pay $${250}`}
+              label={`Pay ${currency}${total}`}
               fontSize="text-xl"
             />
             <Button
