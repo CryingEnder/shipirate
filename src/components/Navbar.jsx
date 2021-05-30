@@ -49,7 +49,6 @@ function Navbar(props) {
       >
         <Logo />
         <div className="flex flex-row space-x-4 justify-center items-center laptop:hidden">
-          <ToggleTheme />
           <List
             doToggleWindow={toggleWindow}
             className="hidden tablet:flex tablet:flex-row tablet:space-x-4 tablet:justify-center tablet:items-center"
@@ -58,19 +57,19 @@ function Navbar(props) {
               {
                 content: "Get VPN",
                 specialStyle:
-                  "py-1 px-3 rounded-xl dark:bg-purple-700 bg-blue-sky-3",
+                  "py-1 px-3 rounded-xl bg-blue-sky-3 dark:bg-purple-700",
                 linkPath: "#plans",
               },
               { content: "Login", toggleWindow: true },
             ]}
           />
+          <ToggleTheme />
           <MenuButton
             className="w-6 cursor-pointer fill-current text-gray-25 transition-colors hover:text-gray-200"
             onClick={toggleMenu}
           />
         </div>
         <div className="flex flex-row laptop:space-x-4 justify-center items-center w-full laptop:w-auto">
-          <ToggleTheme styles="hidden laptop:block" />
           <List
             doToggleWindow={toggleWindow}
             className={`${menuState} w-full laptop:w-auto divide-y-2 divide-blue-sky-4 overflow-hidden laptop:flex laptop:flex-row laptop:justify-center laptop:items-center laptop:space-x-4 laptop:max-h-full laptop:divide-y-0 laptop:opacity-100`}
@@ -88,6 +87,7 @@ function Navbar(props) {
               { content: "Login", toggleWindow: true },
             ]}
           />
+          <ToggleTheme styles="hidden laptop:block" />
         </div>
       </Container>
     </ThemeProvider>

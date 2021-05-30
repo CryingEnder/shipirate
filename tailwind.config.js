@@ -94,6 +94,7 @@ module.exports = {
         "1/10": "10%",
         "1/20": "5%",
         "-18": "-4.5rem",
+        5.5: "1.375rem",
       },
       keyframes: {
         "opacity-slow": {
