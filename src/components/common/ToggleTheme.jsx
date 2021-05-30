@@ -6,9 +6,7 @@ function ToggleTheme({ styles }) {
   const left = "left-0.5 laptop:left-1";
   const right = "left-5.5 laptop:left-8";
   const { theme, setTheme } = useContext(ThemeContext);
-  const [buttonPosition, setButtonPosition] = useState(
-    theme === "dark" ? right : left
-  );
+  const [buttonPosition, setButtonPosition] = useState("");
 
   useEffect(() => {
     setButtonPosition(theme === "dark" ? right : left);
