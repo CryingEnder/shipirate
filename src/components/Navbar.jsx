@@ -5,7 +5,6 @@ import Container from "./common/Container";
 import Logo from "./common/Logo";
 import List from "./common/List";
 import { MenuButton } from "./common/Icons";
-import { ThemeProvider } from "./context/ThemeContext";
 import ToggleTheme from "./common/ToggleTheme";
 
 function Navbar(props) {
@@ -37,7 +36,7 @@ function Navbar(props) {
   });
 
   return (
-    <ThemeProvider>
+    <Fragment>
       {!signupClicked && (
         <LoginForm goToSignUp={goToSignUp} toggleState={loginClicked} />
       )}
@@ -90,7 +89,7 @@ function Navbar(props) {
           <ToggleTheme styles="hidden laptop:block" />
         </div>
       </Container>
-    </ThemeProvider>
+    </Fragment>
   );
 }
 
