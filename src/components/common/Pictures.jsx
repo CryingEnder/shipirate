@@ -20,7 +20,6 @@ import {
   heroImgLightLargeOld,
   heroImgLightMediumOld,
   heroImgLightSmallOld,
-  /*
   heroImgDark,
   heroImgDarkLarger,
   heroImgDarkLarge,
@@ -31,21 +30,36 @@ import {
   heroImgDarkLargeOld,
   heroImgDarkMediumOld,
   heroImgDarkSmallOld,
-  */
 } from "./../../utils/images";
 
-function HeroPicture({ ...props }) {
+function HeroPictureLight({ ...props }) {
   return (
     <picture {...props}>
       <source
         type="image/webp"
-        srcSet={`${heroImgLightSmall} 200w, ${heroImgLightMedium} 616w, ${heroImgLightLarge} 946w, ${heroImgLightLarger} 1195w, ${heroImgLight} 1440w`}
+        srcSet={`${heroImgLightSmall} 200w, ${heroImgLightMedium} 617w, ${heroImgLightLarge} 946w, ${heroImgLightLarger} 1226w, ${heroImgLight} 1440w`}
       />
       <source
         type="image/jpg"
-        srcSet={`${heroImgLightSmallOld} 200w, ${heroImgLightMediumOld} 616w, ${heroImgLightLargeOld} 946w, ${heroImgLightLargerOld} 1195w, ${heroImgLightOld} 1440w`}
+        srcSet={`${heroImgLightSmallOld} 200w, ${heroImgLightMediumOld} 617w, ${heroImgLightLargeOld} 946w, ${heroImgLightLargerOld} 1226w, ${heroImgLightOld} 1440w`}
       />
       <img src={heroImgLightOld} className="w-full" alt="A pirate ship" />
+    </picture>
+  );
+}
+
+function HeroPictureDark({ ...props }) {
+  return (
+    <picture {...props}>
+      <source
+        type="image/webp"
+        srcSet={`${heroImgDarkSmall} 200w, ${heroImgDarkMedium} 617w, ${heroImgDarkLarge} 985w, ${heroImgDarkLarger} 1240w, ${heroImgDark} 1440w`}
+      />
+      <source
+        type="image/jpg"
+        srcSet={`${heroImgDarkSmallOld} 200w, ${heroImgDarkMediumOld} 617w, ${heroImgDarkLargeOld} 985w, ${heroImgDarkLargerOld} 1240w, ${heroImgDarkOld} 1440w`}
+      />
+      <img src={heroImgDarkOld} className="w-full" alt="A pirate ship" />
     </picture>
   );
 }
@@ -102,4 +116,10 @@ function FeatureThree({ ...props }) {
   );
 }
 
-export { HeroPicture, FeatureOne, FeatureTwo, FeatureThree };
+export {
+  HeroPictureLight,
+  HeroPictureDark,
+  FeatureOne,
+  FeatureTwo,
+  FeatureThree,
+};
