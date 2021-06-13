@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { Check, Cross } from "./Icons";
 import {
   ocean,
+  oceanDark,
   tierOne,
   tierTwo,
   tierThree,
+  tierOneDark,
+  tierTwoDark,
+  tierThreeDark,
   popular,
+  popularDark,
 } from "./../../utils/images";
 import Button from "./Button";
 import Badge from "./Badge";
 import { showTwoDecimals } from "./../../utils/showTwoDecimals";
+import { ThemeContext } from "./../context/ThemeContext";
 
 function Plan({
   planFeatures,
@@ -20,6 +26,8 @@ function Plan({
   currency,
   isPopular,
 }) {
+  const { theme, setTheme } = useContext(ThemeContext);
+
   const price = discountPercentage
     ? showTwoDecimals(initialPrice - (discountPercentage / 100) * initialPrice)
     : showTwoDecimals(initialPrice);
@@ -28,16 +36,16 @@ function Plan({
     : showTwoDecimals(initialPrice * numberOfMonths);
   let tier = "";
 
-  if (numberOfMonths > 6) tier = tierThree;
-  else if (numberOfMonths > 1) tier = tierTwo;
-  else tier = tierOne;
+  if (numberOfMonths > 6) tier = theme !== "dark" ? tierThree : tierThreeDark;
+  else if (numberOfMonths > 1) tier = theme !== "dark" ? tierTwo : tierTwoDark;
+  else tier = theme !== "dark" ? tierOne : tierOneDark;
 
   return (
-    <article className="relative cursor-pointer text-center rounded-2xl p-2 mx-auto shadow-md bg-gradient-to-b from-gray-25 to-gray-30 text-blue-bird max-w-sm tablet:max-w-md tablet:transform tablet:ease-out tablet:duration-200 tablet:hover:scale-105 laptop:w-3/10">
+    <article className="relative cursor-pointer text-center rounded-2xl p-2 mx-auto shadow-md bg-gradient-to-b from-gray-25 to-gray-30 dark:from-purple-light-1 dark:to-purple-light-2 text-blue-bird dark:text-purple-light-3 max-w-sm tablet:max-w-md tablet:transform tablet:ease-out tablet:duration-200 tablet:hover:scale-105 laptop:w-3/10">
       {isPopular && (
         <img
           className="absolute right-2 -top-4 w-1/5"
-          src={popular}
+          src={theme !== "dark" ? popular : popularDark}
           alt="A popular sale badge"
         />
       )}
@@ -47,7 +55,7 @@ function Plan({
           src={tier}
           alt="A pirate hat"
         />
-        <h3 className="clip-plan-header mb-3 pb-7 pt-3 -mx-4 shadow-sm text-shadow rounded-t-lg bg-blue-water text-gray-25">
+        <h3 className="clip-plan-header mb-3 pb-7 pt-3 -mx-4 shadow-sm text-shadow rounded-t-lg bg-blue-water text-gray-25 dark:bg-purple-light-6 dark:text-purple-light-5">
           {`${numberOfMonths} month plan`}
         </h3>
         <div className="flex flex-wrap space-x-1 mb-2 justify-center items-center">
@@ -66,7 +74,9 @@ function Plan({
         </div>
         <p
           className={
-            numberOfMonths > 1 ? "mb-4 font-medium text-gray-cloud" : "hidden"
+            numberOfMonths > 1
+              ? "mb-4 font-medium text-gray-cloud dark:text-purple-light-4"
+              : "hidden"
           }
         >
           {`${currency}${totalPrice} billed at once`}
@@ -77,9 +87,9 @@ function Plan({
           {planFeatures.map((f) => (
             <li className="mb-1">
               {f.available ? (
-                <Check className="mb-1.5 mr-2 inline-block fill-current text-blue-water w-4 tablet:w-5" />
+                <Check className="mb-1.5 mr-2 inline-block fill-current text-blue-water dark:text-blue-check w-4 tablet:w-5" />
               ) : (
-                <Cross className="mb-1.5 mr-2 inline-block fill-current text-red-faded w-3.5 tablet:w-5" />
+                <Cross className="mb-1.5 mr-2 inline-block fill-current text-red-faded dark:text-red-faded-dark w-3.5 tablet:w-5" />
               )}
               {f.feature}
             </li>
@@ -87,13 +97,17 @@ function Plan({
         </ul>
         <div className="relative rounded-b-xl overflow-hidden">
           <div className="absolute left-0 right-0 bottom-1/10 mx-auto">
-            <Button
-              linkPath="/checkout"
-              label="Buy now"
-              fontColor="text-blue-bird"
-            />
+            {theme !== "dark" ? (
+              <Button
+                linkPath="/checkout"
+                label="Buy now"
+                fontColor="text-blue-bird"
+              />
+            ) : (
+              <Button linkPath="/checkout" label="Buy now" />
+            )}
           </div>
-          <img src={ocean} alt="Ocean" />
+          <img src={theme !== "dark" ? ocean : oceanDark} alt="Ocean" />
         </div>
       </div>
     </article>

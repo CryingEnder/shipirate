@@ -14,6 +14,10 @@ function Button({
   goBack,
   ...props
 }) {
+  const submitStyle =
+    "bg-green-normal ring ring-green-ring transition-colors hover:bg-green-hover hover:ring-green-hover-ring ";
+  const normalStyle =
+    "transition-colors bg-yellow-pirate ring ring-yellow-pirate-ring hover:bg-yellow-pirate-hover hover:ring-yellow-pirate-hover-ring dark:bg-red-sky-1 dark:ring-red-sky-2 dark:hover:bg-red-sky-3 dark:hover:ring-red-sky-4 ";
   let history = goBack ? useHistory() : "";
   const doGoBack = history
     ? () => {
@@ -30,9 +34,7 @@ function Button({
             className={`${fontColor ? `${fontColor} ` : ""}${
               styles ? `${styles} ` : ""
             }${
-              type === "submit" && isGreen
-                ? "bg-green-normal ring ring-green-ring transition-colors hover:bg-green-hover hover:ring-green-hover-ring "
-                : "bg-yellow-pirate ring ring-yellow-pirate-ring transition-colors hover:bg-yellow-pirate-hover hover:ring-yellow-pirate-hover-ring "
+              type === "submit" && isGreen ? submitStyle : normalStyle
             }rounded-2xl shadow-md font-semibold focus:outline-none px-4 py-2`}
             type={type}
           >
@@ -56,9 +58,7 @@ function Button({
             className={`${fontColor ? `${fontColor} ` : ""}${
               styles ? `${styles} ` : ""
             }${
-              type === "submit" && isGreen
-                ? "bg-green-normal ring ring-green-ring transition-colors hover:bg-green-hover hover:ring-green-hover-ring "
-                : "bg-yellow-pirate ring ring-yellow-pirate-ring transition-colors hover:bg-yellow-pirate-hover hover:ring-yellow-pirate-hover-ring "
+              type === "submit" && isGreen ? submitStyle : normalStyle
             }rounded-2xl shadow-md font-semibold focus:outline-none px-4 py-2`}
             type={type}
           >
@@ -82,9 +82,7 @@ function Button({
           className={`${fontColor ? `${fontColor} ` : ""}${
             styles ? `${styles} ` : ""
           }${
-            type === "submit" && isGreen
-              ? "bg-green-normal ring ring-green-ring transition-colors hover:bg-green-hover hover:ring-green-hover-ring "
-              : "bg-yellow-pirate ring ring-yellow-pirate-ring transition-colors hover:bg-yellow-pirate-hover hover:ring-yellow-pirate-hover-ring "
+            type === "submit" && isGreen ? submitStyle : normalStyle
           }rounded-2xl shadow-md font-semibold focus:outline-none px-4 py-2`}
           type={type}
         >
@@ -109,7 +107,7 @@ Button.defaultProps = {
   labelIconSize: "w-6",
   linkPath: "/",
   goBack: false,
-  fontColor: "text-blue-dark",
+  fontColor: "text-blue-dark dark:text-blue-whiteish-2",
   fontStyle: "",
   styles: "",
   isGreen: false,

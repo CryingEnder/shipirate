@@ -43,8 +43,8 @@ function Navbar(props) {
       <SignupForm toggleState={signupClicked} />
       <Container
         tag="nav"
-        stylesOutside={`sticky top-0 z-10 bg-blue-sky-1 dark:bg-purple-900`}
-        stylesInside={`flex flex-row flex-wrap justify-between py-3 px-3 tablet:px-6 text-shadow tracking-wide-2 font-semibold text-gray-100 dark:bg-purple-900`}
+        stylesOutside={`sticky top-0 z-10 bg-blue-sky-1 dark:bg-blue-night-sky-1`}
+        stylesInside={`flex flex-row flex-wrap justify-between py-3 px-3 tablet:px-6 text-shadow tracking-wide-2 font-semibold text-gray-100 dark:bg-blue-night-sky-1`}
       >
         <Logo />
         <div className="flex flex-row space-x-4 justify-center items-center laptop:hidden">
@@ -71,7 +71,7 @@ function Navbar(props) {
         <div className="flex flex-row laptop:space-x-4 justify-center items-center w-full laptop:w-auto">
           <List
             doToggleWindow={toggleWindow}
-            className={`${menuState} w-full laptop:w-auto divide-y-2 divide-blue-sky-4 overflow-hidden laptop:flex laptop:flex-row laptop:justify-center laptop:items-center laptop:space-x-4 laptop:max-h-full laptop:divide-y-0 laptop:opacity-100`}
+            className={`${menuState} w-full laptop:w-auto divide-y-2 divide-blue-sky-4 dark:divide-purple-700 overflow-hidden laptop:flex laptop:flex-row laptop:justify-center laptop:items-center laptop:space-x-4 laptop:max-h-full laptop:divide-y-0 laptop:opacity-100`}
             itemsStyle={"py-3 transition-colors hover:text-gray-200"}
             items={[
               {

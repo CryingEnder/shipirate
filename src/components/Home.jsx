@@ -12,9 +12,11 @@ function Home(props) {
       <Navbar />
       <main>
         <Hero />
-        <Features />
-        <PlanSection />
-        <Testimonials />
+        <div className="bg-gradient-to-b dark:from-blue-night-sky-1 dark:to-blue-night-sky-2 w-full py-16">
+          <Features />
+          <PlanSection />
+          <Testimonials />
+        </div>
         <Footer />
       </main>
     </Fragment>

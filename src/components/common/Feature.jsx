@@ -15,8 +15,10 @@ function Feature({
     <div className="grid gap-y-8 laptop:items-center laptop:grid-cols-2">
       <article className={reversedOrder ? "px-6 laptop:order-1" : "px-6"}>
         <img className="w-12" src={logoSrc} alt={logoAlt} />
-        <h2 className="mt-2 text-shadow text-blue-dark">{heading}</h2>
-        <p className="my-6 text-gray-600">{text}</p>
+        <h2 className="mt-2 text-shadow text-blue-dark dark:text-blue-whiteish-1">
+          {heading}
+        </h2>
+        <p className="my-6 text-gray-600 dark:text-blue-whiteish-2">{text}</p>
         <Button label={buttonLabel} />
       </article>
       <Picture className="mx-6 shadow-md rounded-xl overflow-hidden" />

@@ -20,11 +20,16 @@ module.exports = {
             3: "#1a9891",
             4: "#20a99c",
           },
+          "night-water": "#48366a",
+          "night-sky": { 1: "#121131", 2: "#212049", 3: "#2f2d65" },
+          "night-dark": "#48366a",
           dark: "#16143b",
           "dark-hover": "#312d7a",
           light: { 1: "#b2e8e6", 2: "#87bab8" },
+          check: "#89a0f4",
           bird: "#477b9e",
           grayish: "#9c9abf",
+          whiteish: { 1: "#b0adff", 2: "#e6e6ff", 3: "#ccccff" },
         },
         gray: {
           25: "#fbfdff",
@@ -39,8 +44,25 @@ module.exports = {
           ring: "#00bc71",
           "hover-ring": "#00b56c",
         },
+        purple: {
+          light: {
+            1: "#64548d",
+            2: "#6d5b9b",
+            3: "#d7d0ee",
+            4: "#d3cbee",
+            5: "#dcd7ee",
+            6: "#4b3d96",
+          },
+        },
         red: {
           faded: "#f48989",
+          "faded-dark": "#f0a3c7",
+          sky: {
+            1: "#803b67",
+            2: "#b35290",
+            3: "#6e3258",
+            4: "#914375",
+          },
         },
         white: {
           "faded-50": "rgba(255, 255, 255, 0.7)",

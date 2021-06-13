@@ -1,4 +1,5 @@
 import compass from "../css/images/compass.svg";
+import compassDark from "../css/images/compassDark.svg";
 import customerFive from "../css/images/customer-5.jpg";
 import customerFour from "../css/images/customer-4.jpg";
 import customerOne from "../css/images/customer-1.jpg";
@@ -10,6 +11,10 @@ import deviceFeature from "../css/images/deviceFeature.webp";
 import deviceFeatureOld from "../css/images/deviceFeature.jpg";
 import deviceFeatureRetina from "../css/images/deviceFeature@2x.webp";
 import deviceFeatureRetinaOld from "../css/images/deviceFeature@2x.jpg";
+import deviceFeatureDark from "../css/images/deviceFeatureDark.webp";
+import deviceFeatureDarkOld from "../css/images/deviceFeatureDark.jpg";
+import deviceFeatureDarkRetina from "../css/images/deviceFeatureDark@2x.webp";
+import deviceFeatureDarkRetinaOld from "../css/images/deviceFeatureDark@2x.jpg";
 import facebook from "../css/images/facebook.svg";
 import heroImgDark from "../css/images/hero-dark-w-1440.webp";
 import heroImgDarkOld from "../css/images/hero-dark-w-1440.jpg";
@@ -33,28 +38,43 @@ import heroImgLightSmall from "../css/images/hero-light-w-200.webp";
 import heroImgLightSmallOld from "../css/images/hero-light-w-200.jpg";
 import instagram from "../css/images/instagram.svg";
 import key from "../css/images/key.svg";
+import keyDark from "../css/images/keyDark.svg";
 import linkedin from "../css/images/linkedin.svg";
 import locationFeature from "../css/images/locationFeature.jpg";
 import locationFeatureRetina from "../css/images/locationFeature@2x.jpg";
+import locationFeatureDark from "../css/images/locationFeatureDark.jpg";
+import locationFeatureDarkRetina from "../css/images/locationFeatureDark@2x.jpg";
 import logo from "../css/images/logo.svg";
 import ocean from "../css/images/ocean.svg";
+import oceanDark from "../css/images/oceanDark.svg";
 import paymentMethods from "../css/images/payments.png";
 import paypal from "../css/images/paypal.svg";
 import popular from "../css/images/popular.svg";
+import popularDark from "../css/images/popularDark.svg";
 import secureFeature from "../css/images/secureFeature.webp";
 import secureFeatureOld from "../css/images/secureFeature.png";
 import secureFeatureRetina from "../css/images/secureFeature@2x.webp";
 import secureFeatureRetinaOld from "../css/images/secureFeature@2x.png";
+import secureFeatureDark from "../css/images/secureFeatureDark.webp";
+import secureFeatureDarkOld from "../css/images/secureFeatureDark.png";
+import secureFeatureDarkRetina from "../css/images/secureFeatureDark@2x.webp";
+import secureFeatureDarkRetinaOld from "../css/images/secureFeatureDark@2x.png";
 import shield from "../css/images/shield.svg";
+import shieldDark from "../css/images/shieldDark.svg";
 import testimonialsLogo from "../css/images/testimonials.svg";
+import testimonialsLogoDark from "../css/images/testimonialsDark.svg";
 import tierOne from "../css/images/tier-one.svg";
-import tierThree from "../css/images/tier-three.svg";
 import tierTwo from "../css/images/tier-two.svg";
+import tierThree from "../css/images/tier-three.svg";
+import tierOneDark from "../css/images/tier-one-dark.svg";
+import tierTwoDark from "../css/images/tier-two-dark.svg";
+import tierThreeDark from "../css/images/tier-three-dark.svg";
 import treasure from "../css/images/treasure.svg";
 import twitter from "../css/images/twitter.svg";
 
 export {
   compass,
+  compassDark,
   customerFive,
   customerFour,
   customerOne,
@@ -66,6 +86,10 @@ export {
   deviceFeatureOld,
   deviceFeatureRetina,
   deviceFeatureRetinaOld,
+  deviceFeatureDark,
+  deviceFeatureDarkOld,
+  deviceFeatureDarkRetina,
+  deviceFeatureDarkRetinaOld,
   facebook,
   heroImgDark,
   heroImgDarkOld,
@@ -89,23 +113,37 @@ export {
   heroImgLightSmallOld,
   instagram,
   key,
+  keyDark,
   linkedin,
   locationFeature,
   locationFeatureRetina,
+  locationFeatureDark,
+  locationFeatureDarkRetina,
   logo,
   ocean,
+  oceanDark,
   paymentMethods,
   paypal,
   popular,
+  popularDark,
   secureFeature,
   secureFeatureOld,
   secureFeatureRetina,
   secureFeatureRetinaOld,
+  secureFeatureDark,
+  secureFeatureDarkOld,
+  secureFeatureDarkRetina,
+  secureFeatureDarkRetinaOld,
   shield,
+  shieldDark,
   testimonialsLogo,
+  testimonialsLogoDark,
   tierOne,
-  tierThree,
   tierTwo,
+  tierThree,
+  tierOneDark,
+  tierTwoDark,
+  tierThreeDark,
   treasure,
   twitter,
 };

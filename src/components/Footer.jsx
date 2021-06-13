@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { paymentMethods } from "./../utils/images";
 import List from "./common/List";
 import Logo from "./common/Logo";
 import Container from "./common/Container";
+import { ThemeContext } from "./context/ThemeContext";
 
 function Footer(props) {
+  const { theme, setTheme } = useContext(ThemeContext);
+
   return (
     <Container
       tag="footer"
-      stylesOutside="bg-gradient-to-br from-blue-sky-1 via-blue-sky-2 to-blue-water"
+      stylesOutside={`${
+        theme !== "dark" ? "bg-gradient-to-b " : ""
+      }from-blue-sky-1 via-blue-sky-2 to-blue-water dark:bg-blue-night-sky-1`}
       stylesInside="px-6 py-12"
     >
       <div className="flex flex-col">
@@ -40,7 +45,7 @@ function Footer(props) {
           </div>
           <div>
             <Logo styles="mb-2" />
-            <p className="text-lg text-blue-dark font-normal">
+            <p className="text-lg text-blue-dark dark:text-blue-whiteish-2 font-normal">
               Copyright &copy; 2021 Cristian Botez
             </p>
           </div>

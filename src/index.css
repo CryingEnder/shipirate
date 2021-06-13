@@ -76,7 +76,7 @@
   }
 
   body {
-    @apply relative;
+    @apply relative bg-gray-25;
   }
 
   nav {
@@ -128,14 +128,6 @@
 
   .clip-bottom-point {
     clip-path: polygon(0% 0%, 100% 0, 100% 93%, 50% 100%, 0 93%);
-  }
-
-  .clip-top-point-up {
-    clip-path: polygon(0% 7%, 50% 0, 100% 7%, 100% 100%, 0 100%);
-  }
-
-  .clip-top-point-down {
-    clip-path: polygon(0% 0%, 50% 7%, 100% 0%, 100% 100%, 0 100%);
   }
 
   .clip-plan-header {

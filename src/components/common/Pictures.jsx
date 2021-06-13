@@ -4,12 +4,22 @@ import {
   deviceFeatureOld,
   deviceFeatureRetina,
   deviceFeatureRetinaOld,
+  deviceFeatureDark,
+  deviceFeatureDarkOld,
+  deviceFeatureDarkRetina,
+  deviceFeatureDarkRetinaOld,
   secureFeature,
   secureFeatureOld,
   secureFeatureRetina,
   secureFeatureRetinaOld,
+  secureFeatureDark,
+  secureFeatureDarkOld,
+  secureFeatureDarkRetina,
+  secureFeatureDarkRetinaOld,
   locationFeature,
   locationFeatureRetina,
+  locationFeatureDark,
+  locationFeatureDarkRetina,
   heroImgLight,
   heroImgLightLarger,
   heroImgLightLarge,
@@ -64,7 +74,7 @@ function HeroPictureDark({ ...props }) {
   );
 }
 
-function FeatureOne({ ...props }) {
+function FeatureOneLight({ ...props }) {
   return (
     <picture {...props}>
       <source
@@ -84,7 +94,27 @@ function FeatureOne({ ...props }) {
   );
 }
 
-function FeatureTwo({ ...props }) {
+function FeatureOneDark({ ...props }) {
+  return (
+    <picture {...props}>
+      <source
+        type="image/webp"
+        srcSet={`${deviceFeatureDark} 1x, ${deviceFeatureDarkRetina} 2x`}
+      />
+      <source
+        type="image/jpg"
+        srcSet={`${deviceFeatureDarkOld} 1x, ${deviceFeatureDarkRetinaOld} 2x`}
+      />
+      <img
+        src={deviceFeatureDarkRetinaOld}
+        className="w-full"
+        alt="A laptop of a pirate skull and a lamp"
+      />
+    </picture>
+  );
+}
+
+function FeatureTwoLight({ ...props }) {
   return (
     <picture {...props}>
       <source
@@ -92,11 +122,11 @@ function FeatureTwo({ ...props }) {
         srcSet={`${secureFeature} 1x, ${secureFeatureRetina} 2x`}
       />
       <source
-        type="image/jpg"
+        type="image/png"
         srcSet={`${secureFeatureOld} 1x, ${secureFeatureRetinaOld} 2x`}
       />
       <img
-        src={deviceFeatureRetinaOld}
+        src={secureFeatureRetinaOld}
         className="w-full"
         alt="A pirate ship of pirates shooting the cannons"
       />
@@ -104,7 +134,27 @@ function FeatureTwo({ ...props }) {
   );
 }
 
-function FeatureThree({ ...props }) {
+function FeatureTwoDark({ ...props }) {
+  return (
+    <picture {...props}>
+      <source
+        type="image/webp"
+        srcSet={`${secureFeatureDark} 1x, ${secureFeatureDarkRetina} 2x`}
+      />
+      <source
+        type="image/png"
+        srcSet={`${secureFeatureDarkOld} 1x, ${secureFeatureDarkRetinaOld} 2x`}
+      />
+      <img
+        src={secureFeatureDarkRetinaOld}
+        className="w-full"
+        alt="A pirate ship of pirates shooting the cannons"
+      />
+    </picture>
+  );
+}
+
+function FeatureThreeLight({ ...props }) {
   return (
     <picture {...props}>
       <source
@@ -116,10 +166,29 @@ function FeatureThree({ ...props }) {
   );
 }
 
+function FeatureThreeDark({ ...props }) {
+  return (
+    <picture {...props}>
+      <source
+        type="image/jpg"
+        srcSet={`${locationFeatureDark} 1x, ${locationFeatureDarkRetina} 2x`}
+      />
+      <img
+        src={locationFeatureDarkRetina}
+        className="w-full"
+        alt="A pirate map"
+      />
+    </picture>
+  );
+}
+
 export {
   HeroPictureLight,
   HeroPictureDark,
-  FeatureOne,
-  FeatureTwo,
-  FeatureThree,
+  FeatureOneLight,
+  FeatureOneDark,
+  FeatureTwoLight,
+  FeatureTwoDark,
+  FeatureThreeLight,
+  FeatureThreeDark,
 };

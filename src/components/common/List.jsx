@@ -45,8 +45,9 @@ function List({
 
 List.defaultProps = {
   itemsStyle:
-    "font-medium text-blue-dark cursor-pointer transition-colors hover:text-gray-bluegray-500",
-  titleStyle: "mb-1 uppercase font-bold text-gray-100",
+    "font-medium text-blue-dark cursor-pointer transition-colors hover:text-gray-bluegray-500 dark:text-blue-whiteish-2 dark:hover:text-blue-whiteish-3",
+  titleStyle:
+    "mb-1 uppercase font-bold text-gray-100 dark:text-blue-whiteish-1",
 };
 
 List.propTypes = {
