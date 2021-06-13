@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import { ThemeContext } from "./../context/ThemeContext";
 import PropTypes from "prop-types";
 
 function Input({ label, styles, linkPath, checkboxLabelFontSize, ...props }) {
+  const { theme, setTheme } = useContext(ThemeContext);
+
   const transformOn = "transition-all transform -translate-y-5 text-xs";
   const transformOff = "transition-all transform translate-y-0 text-base";
   const [labelTransformClass, setLabelTransformClass] = useState(transformOff);
@@ -39,7 +42,11 @@ function Input({ label, styles, linkPath, checkboxLabelFontSize, ...props }) {
       {(props.type === "checkbox" || props.type === "radio") && (
         <input
           {...props}
-          className="appearance-none cursor-pointer outline-none w-10 h-10 -ml-1 bg-no-repeat bg-checkbox-unchecked checked:bg-checkbox-checked rounded-lg"
+          className={`appearance-none cursor-pointer outline-none w-10 h-10 -ml-1 rounded-lg bg-no-repeat ${
+            theme !== "dark"
+              ? "bg-checkbox-unchecked checked:bg-checkbox-checked"
+              : "bg-checkbox-unchecked-dark checked:bg-checkbox-checked-dark"
+          }`}
         />
       )}
       {props.type !== "checkbox" && props.type !== "radio" && (
@@ -54,7 +61,7 @@ function Input({ label, styles, linkPath, checkboxLabelFontSize, ...props }) {
       {props.type === "checkbox" || props.type === "radio" ? (
         linkPath ? (
           <label
-            className="cursor-pointer text-base pl-2 hover:underline text-blue-dark"
+            className="cursor-pointer text-base pl-2 hover:underline text-blue-dark dark:text-purple-light-3"
             htmlFor={props.id}
           >
             <Link target="_blank" to={linkPath}>
@@ -63,7 +70,7 @@ function Input({ label, styles, linkPath, checkboxLabelFontSize, ...props }) {
           </label>
         ) : (
           <label
-            className="cursor-pointer text-lg font-semibold pl-2 text-blue-dark"
+            className="cursor-pointer text-lg font-semibold pl-2 text-blue-dark dark:text-purple-light-3"
             htmlFor={props.id}
           >
             {label}
