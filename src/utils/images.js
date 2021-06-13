@@ -15,7 +15,6 @@ import deviceFeatureDark from "../css/images/deviceFeatureDark.webp";
 import deviceFeatureDarkOld from "../css/images/deviceFeatureDark.jpg";
 import deviceFeatureDarkRetina from "../css/images/deviceFeatureDark@2x.webp";
 import deviceFeatureDarkRetinaOld from "../css/images/deviceFeatureDark@2x.jpg";
-import facebook from "../css/images/facebook.svg";
 import heroImgDark from "../css/images/hero-dark-w-1440.webp";
 import heroImgDarkOld from "../css/images/hero-dark-w-1440.jpg";
 import heroImgDarkLarge from "../css/images/hero-dark-w-985.webp";
@@ -36,10 +35,8 @@ import heroImgLightMediumOld from "../css/images/hero-light-w-617.jpg";
 import heroImgLightOld from "../css/images/hero-light-w-1440.jpg";
 import heroImgLightSmall from "../css/images/hero-light-w-200.webp";
 import heroImgLightSmallOld from "../css/images/hero-light-w-200.jpg";
-import instagram from "../css/images/instagram.svg";
 import key from "../css/images/key.svg";
 import keyDark from "../css/images/keyDark.svg";
-import linkedin from "../css/images/linkedin.svg";
 import locationFeature from "../css/images/locationFeature.jpg";
 import locationFeatureRetina from "../css/images/locationFeature@2x.jpg";
 import locationFeatureDark from "../css/images/locationFeatureDark.jpg";
@@ -70,7 +67,6 @@ import tierOneDark from "../css/images/tier-one-dark.svg";
 import tierTwoDark from "../css/images/tier-two-dark.svg";
 import tierThreeDark from "../css/images/tier-three-dark.svg";
 import treasure from "../css/images/treasure.svg";
-import twitter from "../css/images/twitter.svg";
 
 export {
   compass,
@@ -90,7 +86,6 @@ export {
   deviceFeatureDarkOld,
   deviceFeatureDarkRetina,
   deviceFeatureDarkRetinaOld,
-  facebook,
   heroImgDark,
   heroImgDarkOld,
   heroImgDarkLarge,
@@ -111,10 +106,8 @@ export {
   heroImgLightOld,
   heroImgLightSmall,
   heroImgLightSmallOld,
-  instagram,
   key,
   keyDark,
-  linkedin,
   locationFeature,
   locationFeatureRetina,
   locationFeatureDark,
@@ -145,5 +138,4 @@ export {
   tierTwoDark,
   tierThreeDark,
   treasure,
-  twitter,
 };
