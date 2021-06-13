@@ -20,7 +20,7 @@ function PaymentForm(props) {
 
   useEffect(() => {
     document.body.className =
-      "bg-gradient-to-r from-blue-light-1 to-blue-light-2 h-screen";
+      "bg-gradient-to-r from-blue-sky-1 to-blue-sky-2 h-screen";
     return () => {
       document.body.className = null;
     };
