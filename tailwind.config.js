@@ -1,5 +1,5 @@
 module.exports = {
-  //to be updated to jit mode (issue with tailwind intellisense extension atm)
+  // mode: "jit",
   purge: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class", //'false', 'media' or 'class'
   theme: {
@@ -78,11 +78,6 @@ module.exports = {
       },
       fontFamily: {
         "pirate-gr": ["pirate_grungeregular"],
-        "pirate-ir": ["pirate_inlineregular"],
-        "pirate-igr": ["pirate_inline__grungeregular"],
-        "pirate-rr": ["pirate_regularregular"],
-        "pirate-sr": ["pirate_shadowregular"],
-        "pirate-sgr": ["pirate_shadow_grungeregular"],
       },
       fontSize: {
         "1.5xl": ["1.375rem", { lineHeight: "1.875rem" }],
@@ -94,6 +89,10 @@ module.exports = {
       backgroundImage: (theme) => ({
         "checkbox-unchecked": "url('./src/css/images/checkbox-unchecked.svg')",
         "checkbox-checked": "url('./src/css/images/checkbox-checked.svg')",
+        "checkbox-unchecked-dark":
+          "url('./src/css/images/checkbox-unchecked-dark.svg')",
+        "checkbox-checked-dark":
+          "url('./src/css/images/checkbox-checked-dark.svg')",
       }),
       borderRadius: {
         x2: "3rem",
