@@ -1,6 +1,6 @@
 const request = require("supertest");
-const mongoose = require("mongoose");
 const { User } = require("../../../models/user");
+const mongoose = require("mongoose");
 
 describe("auth middleware", () => {
   let server;
@@ -14,11 +14,8 @@ describe("auth middleware", () => {
     server = require("../../../index");
     token = new User().generateAuthToken();
   });
-  afterEach(async () => {
-    await server.close();
-  });
-  afterAll(async () => {
-    await mongoose.connection.close();
+  afterEach(() => {
+    server.close();
   });
 
   it("should return 401 if no token is provided", async () => {

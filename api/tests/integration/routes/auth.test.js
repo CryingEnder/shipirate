@@ -12,15 +12,6 @@ describe("/api/auth", () => {
       .send({ email: user.email, password: user.password });
   };
 
-  beforeAll(async () => {
-    server = require("../../../index");
-    await request(server).post("/api/users").send({
-      username: "user1",
-      email: "example1@domain.com",
-      password: "12345",
-      repeatPassword: "12345",
-    });
-  });
   beforeEach(async () => {
     server = require("../../../index");
     user = {
@@ -29,13 +20,11 @@ describe("/api/auth", () => {
       password: "12345",
       repeatPassword: "12345",
     };
+    await request(server).post("/api/users").send(user);
   });
   afterEach(async () => {
-    await server.close();
-  });
-  afterAll(async () => {
+    server.close();
     await User.deleteMany({});
-    await mongoose.connection.close();
   });
 
   it("should return 400 if the e-mail is less than 10 characters", async () => {

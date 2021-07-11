@@ -15,12 +15,8 @@ describe("api/users", () => {
   beforeEach(() => {
     server = require("../../../index");
   });
-  afterEach(async () => {
-    await server.close();
-  });
-  afterAll(async () => {
-    await User.deleteMany({});
-    await mongoose.connection.close();
+  afterEach(() => {
+    server.close();
   });
 
   describe("GET /me", () => {
