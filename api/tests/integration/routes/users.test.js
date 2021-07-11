@@ -19,6 +19,7 @@ describe("api/users", () => {
     await server.close();
   });
   afterAll(async () => {
+    await User.deleteMany({});
     await mongoose.connection.close();
   });
 
@@ -156,12 +157,18 @@ describe("api/users", () => {
 
   describe("PUT /me", () => {
     describe("PUT /me input", () => {
-      beforeAll(async () => {
-        server = require("../../../index");
+      beforeEach(async () => {
+        user = {
+          username: "user1",
+          email: "example1@domain.com",
+          password: "12345",
+          repeatPassword: "12345",
+        };
+
         const userInfo = await execPost();
         token = userInfo.header["x-auth-token"];
       });
-      afterAll(async () => {
+      afterEach(async () => {
         await User.deleteMany({});
       });
 
@@ -302,25 +309,28 @@ describe("api/users", () => {
     });
 
     describe("PUT /me username", () => {
-      beforeAll(async () => {
-        server = require("../../../index");
+      beforeEach(async () => {
+        user = {
+          username: "user1",
+          email: "example1@domain.com",
+          password: "12345",
+          repeatPassword: "12345",
+        };
+
         const userInfo = await execPost();
         token = userInfo.header["x-auth-token"];
       });
-      afterAll(async () => {
+      afterEach(async () => {
         await User.deleteMany({});
       });
 
-      it("should return 400 with a message if the new username is the same as the current username", async () => {
+      it("should return 400 if the new username is the same as the current username", async () => {
         const res = await request(server)
           .put("/api/users/me")
           .set("x-auth-token", token)
           .send({ newUsername: "user1" });
 
         expect(res.status).toBe(400);
-        expect(res.text).toBe(
-          "The new username is not different from the current username."
-        );
       });
 
       it("should update the username if the input was valid", async () => {
@@ -337,16 +347,22 @@ describe("api/users", () => {
     });
 
     describe("PUT /me e-mail", () => {
-      beforeAll(async () => {
-        server = require("../../../index");
+      beforeEach(async () => {
+        user = {
+          username: "user1",
+          email: "example1@domain.com",
+          password: "12345",
+          repeatPassword: "12345",
+        };
+
         const userInfo = await execPost();
         token = userInfo.header["x-auth-token"];
       });
-      afterAll(async () => {
+      afterEach(async () => {
         await User.deleteMany({});
       });
 
-      it("should return 400 with a message if the new e-mail is the same as the current e-mail", async () => {
+      it("should return 400 if the new e-mail is the same as the current e-mail", async () => {
         const res = await request(server)
           .put("/api/users/me")
           .set("x-auth-token", token)
@@ -356,9 +372,28 @@ describe("api/users", () => {
           });
 
         expect(res.status).toBe(400);
-        expect(res.text).toBe(
-          "The new e-mail is not different from the current e-mail."
-        );
+      });
+
+      it("should return 403 if the new e-mail has already been used", async () => {
+        user = {
+          username: "user2",
+          email: "example2@domain.com",
+          password: "12345",
+          repeatPassword: "12345",
+        };
+
+        const userInfo = await execPost();
+        token = userInfo.header["x-auth-token"];
+
+        const res = await request(server)
+          .put("/api/users/me")
+          .set("x-auth-token", token)
+          .send({
+            newEmail: "example1@domain.com",
+            repeatNewEmail: "example1@domain.com",
+          });
+
+        expect(res.status).toBe(403);
       });
 
       it("should update the e-mail if the input was valid", async () => {
@@ -378,12 +413,18 @@ describe("api/users", () => {
     });
 
     describe("PUT /me password", () => {
-      beforeAll(async () => {
-        server = require("../../../index");
+      beforeEach(async () => {
+        user = {
+          username: "user1",
+          email: "example1@domain.com",
+          password: "12345",
+          repeatPassword: "12345",
+        };
+
         const userInfo = await execPost();
         token = userInfo.header["x-auth-token"];
       });
-      afterAll(async () => {
+      afterEach(async () => {
         await User.deleteMany({});
       });
 
@@ -420,12 +461,19 @@ describe("api/users", () => {
   });
 
   describe("DELETE /me", () => {
-    beforeAll(async () => {
-      server = require("../../../index");
-      await execPost();
-    });
     beforeEach(async () => {
-      token = new User().generateAuthToken();
+      user = {
+        username: "user1",
+        email: "example1@domain.com",
+        password: "12345",
+        repeatPassword: "12345",
+      };
+
+      const userInfo = await execPost();
+      token = userInfo.header["x-auth-token"];
+    });
+    afterEach(async () => {
+      await User.deleteMany({});
     });
 
     it("should return 401 if the user is not logged in", async () => {
@@ -444,7 +492,6 @@ describe("api/users", () => {
         .set("x-auth-token", token);
 
       expect(res.status).toBe(200);
-      expect(res.text).toBe("Your account has been deleted");
     });
   });
 });
