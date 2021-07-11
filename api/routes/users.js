@@ -49,6 +49,7 @@ router.put(
   [auth, validator(validateInput)],
   tryCatch(async (req, res) => {
     const user = await User.findById(req.user._id);
+
     if (req.body.newUsername) {
       if (user.username === req.body.newUsername)
         return res
@@ -63,6 +64,11 @@ router.put(
         return res
           .status(400)
           .send("The new e-mail is not different from the current e-mail.");
+
+      const emailWasUsed = await User.findOne({ email: req.body.newEmail });
+      if (emailWasUsed)
+        return res.status(403).send("The new e-mail has already been used.");
+
       await User.updateOne(user, { email: req.body.newEmail });
       return res.status(200).send("The e-mail has been updated.");
     }
@@ -75,7 +81,7 @@ router.put(
       if (!validateCurrentPassword)
         return res
           .status(400)
-          .send("The current password provided is not correct.");
+          .send("The current provided password is not correct.");
       const salt = await bcrypt.genSalt(10);
       req.body.newPassword = await bcrypt.hash(req.body.newPassword, salt);
       await User.updateOne(user, { password: req.body.newPassword });
