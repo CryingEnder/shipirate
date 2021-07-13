@@ -6,9 +6,10 @@ import FormContainer from "./common/FormContainer";
 function LoginForm({ toggleState, ...props }) {
   return (
     <FormContainer toggleState={toggleState}>
-      <Input type="text" label="Full name" id="name" />
+      <Input type="text" label="Username" id="name" />
       <Input type="email" label="E-mail" id="emailnew" />
       <Input type="password" label="Password" id="passwordnew" />
+      <Input type="password" label="Repeat password" id="repeatpasswordnew" />
       <Input
         styles="pt-6"
         linkPath={"/"}
