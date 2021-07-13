@@ -10,7 +10,7 @@ function Button({
   fontSize,
   type,
   styles,
-  isGreen,
+  isSubmit,
   goBack,
   ...props
 }) {
@@ -18,12 +18,12 @@ function Button({
     "bg-green-normal ring ring-green-ring transition-colors hover:bg-green-hover hover:ring-green-hover-ring ";
   const normalStyle =
     "transition-colors bg-yellow-pirate ring ring-yellow-pirate-ring hover:bg-yellow-pirate-hover hover:ring-yellow-pirate-hover-ring dark:bg-red-sky-1 dark:ring-red-sky-2 dark:hover:bg-red-sky-3 dark:hover:ring-red-sky-4 ";
-  let history = goBack ? useHistory() : "";
+  let history = goBack ? useHistory() : null;
   const doGoBack = history
     ? () => {
         history.goBack();
       }
-    : "";
+    : null;
 
   return (
     <Fragment>
@@ -34,7 +34,7 @@ function Button({
             className={`${fontColor ? `${fontColor} ` : ""}${
               styles ? `${styles} ` : ""
             }${
-              type === "submit" && isGreen ? submitStyle : normalStyle
+              type === "submit" && isSubmit ? submitStyle : normalStyle
             }rounded-2xl shadow-md font-semibold focus:outline-none px-4 py-2`}
             type={type}
           >
@@ -58,7 +58,7 @@ function Button({
             className={`${fontColor ? `${fontColor} ` : ""}${
               styles ? `${styles} ` : ""
             }${
-              type === "submit" && isGreen ? submitStyle : normalStyle
+              type === "submit" && isSubmit ? submitStyle : normalStyle
             }rounded-2xl shadow-md font-semibold focus:outline-none px-4 py-2`}
             type={type}
           >
@@ -82,7 +82,7 @@ function Button({
           className={`${fontColor ? `${fontColor} ` : ""}${
             styles ? `${styles} ` : ""
           }${
-            type === "submit" && isGreen ? submitStyle : normalStyle
+            type === "submit" && isSubmit ? submitStyle : normalStyle
           }rounded-2xl shadow-md font-semibold focus:outline-none px-4 py-2`}
           type={type}
         >
@@ -110,7 +110,7 @@ Button.defaultProps = {
   fontColor: "text-blue-dark dark:text-blue-whiteish-2",
   fontStyle: "",
   styles: "",
-  isGreen: false,
+  isSubmit: false,
   type: "button",
 };
 
@@ -123,7 +123,7 @@ Button.propTypes = {
   fontColor: PropTypes.string,
   fontSize: PropTypes.string,
   styles: PropTypes.string,
-  isGreen: PropTypes.bool,
+  isSubmit: PropTypes.bool,
 };
 
 export default Button;
