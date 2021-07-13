@@ -169,7 +169,7 @@ function Testimonials(props) {
                 alt="A profile photo"
               />
               {userTestimonials[currentUser].socialPlatform && (
-                <div className="bg-gray-25 dark:bg-blue-night-sky-3 fill-current text-purple-light-3 p-0.5 rounded-full absolute right-0.5 bottom-1 w-8 laptop:hidden">
+                <div className="bg-gray-25 dark:bg-blue-night-sky-3 fill-current text-blue-sky-1 dark:text-purple-light-3 p-0.5 rounded-full absolute right-0.5 bottom-1 w-8 laptop:hidden">
                   {userTestimonials[currentUser].socialPlatform ===
                     "facebook" && <Facebook />}
                   {userTestimonials[currentUser].socialPlatform ===
