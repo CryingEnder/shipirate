@@ -10,15 +10,22 @@ function Button({
   fontSize,
   type,
   styles,
-  isSubmit,
+  isGreen,
   goBack,
   ...props
 }) {
-  const submitStyle =
+  const greenStyle =
     "bg-green-normal ring ring-green-ring transition-colors hover:bg-green-hover hover:ring-green-hover-ring ";
   const normalStyle =
     "transition-colors bg-yellow-pirate ring ring-yellow-pirate-ring hover:bg-yellow-pirate-hover hover:ring-yellow-pirate-hover-ring dark:bg-red-sky-1 dark:ring-red-sky-2 dark:hover:bg-red-sky-3 dark:hover:ring-red-sky-4 ";
+  const buttonStyle = `${fontColor ? `${fontColor} ` : ""}${
+    styles ? `${styles} ` : ""
+  }${
+    isGreen ? greenStyle : normalStyle
+  }rounded-2xl shadow-md font-semibold focus:outline-none px-4 py-2`;
+
   let history = goBack ? useHistory() : null;
+
   const doGoBack = history
     ? () => {
         history.goBack();
@@ -27,17 +34,23 @@ function Button({
 
   return (
     <Fragment>
-      {!goBack && linkPath.search("#") !== 0 && (
-        <Link to={linkPath}>
-          <button
-            {...props}
-            className={`${fontColor ? `${fontColor} ` : ""}${
-              styles ? `${styles} ` : ""
-            }${
-              type === "submit" && isSubmit ? submitStyle : normalStyle
-            }rounded-2xl shadow-md font-semibold focus:outline-none px-4 py-2`}
-            type={type}
-          >
+      {!goBack && type === "submit" && (
+        <button {...props} className={buttonStyle} type={type}>
+          {LabelIcon && (
+            <div className="flex flex-row justify-center items-center space-x-1">
+              <LabelIcon
+                className={`fill-current ${labelIconSize}`}
+                alt="Label icon"
+              />
+              <p className={fontSize ? fontSize : ""}>{label}</p>
+            </div>
+          )}
+          {!LabelIcon && <p className={fontSize ? fontSize : ""}>{label}</p>}
+        </button>
+      )}
+      {!goBack && linkPath.search("#") !== 0 && type !== "submit" && (
+        <button {...props} className={buttonStyle} type={type}>
+          <Link to={linkPath}>
             {LabelIcon && (
               <div className="flex flex-row justify-center items-center space-x-1">
                 <LabelIcon
@@ -48,20 +61,12 @@ function Button({
               </div>
             )}
             {!LabelIcon && <p className={fontSize ? fontSize : ""}>{label}</p>}
-          </button>
-        </Link>
+          </Link>
+        </button>
       )}
-      {!goBack && linkPath.search("#") === 0 && (
+      {!goBack && linkPath.search("#") === 0 && type !== "submit" && (
         <a href={linkPath}>
-          <button
-            {...props}
-            className={`${fontColor ? `${fontColor} ` : ""}${
-              styles ? `${styles} ` : ""
-            }${
-              type === "submit" && isSubmit ? submitStyle : normalStyle
-            }rounded-2xl shadow-md font-semibold focus:outline-none px-4 py-2`}
-            type={type}
-          >
+          <button {...props} className={buttonStyle} type={type}>
             {LabelIcon && (
               <div className="flex flex-row justify-center items-center space-x-1">
                 <LabelIcon
@@ -75,15 +80,11 @@ function Button({
           </button>
         </a>
       )}
-      {goBack && (
+      {goBack && type !== "submit" && (
         <button
           {...props}
           onClick={doGoBack}
-          className={`${fontColor ? `${fontColor} ` : ""}${
-            styles ? `${styles} ` : ""
-          }${
-            type === "submit" && isSubmit ? submitStyle : normalStyle
-          }rounded-2xl shadow-md font-semibold focus:outline-none px-4 py-2`}
+          className={buttonStyle}
           type={type}
         >
           {LabelIcon && (
@@ -110,7 +111,7 @@ Button.defaultProps = {
   fontColor: "text-blue-dark dark:text-blue-whiteish-2",
   fontStyle: "",
   styles: "",
-  isSubmit: false,
+  isGreen: false,
   type: "button",
 };
 
@@ -123,7 +124,7 @@ Button.propTypes = {
   fontColor: PropTypes.string,
   fontSize: PropTypes.string,
   styles: PropTypes.string,
-  isSubmit: PropTypes.bool,
+  isGreen: PropTypes.bool,
 };
 
 export default Button;

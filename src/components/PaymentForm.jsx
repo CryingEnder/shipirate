@@ -113,7 +113,7 @@ function PaymentForm(props) {
             <Button
               fontColor="text-gray-25"
               type="submit"
-              isSubmit={true}
+              isGreen={true}
               label={`Pay ${currency}${total}`}
               fontSize="text-xl"
             />
@@ -145,7 +145,7 @@ function PaymentForm(props) {
             <Button
               fontColor="text-gray-25"
               type="submit"
-              isSubmit={true}
+              isGreen={true}
               label={`Pay ${currency}${total}`}
               fontSize="text-xl"
             />
