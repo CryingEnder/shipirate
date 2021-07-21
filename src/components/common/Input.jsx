@@ -24,13 +24,7 @@ function Input({ label, styles, linkPath, checkboxLabelFontSize, ...props }) {
   function handleInput(e) {
     let inputValue = e.target.value;
     setInputState(inputValue);
-    // console.log(inputValue.length % 4 === 0);
-    // if (
-    //   inputValue.length > 0 &&
-    //   inputValue.length < 16 &&
-    //   inputValue.length % 4 === 0
-    // )
-    //   e.target.value += " ";
+    //TODO:
   }
 
   return (
@@ -55,7 +49,7 @@ function Input({ label, styles, linkPath, checkboxLabelFontSize, ...props }) {
           onChange={handleInput}
           onFocus={toggleTransform}
           onBlur={toggleTransform}
-          className="outline-none text-lg rounded-lg p-4 focus:bg-gray-100 placeholder-blue-grayish bg-gray-25 w-full"
+          className="outline-none text-lg rounded-lg p-4 text-blue-dark focus:bg-gray-100 placeholder-blue-grayish bg-gray-25 w-full"
         />
       )}
       {props.type === "checkbox" || props.type === "radio" ? (
