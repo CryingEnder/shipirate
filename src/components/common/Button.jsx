@@ -49,8 +49,8 @@ function Button({
         </button>
       )}
       {!goBack && linkPath.search("#") !== 0 && type !== "submit" && (
-        <button {...props} className={buttonStyle} type={type}>
-          <Link to={linkPath}>
+        <Link to={linkPath}>
+          <button {...props} className={buttonStyle} type={type}>
             {LabelIcon && (
               <div className="flex flex-row justify-center items-center space-x-1">
                 <LabelIcon
@@ -61,8 +61,8 @@ function Button({
               </div>
             )}
             {!LabelIcon && <p className={fontSize ? fontSize : ""}>{label}</p>}
-          </Link>
-        </button>
+          </button>
+        </Link>
       )}
       {!goBack && linkPath.search("#") === 0 && type !== "submit" && (
         <a href={linkPath}>
