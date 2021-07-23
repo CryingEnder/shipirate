@@ -103,7 +103,6 @@ function PaymentForm(props) {
             />
           </div>
           <Input
-            checkboxLabelFontSize="text-lg"
             type="checkbox"
             id="savecard"
             label="Save the card for future purchases"
