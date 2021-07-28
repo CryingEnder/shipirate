@@ -17,7 +17,7 @@ function Button({
   const greenStyle =
     "bg-green-normal ring ring-green-ring transition-colors hover:bg-green-hover hover:ring-green-hover-ring ";
   const normalStyle =
-    "transition-colors bg-yellow-pirate ring ring-yellow-pirate-ring hover:bg-yellow-pirate-hover hover:ring-yellow-pirate-hover-ring dark:bg-red-sky-1 dark:ring-red-sky-2 dark:hover:bg-red-sky-3 dark:hover:ring-red-sky-4 ";
+    "transition-colors bg-yellow-pirate ring ring-yellow-pirate-ring disabled:opacity-80 disabled:pointer-events-none hover:bg-yellow-pirate-hover hover:ring-yellow-pirate-hover-ring dark:bg-red-sky-1 dark:ring-red-sky-2 dark:hover:bg-red-sky-3 dark:hover:ring-red-sky-4 ";
   const buttonStyle = `${fontColor ? `${fontColor} ` : ""}${
     styles ? `${styles} ` : ""
   }${
