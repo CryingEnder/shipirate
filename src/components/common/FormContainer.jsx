@@ -33,10 +33,10 @@ function FormContainer({ children, toggleState, ...props }) {
     >
       <div
         ref={ref}
-        className={`relative flex flex-col justify-center items-center p-12 text-blue-dark dark:text-purple-light-3 rounded-3xl shadow-xl bg-gradient-to-t from-blue-sky-2 to-blue-water dark:from-blue-night-sky-2 dark:to-blue-night-sky-1 max-w-xs`}
+        className={`relative flex flex-col justify-center items-center text-blue-dark dark:text-purple-light-3 rounded-3xl shadow-xl bg-gradient-to-t from-blue-sky-2 to-blue-water dark:from-blue-night-sky-2 dark:to-blue-night-sky-1 w-64 tablet:w-80 p-8 tablet:p-12`}
       >
         <Cross
-          className="absolute w-5 fill-current m-4 top-0 right-0 cursor-pointer transition-colors hover:text-gray-25"
+          className="absolute fill-current m-4 top-0 right-0 cursor-pointer transition-colors hover:text-gray-25 w-4 tablet:w-5"
           onClick={closeWindow}
         />
         <Logo
@@ -46,7 +46,10 @@ function FormContainer({ children, toggleState, ...props }) {
           fontSize="text-2xl tablet:text-3xl laptop:text-4xl"
           phoneLogoSize="w-8"
         />
-        <form className="max-w-full flex flex-col justify-center items-center space-y-4 mt-4">
+        <form
+          {...props}
+          className="max-w-full flex flex-col justify-center items-center space-y-3 tablet:space-y-4 mt-4"
+        >
           {children}
         </form>
       </div>
