@@ -142,4 +142,12 @@
       0% 80%
     );
   }
+
+  .clip-left-triangle {
+    clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+  }
+
+  .clip-top-triangle {
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  }
 }

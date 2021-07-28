@@ -62,6 +62,7 @@ module.exports = {
             2: "#b35290",
             3: "#6e3258",
             4: "#914375",
+            error: "#e2809b",
           },
         },
         white: {
@@ -80,6 +81,7 @@ module.exports = {
         "pirate-gr": ["pirate_grungeregular"],
       },
       fontSize: {
+        smallest: [".625rem", { lineHeight: ".75rem" }],
         "1.5xl": ["1.375rem", { lineHeight: "1.875rem" }],
         "2.5xl": ["1.6875rem", { lineHeight: "2.125rem" }],
       },
@@ -99,7 +101,9 @@ module.exports = {
         "x1.5": "2.5rem",
       },
       borderWidth: {
+        0: "0px",
         1: "1px",
+        3: "3px",
         6: "6px",
         7: "7px",
       },
@@ -115,6 +119,7 @@ module.exports = {
         "1/10": "10%",
         "1/20": "5%",
         "-18": "-4.5rem",
+        4.5: "1.125rem",
         5.5: "1.375rem",
       },
       keyframes: {
@@ -138,14 +143,16 @@ module.exports = {
   },
   variants: {
     extend: {
-      scale: ["active"],
       backgroundColor: ["focus", "checked"],
       backgroundImage: ["checked", "hover"],
       borderColor: ["checked", "hover"],
       borderWidth: ["hover"],
       borderStyle: ["hover"],
       borderRadius: ["hover"],
+      opacity: ["disabled"],
+      pointerEvents: ["disabled"],
       ringColor: ["hover"],
+      scale: ["active"],
     },
   },
   plugins: [],
