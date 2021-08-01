@@ -3,6 +3,8 @@ import Joi from "joi";
 import Button from "./common/Button";
 import Input from "./common/Input";
 import FormContainer from "./common/FormContainer";
+import auth from "../services/authService";
+import * as userService from "../services/userService";
 import { removeCharacter } from "../utils/removeCharacter";
 
 function SignupForm({ toggleState, ...props }) {
@@ -62,8 +64,7 @@ function SignupForm({ toggleState, ...props }) {
             [input.target.name]: input.target.value,
           }
         : {
-            [input.target.name]:
-              input.target.name === "agree" ? isChecked : input.target.value,
+            [input.target.name]: input.target.value,
           };
     const schemaProps =
       input.target.name === "repeatPassword"
@@ -106,9 +107,22 @@ function SignupForm({ toggleState, ...props }) {
     doSubmit();
   }
 
-  function doSubmit() {
-    alert("Success");
-    console.log("Success");
+  async function doSubmit() {
+    try {
+      const userData = { ...data };
+      delete userData.agree;
+
+      const response = await userService.register(userData);
+      auth.loginWithJwt(response.headers["x-auth-token"]);
+      window.location = "/";
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        const newErrors = { ...errors };
+        if (ex.response.data.email)
+          newErrors.email = removeCharacter(/"/g, ex.response.data.email);
+        setErrors(newErrors);
+      }
+    }
   }
 
   return (
