@@ -1,5 +1,5 @@
 import axios from "axios";
-import logger from "./logService;";
+import logger from "./logService";
 
 axios.interceptors.response.use(null, (error) => {
   //(fulfilled, rejected)
