@@ -38,18 +38,22 @@ userSchema.methods.generateAuthToken = function () {
 const User = mongoose.model("User", userSchema);
 
 function validateUser(user) {
-  const schema = Joi.object()
-    .keys({
-      username: Joi.string().alphanum().min(5).max(30).required(),
-      email: Joi.string().email().min(10).max(255).required(),
-      password: Joi.string()
-        .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
-        .min(5)
-        .max(1024)
-        .required(),
-      repeatPassword: Joi.ref("password"),
-    })
-    .with("password", "repeatPassword");
+  const schema = Joi.object({
+    username: Joi.string()
+      .alphanum()
+      .min(5)
+      .max(30)
+      .required()
+      .label("Username"),
+    email: Joi.string().email().min(10).max(255).required().label("E-mail"),
+    password: Joi.string()
+      .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
+      .min(5)
+      .max(1024)
+      .required()
+      .label("Password"),
+    repeatPassword: Joi.valid(Joi.ref("password")).label("Repeat password"),
+  }).with("password", "repeatPassword");
 
   return schema.validate(user);
 }
