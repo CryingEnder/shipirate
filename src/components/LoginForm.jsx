@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Button from "./common/Button";
 import Input from "./common/Input";
 import FormContainer from "./common/FormContainer";
+import auth from "../services/authService";
 import { removeCharacter } from "./../utils/removeCharacter";
 
 function LoginForm({ toggleState, goToSignUp, ...props }) {
@@ -84,9 +85,23 @@ function LoginForm({ toggleState, goToSignUp, ...props }) {
     doSubmit();
   }
 
-  function doSubmit() {
-    alert("Success");
-    console.log("Success");
+  async function doSubmit() {
+    try {
+      const userData = { ...data };
+
+      await auth.login(userData.email, userData.password);
+      window.location = "/";
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        const newErrors = { ...errors };
+        if (ex.response.data.email)
+          newErrors.email = removeCharacter(/"/g, ex.response.data.email);
+        else if (ex.response.data.password)
+          newErrors.password = removeCharacter(/"/g, ex.response.data.password);
+        else newErrors.email = removeCharacter(/"/g, ex.response.data);
+        setErrors(newErrors);
+      }
+    }
   }
 
   return (
