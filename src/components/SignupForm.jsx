@@ -120,6 +120,7 @@ function SignupForm({ toggleState, ...props }) {
         const newErrors = { ...errors };
         if (ex.response.data.email)
           newErrors.email = removeCharacter(/"/g, ex.response.data.email);
+        else newErrors.email = removeCharacter(/"/g, ex.response.data);
         setErrors(newErrors);
       }
     }
