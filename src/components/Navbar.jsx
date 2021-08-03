@@ -6,8 +6,9 @@ import Logo from "./common/Logo";
 import List from "./common/List";
 import { MenuButton } from "./common/Icons";
 import ToggleTheme from "./common/ToggleTheme";
+import PropTypes from "prop-types";
 
-function Navbar(props) {
+function Navbar({ user }) {
   const menuOff = "max-h-0 opacity-0";
   const menuOn = "max-h-full opacity-100 transition-opacity";
   const [menuState, setMenuState] = useState(menuOff);
@@ -59,12 +60,13 @@ function Navbar(props) {
                   "py-1 px-3 rounded-xl bg-blue-sky-3 dark:bg-purple-700",
                 linkPath: "#plans",
               },
-              { content: "Login", toggleWindow: true },
+              user && { content: "Logout", linkPath: "/logout" },
+              !user && { content: "Login", toggleWindow: true },
             ]}
           />
           <ToggleTheme />
           <MenuButton
-            className="w-6 cursor-pointer fill-current text-gray-25 transition-colors hover:text-gray-200"
+            className="w-6 mt-0.5 cursor-pointer fill-current text-gray-25 transition-colors hover:text-gray-200"
             onClick={toggleMenu}
           />
         </div>
@@ -74,6 +76,10 @@ function Navbar(props) {
             className={`${menuState} w-full laptop:w-auto divide-y-2 divide-blue-sky-4 dark:divide-purple-700 overflow-hidden laptop:flex laptop:flex-row laptop:justify-center laptop:items-center laptop:space-x-4 laptop:max-h-full laptop:divide-y-0 laptop:opacity-100`}
             itemsStyle={"py-3 transition-colors hover:text-gray-200"}
             items={[
+              user && {
+                content: user.username,
+                specialStyle: "block laptop:hidden",
+              },
               {
                 content: "Get VPN",
                 specialStyle:
@@ -81,9 +87,20 @@ function Navbar(props) {
                 linkPath: "#plans",
               },
               "What is VPN?",
-              "Features",
-              "Servers",
-              { content: "Login", toggleWindow: true },
+              {
+                content: "Features",
+                specialStyle: "laptop:hidden desktop:block",
+              },
+              {
+                content: "Servers",
+                specialStyle: "laptop:hidden desktop:block",
+              },
+              user && {
+                content: user.username,
+                specialStyle: "hidden laptop:block",
+              },
+              user && { content: "Logout", linkPath: "/logout" },
+              !user && { content: "Login", toggleWindow: true },
             ]}
           />
           <ToggleTheme styles="hidden laptop:block" />
@@ -92,5 +109,13 @@ function Navbar(props) {
     </Fragment>
   );
 }
+
+Navbar.defaultProps = {
+  user: null,
+};
+
+Navbar.propTypes = {
+  user: PropTypes.any,
+};
 
 export default Navbar;

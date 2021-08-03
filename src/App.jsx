@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -6,15 +6,29 @@ import {
   Redirect,
 } from "react-router-dom";
 import Home from "./components/Home";
+import Logout from "./components/Logout";
 import PaymentForm from "./components/PaymentForm";
 import NotFound from "./components/NotFound";
+import auth from "./services/authService";
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const userFound = auth.getCurrentUser();
+    setUser(userFound);
+  }, []);
+
+  console.log(user);
+
   return (
     <Router>
       <Switch>
         <Route exact path="/">
-          <Home />
+          <Home user={user} />
+        </Route>
+        <Route path="/logout">
+          <Logout />
         </Route>
         <Route path="/checkout">
           <PaymentForm />
