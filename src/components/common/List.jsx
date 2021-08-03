@@ -17,28 +17,29 @@ function List({
           {title}
         </strong>
       )}
-      {items.map((i) => (
-        <li
-          className={
-            i.specialStyle
-              ? `${i.specialStyle}${itemsStyle ? ` ${itemsStyle}` : ""}`
-              : itemsStyle
-          }
-        >
-          {i.linkPath && i.linkPath.search("#") === 0 ? (
-            <a href={i.linkPath}>{i.content ? i.content : i}</a>
-          ) : (
-            <Link
-              onClick={
-                i.toggleWindow ? doToggleWindow : (e) => e.preventDefault()
+      {items.map(
+        (i) =>
+          i && (
+            <li
+              className={
+                i.specialStyle
+                  ? `${i.specialStyle}${itemsStyle ? ` ${itemsStyle}` : ""}`
+                  : itemsStyle
               }
-              to={i.linkPath ? i.linkPath : "/"}
             >
-              {i.content ? i.content : i}
-            </Link>
-          )}
-        </li>
-      ))}
+              {i.linkPath && i.linkPath.search("#") === 0 ? (
+                <a href={i.linkPath}>{i.content ? i.content : i}</a>
+              ) : (
+                <Link
+                  onClick={i.toggleWindow ? doToggleWindow : null}
+                  to={i.linkPath ? i.linkPath : "/"}
+                >
+                  {i.content ? i.content : i}
+                </Link>
+              )}
+            </li>
+          )
+      )}
     </ul>
   );
 }
