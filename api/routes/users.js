@@ -21,7 +21,7 @@ router.post(
   validator(validate),
   tryCatch(async (req, res) => {
     let user = await User.findOne({ email: req.body.email });
-    if (user) return res.status(400).send({ email: "E-mail already exists." });
+    if (user) return res.status(400).send("E-mail already exists.");
 
     user = new User({
       username: req.body.username,
