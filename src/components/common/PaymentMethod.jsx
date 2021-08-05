@@ -11,7 +11,7 @@ function PaymentMethod({ method, border, ...props }) {
 
   return (
     <img
-      className={`border-2 border-solid rounded-xl border-transparent hover:border-blue-dark cursor-pointer transition-all ${border}`}
+      className={`border-2 border-solid rounded-xl border-transparent hover:border-blue-dark dark:hover:border-purple-light-3 cursor-pointer transition-all ${border}`}
       src={paymentMethod}
       alt="Payment method"
       {...props}
