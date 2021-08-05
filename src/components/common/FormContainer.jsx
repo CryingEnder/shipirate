@@ -48,7 +48,7 @@ function FormContainer({ children, toggleState, ...props }) {
         />
         <form
           {...props}
-          className="max-w-full flex flex-col justify-center items-center space-y-3 tablet:space-y-4 mt-4"
+          className="w-full flex flex-col justify-center items-center space-y-3 tablet:space-y-4 mt-4"
         >
           {children}
         </form>
