@@ -35,18 +35,32 @@ function Button({
   return (
     <Fragment>
       {!goBack && type === "submit" && (
-        <button {...props} className={buttonStyle} type={type}>
-          {LabelIcon && (
-            <div className="flex flex-row justify-center items-center space-x-1">
-              <LabelIcon
-                className={`fill-current ${labelIconSize}`}
-                alt="Label icon"
-              />
-              <p className={fontSize ? fontSize : ""}>{label}</p>
+        <div className="max-w-full relative flex flex-col tablet:w-auto">
+          <button
+            {...props}
+            className={`${buttonStyle} self-center`}
+            type={type}
+          >
+            {LabelIcon && (
+              <div className="flex flex-row justify-center items-center space-x-1">
+                <LabelIcon
+                  className={`fill-current ${labelIconSize}`}
+                  alt="Label icon"
+                />
+                <p className={fontSize ? fontSize : ""}>{label}</p>
+              </div>
+            )}
+            {!LabelIcon && <p className={fontSize ? fontSize : ""}>{label}</p>}
+          </button>
+          {props.error && (
+            <div className="relative flex flex-row justify-start items-center mt-4 w-full h-auto select-none rounded-lg font-bold text-shadow border-3 border-solid border-yellow-pirate-ring bg-yellow-pirate text-blue-dark dark:bg-gray-25 dark:border-gray-bluegray-300 dark:text-red-sky-error tablet:bottom-0 tablet:top-0 tablet:my-auto tablet:min-w-max tablet:absolute tablet:left-full tablet:ml-7 tablet:rounded-xl">
+              <div className="absolute left-0 right-0 mx-auto -top-3 w-3 h-3 clip-top-triangle bg-yellow-pirate-ring dark:bg-gray-bluegray-300 tablet:top-auto tablet:-left-4 tablet:right-auto tablet:m-auto tablet:w-4 tablet:h-4 tablet:clip-left-triangle" />
+              <p className="text-xs mx-2 my-1 tablet:m-4 tablet:max-w-small">
+                {props.error}
+              </p>
             </div>
           )}
-          {!LabelIcon && <p className={fontSize ? fontSize : ""}>{label}</p>}
-        </button>
+        </div>
       )}
       {!goBack && linkPath.search("#") !== 0 && type !== "submit" && (
         <Link to={linkPath}>
@@ -104,27 +118,27 @@ function Button({
 }
 
 Button.defaultProps = {
+  fontColor: "text-blue-dark dark:text-blue-whiteish-2",
+  fontStyle: "",
+  goBack: false,
+  isGreen: false,
   labelIcon: "",
   labelIconSize: "w-6",
   linkPath: "/",
-  goBack: false,
-  fontColor: "text-blue-dark dark:text-blue-whiteish-2",
-  fontStyle: "",
   styles: "",
-  isGreen: false,
   type: "button",
 };
 
 Button.propTypes = {
+  fontColor: PropTypes.string,
+  fontSize: PropTypes.string,
+  goBack: PropTypes.bool,
+  isGreen: PropTypes.bool,
   label: PropTypes.string.isRequired,
   labelIcon: PropTypes.any,
   labelIconSize: PropTypes.string,
   linkPath: PropTypes.string,
-  goBack: PropTypes.bool,
-  fontColor: PropTypes.string,
-  fontSize: PropTypes.string,
   styles: PropTypes.string,
-  isGreen: PropTypes.bool,
 };
 
 export default Button;
