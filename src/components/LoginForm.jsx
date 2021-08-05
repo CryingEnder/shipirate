@@ -14,6 +14,7 @@ function LoginForm({ toggleState, goToSignUp, ...props }) {
     remember: false,
   });
   const [errors, setErrors] = useState({});
+  const [serverErrors, setServerErrors] = useState("");
   const [isChecked, setIsChecked] = useState(false);
 
   const schema = {
@@ -93,13 +94,8 @@ function LoginForm({ toggleState, goToSignUp, ...props }) {
       window.location = "/";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
-        const newErrors = { ...errors };
-        if (ex.response.data.email)
-          newErrors.email = removeCharacter(/"/g, ex.response.data.email);
-        else if (ex.response.data.password)
-          newErrors.password = removeCharacter(/"/g, ex.response.data.password);
-        else newErrors.email = removeCharacter(/"/g, ex.response.data);
-        setErrors(newErrors);
+        const newErrors = removeCharacter(/"/g, ex.response.data);
+        setServerErrors(newErrors);
       }
     }
   }
@@ -136,6 +132,7 @@ function LoginForm({ toggleState, goToSignUp, ...props }) {
         label="Login"
         fontSize="text-base tablet:text-xl"
         disabled={validate()}
+        error={serverErrors}
       />
       <Link
         to="/"

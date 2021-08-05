@@ -16,7 +16,7 @@ function SignupForm({ toggleState, ...props }) {
     agree: false,
   });
   const [errors, setErrors] = useState({});
-  // const [serverErrors, setServerErrors] = useState("");
+  const [serverErrors, setServerErrors] = useState("");
   const [isChecked, setIsChecked] = useState(false);
 
   const schema = {
@@ -126,11 +126,8 @@ function SignupForm({ toggleState, ...props }) {
       window.location = "/";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
-        const newErrors = { ...errors };
-        if (ex.response.data.email)
-          newErrors.email = removeCharacter(/"/g, ex.response.data.email);
-        else newErrors.email = removeCharacter(/"/g, ex.response.data);
-        setErrors(newErrors);
+        const newErrors = removeCharacter(/"/g, ex.response.data);
+        setServerErrors(newErrors);
       }
     }
   }
@@ -183,6 +180,7 @@ function SignupForm({ toggleState, ...props }) {
         label="Register"
         fontSize="text-base tablet:text-xl"
         disabled={validate()}
+        error={serverErrors}
       />
     </FormContainer>
   );
