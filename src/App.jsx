@@ -19,8 +19,6 @@ function App() {
     setUser(userFound);
   }, []);
 
-  console.log(user);
-
   return (
     <Router>
       <Switch>
