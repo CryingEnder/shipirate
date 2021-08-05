@@ -12,14 +12,13 @@ router.post(
   validator(validate),
   tryCatch(async (req, res) => {
     let user = await User.findOne({ email: req.body.email });
-    if (!user) return res.status(400).send({ email: "Invalid e-mail." });
+    if (!user) return res.status(400).send("E-mail does not exist");
 
     const validPassword = await bcrypt.compare(
       req.body.password,
       user.password
     );
-    if (!validPassword)
-      return res.status(400).send({ password: "Invalid password." });
+    if (!validPassword) return res.status(400).send("Password is invalid");
 
     const token = user.generateAuthToken();
     res.send(token);
