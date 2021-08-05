@@ -52,11 +52,15 @@ function validateUser(user) {
       .label("Username"),
     email: Joi.string().email().min(10).max(255).required().label("E-mail"),
     password: Joi.string()
-      .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
       .min(5)
       .max(1024)
       .required()
-      .label("Password"),
+      .label("Password")
+      .pattern(new RegExp("^[a-zA-Z0-9!@#$%^&*()]{3,30}$"))
+      .messages({
+        "string.pattern.base":
+          "Password may only contain alphanumeric or special characters",
+      }),
     repeatPassword: Joi.valid(Joi.ref("password")).label("Repeat password"),
   }).with("password", "repeatPassword");
 

@@ -99,24 +99,37 @@ router.delete(
   })
 );
 
+//TODO: might have to move it into members model
 function validateInput(req) {
   const schema = Joi.object()
     .keys({
-      newUsername: Joi.string().alphanum().min(5).max(30),
+      newUsername: Joi.string().alphanum().min(5).max(30).label("New username"),
 
-      newEmail: Joi.string().email().min(10).max(255),
-      repeatNewEmail: Joi.ref("newEmail"),
+      newEmail: Joi.string().email().min(10).max(255).label("New e-mail"),
+      repeatNewEmail: Joi.ref("newEmail").label("Repeat new e-mail"),
 
       currentPassword: Joi.string()
-        .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
-        .min(5)
-        .max(1024),
-      newPassword: Joi.string()
-        .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
         .min(5)
         .max(1024)
-        .disallow(Joi.ref("currentPassword")),
-      repeatNewPassword: Joi.ref("newPassword"),
+        .label("Current password")
+        .pattern(new RegExp("^[a-zA-Z0-9!@#$%^&*()]{3,30}$"))
+        .messages({
+          "string.pattern.base":
+            "Password may only contain alphanumeric or special characters",
+        }),
+      newPassword: Joi.string()
+        .min(5)
+        .max(1024)
+        .disallow(Joi.ref("currentPassword"))
+        .label("New password")
+        .pattern(new RegExp("^[a-zA-Z0-9!@#$%^&*()]{3,30}$"))
+        .messages({
+          "string.pattern.base":
+            "Password may only contain alphanumeric or special characters",
+        }),
+      repeatNewPassword: Joi.valid(Joi.ref("newPassword")).label(
+        "Repeat new password"
+      ),
     })
     .xor("newUsername", "newEmail", "currentPassword")
     .with("newEmail", "repeatNewEmail")

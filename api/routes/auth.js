@@ -28,12 +28,8 @@ router.post(
 
 function validate(req) {
   const schema = Joi.object().keys({
-    email: Joi.string().email().min(10).max(255).required(),
-    password: Joi.string()
-      .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
-      .min(5)
-      .max(1024)
-      .required(),
+    email: Joi.string().email().min(10).max(255).required().label("E-mail"),
+    password: Joi.string().min(5).max(1024).required().label("Password"),
   });
 
   return schema.validate(req);

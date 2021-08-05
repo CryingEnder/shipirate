@@ -16,6 +16,7 @@ function SignupForm({ toggleState, ...props }) {
     agree: false,
   });
   const [errors, setErrors] = useState({});
+  // const [serverErrors, setServerErrors] = useState("");
   const [isChecked, setIsChecked] = useState(false);
 
   const schema = {
@@ -24,7 +25,15 @@ function SignupForm({ toggleState, ...props }) {
       .email({ tlds: { allow: false } })
       .required()
       .label("E-mail"),
-    password: Joi.string().min(5).required().label("Password"),
+    password: Joi.string()
+      .min(5)
+      .required()
+      .label("Password")
+      .pattern(new RegExp("^[a-zA-Z0-9!@#$%^&*()]{3,30}$"))
+      .messages({
+        "string.pattern.base":
+          "Password may only contain alphanumeric or special characters",
+      }),
     repeatPassword: Joi.string()
       .valid(Joi.ref("password"))
       .required()
