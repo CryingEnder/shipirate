@@ -126,7 +126,6 @@ function LoginForm({ toggleState, goToSignUp, ...props }) {
       />
       <Input
         label="Remember me"
-        className="appearance-none"
         type="checkbox"
         id="remember"
         name="remember"
