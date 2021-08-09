@@ -1,4 +1,5 @@
 {
   "jwtPrivateKey": "123",
+  "jwtTimer": "3600",
   "db": "mongodb://localhost:27017/api_tests"
 }
