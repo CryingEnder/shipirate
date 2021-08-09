@@ -5,6 +5,8 @@ function getInitialTheme() {
     //check if it's a browser
     const storedPrefs = window.localStorage.getItem("color-theme");
     if (typeof storedPrefs === "string") {
+      if (storedPrefs !== "light" && storedPrefs !== "dark")
+        window.localStorage.setItem("color-theme", "light");
       return storedPrefs;
     }
 
