@@ -77,7 +77,7 @@ function Navbar({ user }) {
             itemsStyle={"py-3 transition-colors hover:text-gray-200"}
             items={[
               user && {
-                content: user.username,
+                content: user.username ? user.username : "Username missing",
                 specialStyle: "block laptop:hidden",
               },
               {
@@ -87,16 +87,18 @@ function Navbar({ user }) {
                 linkPath: "#plans",
               },
               "What is VPN?",
-              {
+              !user && "Features",
+              !user && "Servers",
+              user && {
                 content: "Features",
-                specialStyle: "laptop:hidden desktop:block",
-              },
-              {
-                content: "Servers",
-                specialStyle: "laptop:hidden desktop:block",
+                specialStyle: "hidden desktop:block",
               },
               user && {
-                content: user.username,
+                content: "Servers",
+                specialStyle: "hidden desktop:block",
+              },
+              user && {
+                content: user.username ? user.username : "No username",
                 specialStyle: "hidden laptop:block",
               },
               user && { content: "Logout", linkPath: "/logout" },
