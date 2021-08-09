@@ -1,7 +1,8 @@
 const cors = require("cors");
 
 const corsOptions = {
-  exposedHeaders: "x-auth-token",
+  origin: "http://localhost:3001",
+  credentials: true,
 };
 
 module.exports = function (app) {
