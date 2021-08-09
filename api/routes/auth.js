@@ -23,7 +23,14 @@ router.post(
     if (!validPassword) return res.status(400).send("Password is invalid");
 
     const token = user.generateAuthToken();
-    const expirationTime = new Date(Date.now() + config.get("jwtTimer") * 1000);
+
+    const expirationTime = new Date(
+      Date.now() +
+        (req.body.rememberMe
+          ? config.get("jwtTimer") * 3
+          : config.get("jwtTimer")) *
+          1000
+    );
 
     res
       .cookie("jwt", token, {
@@ -47,6 +54,7 @@ function validate(req) {
   const schema = Joi.object().keys({
     email: Joi.string().email().min(10).max(255).required().label("E-mail"),
     password: Joi.string().min(5).max(1024).required().label("Password"),
+    rememberMe: Joi.bool().required().label("Remember me"),
   });
 
   return schema.validate(req);

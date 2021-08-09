@@ -11,7 +11,7 @@ function LoginForm({ toggleState, goToSignUp, ...props }) {
   const [data, setData] = useState({
     email: "",
     password: "",
-    remember: false,
+    rememberMe: false,
   });
   const [errors, setErrors] = useState({});
   const [serverErrors, setServerErrors] = useState("");
@@ -23,14 +23,14 @@ function LoginForm({ toggleState, goToSignUp, ...props }) {
       .required()
       .label("E-mail"),
     password: Joi.string().min(5).required().label("Password"),
-    remember: Joi.bool().required(),
+    rememberMe: Joi.bool().required(),
   };
 
   function handleCheckbox() {
     setIsChecked(!isChecked);
     const newData = { ...data };
-    if (newData.remember) newData.remember = false;
-    else newData.remember = true;
+    if (newData.rememberMe) newData.rememberMe = false;
+    else newData.rememberMe = true;
     setData(newData);
   }
 
@@ -57,7 +57,7 @@ function LoginForm({ toggleState, goToSignUp, ...props }) {
   }
 
   function handleChange(e) {
-    if (e.target.name === "remember") handleCheckbox();
+    if (e.target.name === "rememberme") handleCheckbox();
     else {
       const newErrors = { ...errors };
       const newErrMessage = validateOne(e);
@@ -90,7 +90,8 @@ function LoginForm({ toggleState, goToSignUp, ...props }) {
     try {
       const userData = { ...data };
 
-      await auth.login(userData.email, userData.password);
+      await auth.login(userData.email, userData.password, userData.rememberMe);
+
       window.location = "/";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
@@ -123,8 +124,8 @@ function LoginForm({ toggleState, goToSignUp, ...props }) {
       <Input
         label="Remember me"
         type="checkbox"
-        id="remember"
-        name="remember"
+        id="rememberme"
+        name="rememberme"
         defaultChecked={isChecked}
       />
       <Button
