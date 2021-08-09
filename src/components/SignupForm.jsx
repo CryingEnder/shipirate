@@ -4,7 +4,7 @@ import Button from "./common/Button";
 import Input from "./common/Input";
 import FormContainer from "./common/FormContainer";
 import auth from "../services/authService";
-import * as userService from "../services/userService";
+import userService from "../services/userService";
 import { removeCharacter } from "../utils/removeCharacter";
 
 function SignupForm({ toggleState, ...props }) {
@@ -121,8 +121,8 @@ function SignupForm({ toggleState, ...props }) {
       const userData = { ...data };
       delete userData.agree;
 
-      const response = await userService.register(userData);
-      auth.loginWithJwt(response.headers["x-auth-token"]);
+      await userService.register(userData);
+
       window.location = "/";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {

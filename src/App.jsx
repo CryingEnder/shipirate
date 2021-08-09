@@ -9,14 +9,18 @@ import Home from "./components/Home";
 import Logout from "./components/Logout";
 import PaymentForm from "./components/PaymentForm";
 import NotFound from "./components/NotFound";
-import auth from "./services/authService";
+import userService from "./services/userService";
 
 function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const userFound = auth.getCurrentUser();
-    setUser(userFound);
+    async function getUser() {
+      const userFound = await userService.getCurrentUser();
+      setUser(userFound);
+    }
+
+    getUser();
   }, []);
 
   return (

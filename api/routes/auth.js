@@ -2,8 +2,10 @@
 const { User } = require("../models/user"); // = x.User and x.validate
 const tryCatch = require("../middleware/async");
 const validator = require("../middleware/validate");
+const auth = require("../middleware/auth");
 const Joi = require("joi");
 const bcrypt = require("bcrypt");
+const config = require("config");
 const express = require("express");
 const router = express.Router();
 
@@ -21,7 +23,23 @@ router.post(
     if (!validPassword) return res.status(400).send("Password is invalid");
 
     const token = user.generateAuthToken();
-    res.send(token);
+    const expirationTime = new Date(Date.now() + config.get("jwtTimer") * 1000);
+
+    res
+      .cookie("jwt", token, {
+        httpOnly: true,
+        secure: false,
+        expires: expirationTime,
+      })
+      .send("You have logged in"); //TODO: add secure: true on HTTPS)
+  })
+);
+
+router.delete(
+  "/logout",
+  auth,
+  tryCatch((req, res) => {
+    res.clearCookie("jwt").send("You have successfully logged out");
   })
 );
 

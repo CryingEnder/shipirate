@@ -4,6 +4,7 @@ const auth = require("../middleware/auth");
 const validator = require("../middleware/validate");
 const Joi = require("joi");
 const bcrypt = require("bcrypt");
+const config = require("config");
 const express = require("express");
 const router = express.Router();
 
@@ -11,8 +12,10 @@ router.get(
   "/me",
   auth,
   tryCatch(async (req, res) => {
-    const user = await User.findById(req.user._id).select("-password");
-    res.send(user);
+    const user = await User.findById(req.user._id).select(
+      "-password -_id -__v"
+    );
+    res.status(200).send(user);
   })
 );
 
@@ -30,14 +33,25 @@ router.post(
     });
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
+
     await user.save();
 
     const token = user.generateAuthToken();
-    res.header("x-auth-token", token).send({
-      _id: user._id,
-      username: user.username,
-      email: user.email,
-    });
+    const expirationTime = new Date(
+      new Date().getTime() + config.get("jwtTimer") * 1000
+    );
+
+    res
+      .cookie("jwt", token, {
+        httpOnly: true,
+        secure: false,
+        expires: expirationTime,
+      })
+      .send({
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+      }); //TODO: add secure: true on HTTPS
   })
 );
 
