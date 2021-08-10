@@ -10,8 +10,11 @@ describe("auth middleware", () => {
     };
     const token = new User(user).generateAuthToken();
     const req = {
-      header: jest.fn().mockReturnValue(token),
+      cookies: {
+        jwt: token,
+      },
     };
+
     const res = {};
     const next = jest.fn();
 

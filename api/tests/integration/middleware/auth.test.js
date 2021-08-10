@@ -1,17 +1,20 @@
 const request = require("supertest");
 const { User } = require("../../../models/user");
-const mongoose = require("mongoose");
 
 describe("auth middleware", () => {
   let server;
   let token;
+  const tokenKey = "jwt";
 
   const exec = () => {
-    return request(server).get("/api/users/me").set("x-auth-token", token);
+    return request(server)
+      .get("/api/users/me")
+      .set("Cookie", `${tokenKey}=${token}`);
   };
 
   beforeEach(() => {
     server = require("../../../index");
+
     token = new User().generateAuthToken();
   });
   afterEach(() => {
@@ -24,7 +27,6 @@ describe("auth middleware", () => {
     const res = await exec();
 
     expect(res.status).toBe(401);
-    expect(res.text).toBe("Access denied. No token provided.");
   });
 
   it("should return 400 if token is invalid", async () => {
@@ -33,7 +35,6 @@ describe("auth middleware", () => {
     const res = await exec();
 
     expect(res.status).toBe(400);
-    expect(res.text).toBe("Invalid token.");
   });
 
   it("should return 200 if token is valid", async () => {
