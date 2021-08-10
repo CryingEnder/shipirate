@@ -1,3 +1,4 @@
 {
-  "jwtPrivateKey": "shipirate_jwtPrivateKey"
+  "jwtPrivateKey": "shipirate_jwtPrivateKey",
+  "db": "shipirate_db"
 }
