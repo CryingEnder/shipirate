@@ -120,7 +120,7 @@ function validateInput(req) {
       newUsername: Joi.string().alphanum().min(5).max(30).label("New username"),
 
       newEmail: Joi.string().email().min(10).max(255).label("New e-mail"),
-      repeatNewEmail: Joi.ref("newEmail").label("Repeat new e-mail"),
+      repeatNewEmail: Joi.valid(Joi.ref("newEmail")).label("Repeat new e-mail"),
 
       currentPassword: Joi.string()
         .min(5)
