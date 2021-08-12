@@ -1,8 +1,22 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Plan from "./common/Plan";
 import Container from "./common/Container";
+import planService from "../services/planService";
 
 function PlanSection(props) {
+  const [plans, setPlans] = useState(null);
+
+  useEffect(() => {
+    async function getPlans() {
+      const plansFound = await planService.getPlans();
+      setPlans(plansFound);
+    }
+
+    getPlans();
+  }, []);
+
+  // console.log("Plans fetched:", plans);
+
   return (
     <Fragment>
       <Container
@@ -12,8 +26,19 @@ function PlanSection(props) {
         <div
           id="plans"
           className="absolute bg-none w-0 h-0 -mt-36 laptop:-mt-52"
-        ></div>
-        <Plan
+        />
+        {plans &&
+          plans.map((plan) => (
+            <Plan
+              key={plan._id}
+              planFeatures={plan.features}
+              numberOfMonths={plan.months}
+              price={plan.price}
+              currency={plan.currency}
+              isPopular={plan.popular}
+            />
+          ))}
+        {/* <Plan
           planFeatures={[
             { available: true, feature: "Lorem ipsum dolor sit amet" },
             { available: true, feature: "Lorem ipsum dolor sit amet" },
@@ -45,7 +70,7 @@ function PlanSection(props) {
           discountPercentage={20}
           price={10}
           currency="$"
-        />
+        /> */}
       </Container>
     </Fragment>
   );

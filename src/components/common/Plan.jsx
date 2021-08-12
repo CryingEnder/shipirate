@@ -25,6 +25,7 @@ function Plan({
   discountPercentage,
   currency,
   isPopular,
+  ...props
 }) {
   const { theme, setTheme } = useContext(ThemeContext);
 
@@ -41,7 +42,10 @@ function Plan({
   else tier = theme !== "dark" ? tierOne : tierOneDark;
 
   return (
-    <article className="relative cursor-pointer text-center rounded-2xl p-2 mx-auto shadow-md bg-gradient-to-b from-gray-25 to-gray-30 dark:from-purple-light-1 dark:to-purple-light-2 text-blue-bird dark:text-purple-light-3 max-w-sm tablet:max-w-md tablet:transform tablet:ease-out tablet:duration-200 tablet:hover:scale-105 laptop:w-3/10">
+    <article
+      {...props}
+      className="relative cursor-pointer text-center rounded-2xl p-2 mx-auto shadow-md bg-gradient-to-b from-gray-25 to-gray-30 dark:from-purple-light-1 dark:to-purple-light-2 text-blue-bird dark:text-purple-light-3 max-w-sm tablet:max-w-md tablet:transform tablet:ease-out tablet:duration-200 tablet:hover:scale-105 laptop:w-3/10"
+    >
       {isPopular && (
         <img
           className="absolute right-2 -top-4 w-1/5"
@@ -85,7 +89,7 @@ function Plan({
       <div>
         <ul className="mb-6 font-semibold">
           {planFeatures.map((f) => (
-            <li className="mb-1">
+            <li key={f._id} className="mb-1">
               {f.available ? (
                 <Check className="mb-1.5 mr-2 inline-block fill-current text-blue-water dark:text-blue-check w-4 tablet:w-5" />
               ) : (
