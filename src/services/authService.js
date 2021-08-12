@@ -5,7 +5,6 @@ const apiEndpoint = apiUrl + "/auth";
 
 export async function login(email, password, rememberMe) {
   try {
-    console.log(rememberMe);
     await http.post(apiEndpoint, { email, password, rememberMe });
   } catch (ex) {}
 }
