@@ -20,6 +20,7 @@ router.post(
       features: req.body.features,
       months: req.body.months,
       price: req.body.price,
+      discount: req.body.discount,
       currency: req.body.currency,
       popular: req.body.popular,
     });

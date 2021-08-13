@@ -20,6 +20,12 @@ const planSchema = new mongoose.Schema({
     min: 1,
     max: 256,
   },
+  discount: {
+    type: Number,
+    min: 0,
+    max: 100,
+    default: 0,
+  },
   currency: {
     type: String,
     required: true,
@@ -46,6 +52,7 @@ function validatePlan(plan) {
       .label("Plan features"),
     months: Joi.number().min(1).max(36).required().label("Subscription time"),
     price: Joi.number().min(1).max(256).required().label("Price"),
+    discount: Joi.number().min(0).max(100).label("Discount percentage"),
     currency: Joi.string().min(1).max(16).required().label("Currency"),
     popular: Joi.boolean().label("Popular flag"),
   });
