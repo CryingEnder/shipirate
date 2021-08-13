@@ -5,6 +5,16 @@ import planService from "../services/planService";
 
 function PlanSection(props) {
   const [plans, setPlans] = useState(null);
+  const [gridStyle, setGridStyle] = useState("");
+
+  function getGridStyle() {
+    if (plans) {
+      if (plans.length > 2)
+        setGridStyle("laptop:grid-cols-2 desktop:grid-cols-3");
+      else if (plans.length > 1)
+        setGridStyle("laptop:grid-cols-2 desktop:grid-cols-2");
+    }
+  }
 
   useEffect(() => {
     async function getPlans() {
@@ -13,19 +23,18 @@ function PlanSection(props) {
     }
 
     getPlans();
-  }, []);
-
-  // console.log("Plans fetched:", plans);
+    getGridStyle();
+  }, [plans]);
 
   return (
     <Fragment>
       <Container
         tag="section"
-        stylesInside="flex-col justify-evenly items-start space-y-28 p-3 tablet:p-0 laptop:flex laptop:flex-row laptop:space-y-0 laptop:mx-auto"
+        stylesInside={`relative px-8 mt-24 grid grid-cols-1 gap-y-36 laptop:gap-x-0 laptop:gap-y-32 desktop:gap-x-12 ${gridStyle}`}
       >
         <div
           id="plans"
-          className="absolute bg-none w-0 h-0 -mt-36 laptop:-mt-52"
+          className="absolute bg-none w-0 h-0 -mt-36 laptop:-mt-40"
         />
         {plans &&
           plans.map((plan) => (
@@ -34,43 +43,11 @@ function PlanSection(props) {
               planFeatures={plan.features}
               numberOfMonths={plan.months}
               price={plan.price}
+              discountPercentage={plan.discount}
               currency={plan.currency}
               isPopular={plan.popular}
             />
           ))}
-        {/* <Plan
-          planFeatures={[
-            { available: true, feature: "Lorem ipsum dolor sit amet" },
-            { available: true, feature: "Lorem ipsum dolor sit amet" },
-            { available: false, feature: "Lorem ipsum dolor sit amet" },
-          ]}
-          numberOfMonths={1}
-          price={10}
-          currency="$"
-        />
-        <Plan
-          planFeatures={[
-            { available: true, feature: "Lorem ipsum dolor sit amet" },
-            { available: true, feature: "Lorem ipsum dolor sit amet" },
-            { available: true, feature: "Lorem ipsum dolor sit amet" },
-          ]}
-          numberOfMonths={6}
-          discountPercentage={10}
-          price={10}
-          currency="$"
-          isPopular={true}
-        />
-        <Plan
-          planFeatures={[
-            { available: true, feature: "Lorem ipsum dolor sit amet" },
-            { available: true, feature: "Lorem ipsum dolor sit amet" },
-            { available: true, feature: "Lorem ipsum dolor sit amet" },
-          ]}
-          numberOfMonths={12}
-          discountPercentage={20}
-          price={10}
-          currency="$"
-        /> */}
       </Container>
     </Fragment>
   );
