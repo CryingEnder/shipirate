@@ -1,4 +1,6 @@
 const { Plan, validate } = require("../models/plan");
+const auth = require("../middleware/auth");
+const isAdmin = require("../middleware/isAdmin");
 const tryCatch = require("../middleware/async");
 const validator = require("../middleware/validate");
 const express = require("express");
@@ -14,7 +16,7 @@ router.get(
 
 router.post(
   "/",
-  validator(validate),
+  [auth, isAdmin, validator(validate)],
   tryCatch(async (req, res) => {
     plan = new Plan({
       features: req.body.features,
