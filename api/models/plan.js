@@ -29,8 +29,8 @@ const planSchema = new mongoose.Schema({
   currency: {
     type: String,
     required: true,
-    minlength: 1,
-    maxlength: 16,
+    min: 1,
+    max: 16,
   },
   popular: {
     type: Boolean,
