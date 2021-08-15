@@ -1,14 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import {
-  customerOne,
-  customerTwo,
-  customerThree,
-  customerFour,
-  customerFive,
-  customerSix,
-  testimonialsLogo,
-  testimonialsLogoDark,
-} from "./../utils/images";
+import { testimonialsLogo, testimonialsLogoDark } from "./../utils/images";
 import {
   AngleLeft,
   AngleRight,
@@ -22,64 +13,22 @@ import {
 } from "./common/Icons";
 import Container from "./common/Container";
 import { ThemeContext } from "./context/ThemeContext";
+import testimonialService from "../services/testimonialService";
 
 function Testimonials(props) {
-  const message =
-    "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium animi excepturi totam provident sequi quisquam quibusdam impedit ex omnis! Minus fuga natus aliquam aliquid.";
-
-  const userTestimonialsData = [
-    {
-      profilePhoto: customerOne,
-      name: "John Smith",
-      profession: "Front-End Developer",
-      socialPlatform: "twitter",
-      message: message,
-    },
-    {
-      profilePhoto: customerTwo,
-      name: "Alex Fiero",
-      profession: "Back-End Developer",
-      socialPlatform: "linkedin",
-      message: message,
-    },
-    {
-      profilePhoto: customerThree,
-      name: "Gabriel Constantinescu",
-      profession: "Full-Stack Developer",
-      message: message,
-    },
-    {
-      profilePhoto: customerFour,
-      name: "Chun Hei",
-      profession: "Front-End Developer",
-      socialPlatform: "facebook",
-      message: message,
-    },
-    {
-      profilePhoto: customerFive,
-      name: "Ji Woo",
-      profession: "Back-End Developer",
-      socialPlatform: "twitter",
-      message: message,
-    },
-    {
-      profilePhoto: customerSix,
-      name: "Amy Oakwood",
-      profession: "Full-Stack Developer",
-      socialPlatform: "instagram",
-      message: message,
-    },
-  ];
-
   const { theme, setTheme } = useContext(ThemeContext);
 
-  const [userTestimonials, setUserTestimonials] =
-    useState(userTestimonialsData);
+  const [testimonials, setTestimonials] = useState(null);
   const [currentUser, setCurrentUser] = useState(0);
   const [opacityAnimation, setOpacityAnimation] = useState("");
 
   useEffect(() => {
-    setUserTestimonials(userTestimonialsData);
+    async function getTestimonials() {
+      const testimonialsFound = await testimonialService.getTestimonials();
+      setTestimonials(testimonialsFound);
+    }
+
+    getTestimonials();
   }, []);
 
   function addOpacityAnimation() {
@@ -87,13 +36,13 @@ function Testimonials(props) {
   }
 
   function getNextUser() {
-    if (currentUser === userTestimonials.length - 1) setCurrentUser(0);
+    if (currentUser === testimonials.length - 1) setCurrentUser(0);
     else setCurrentUser(currentUser + 1);
     addOpacityAnimation();
   }
 
   function getPreviousUser() {
-    if (currentUser === 0) setCurrentUser(userTestimonials.length - 1);
+    if (currentUser === 0) setCurrentUser(testimonials.length - 1);
     else setCurrentUser(currentUser - 1);
     addOpacityAnimation();
   }
@@ -152,7 +101,7 @@ function Testimonials(props) {
               className={`font-semibold ${opacityAnimation}`}
               onAnimationEnd={() => setOpacityAnimation("")}
             >
-              {userTestimonials[currentUser].message}
+              {testimonials && testimonials[currentUser].message}
             </p>
           </div>
         </div>
@@ -163,45 +112,53 @@ function Testimonials(props) {
                 "rounded-full box-content relative bg-gray-25 dark:bg-blue-night-sky-3 p-2.5 min-w-max laptop:p-1.5"
               }
             >
-              <img
-                className="rounded-full w-20 laptop:w-24 desktop:w-28"
-                src={userTestimonials[currentUser].profilePhoto}
-                alt="A profile photo"
-              />
-              {userTestimonials[currentUser].socialPlatform && (
+              {testimonials && (
+                <img
+                  className="rounded-full w-20 laptop:w-24 desktop:w-28"
+                  src={`../api/${testimonials[currentUser].profilePhoto}`}
+                  alt="A profile photo"
+                />
+              )}
+              {testimonials && testimonials[currentUser].socialPlatform && (
                 <div className="bg-gray-25 dark:bg-blue-night-sky-3 fill-current text-blue-sky-1 dark:text-purple-light-3 p-0.5 rounded-full absolute right-0.5 bottom-1 w-8 laptop:hidden">
-                  {userTestimonials[currentUser].socialPlatform ===
-                    "facebook" && <Facebook />}
-                  {userTestimonials[currentUser].socialPlatform ===
-                    "instagram" && <Instagram />}
-                  {userTestimonials[currentUser].socialPlatform ===
-                    "linkedin" && <Linkedin />}
-                  {userTestimonials[currentUser].socialPlatform ===
-                    "twitter" && <Twitter />}
+                  {testimonials[currentUser].socialPlatform === "facebook" && (
+                    <Facebook />
+                  )}
+                  {testimonials[currentUser].socialPlatform === "instagram" && (
+                    <Instagram />
+                  )}
+                  {testimonials[currentUser].socialPlatform === "linkedin" && (
+                    <Linkedin />
+                  )}
+                  {testimonials[currentUser].socialPlatform === "twitter" && (
+                    <Twitter />
+                  )}
                 </div>
               )}
             </div>
-            <div className="laptop:max-w-xs">
-              <p className="text-blue-dark laptop:text-gray-25 dark:text-purple-light-4 font-bold">
-                {userTestimonials[currentUser].name}
-              </p>
-              <p className="text-gray-bluegray-500 dark:text-blue-grayish font-semibold">
-                {userTestimonials[currentUser].profession}
-              </p>
-            </div>
+            {testimonials && (
+              <div className="laptop:max-w-xs">
+                <p className="text-blue-dark laptop:text-gray-25 dark:text-purple-light-4 font-bold">
+                  {testimonials[currentUser].name}
+                </p>
+                <p className="text-gray-bluegray-500 dark:text-blue-grayish font-semibold">
+                  {testimonials[currentUser].profession}
+                </p>
+              </div>
+            )}
           </div>
-          {userTestimonials[currentUser].socialPlatform && (
+          {testimonials && testimonials[currentUser].socialPlatform && (
             <div className="hidden laptop:block laptop:w-16 fill-current text-blue-sky-1 dark:text-purple-light-3">
-              {userTestimonials[currentUser].socialPlatform === "facebook" && (
+              {testimonials[currentUser].socialPlatform === "facebook" && (
                 <Facebook />
               )}
-              {userTestimonials[currentUser].socialPlatform === "instagram" && (
+              {testimonials[currentUser].socialPlatform === "instagram" && (
                 <Instagram />
               )}
-              {userTestimonials[currentUser].socialPlatform === "linkedin" && (
+              {testimonials[currentUser].socialPlatform === "linkedin" && (
                 <Linkedin />
               )}
-              {userTestimonials[currentUser].socialPlatform === "twitter" && (
+              {testimonials[currentUser].socialPlatform === "twitter" && (
                 <Twitter />
               )}
             </div>

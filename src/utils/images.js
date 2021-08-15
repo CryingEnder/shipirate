@@ -1,11 +1,5 @@
 import compass from "../css/images/compass.svg";
 import compassDark from "../css/images/compassDark.svg";
-import customerFive from "../css/images/customer-5.jpg";
-import customerFour from "../css/images/customer-4.jpg";
-import customerOne from "../css/images/customer-1.jpg";
-import customerSix from "../css/images/customer-6.jpg";
-import customerThree from "../css/images/customer-3.jpg";
-import customerTwo from "../css/images/customer-2.jpg";
 import creditCard from "../css/images/credit-card.svg";
 import deviceFeature from "../css/images/deviceFeature.webp";
 import deviceFeatureOld from "../css/images/deviceFeature.jpg";
@@ -71,12 +65,6 @@ import treasure from "../css/images/treasure.svg";
 export {
   compass,
   compassDark,
-  customerFive,
-  customerFour,
-  customerOne,
-  customerSix,
-  customerThree,
-  customerTwo,
   creditCard,
   deviceFeature,
   deviceFeatureOld,
