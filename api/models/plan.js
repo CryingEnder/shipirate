@@ -44,10 +44,9 @@ function validatePlan(plan) {
   const schema = Joi.object({
     features: Joi.array()
       .items({
-        feature: Joi.string().min(1).max(128).required(),
-        available: Joi.boolean().required(),
+        feature: Joi.string().min(1).max(128).required().label("Feature"),
+        available: Joi.boolean().required().label("Available"),
       })
-
       .required()
       .label("Plan features"),
     months: Joi.number().min(1).max(36).required().label("Subscription time"),
