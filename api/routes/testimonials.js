@@ -3,8 +3,8 @@ const auth = require("../middleware/auth");
 const isAdmin = require("../middleware/isAdmin");
 const upload = require("../middleware/upload");
 const tryCatch = require("../middleware/async");
+const validator = require("../middleware/validate");
 const { unlink } = require("fs/promises");
-
 const express = require("express");
 const router = express.Router();
 
@@ -18,6 +18,24 @@ router.get(
 
 router.post(
   "/",
+  [auth, isAdmin, upload.none(), validator(validate)],
+  tryCatch(async (req, res) => {
+    testimonial = new Testimonial({
+      profilePhoto: req.body.profilePhoto,
+      name: req.body.name,
+      profession: req.body.profession,
+      socialPlatform: req.body.socialPlatform,
+      message: req.body.message,
+    });
+
+    await testimonial.save();
+
+    res.status(200).send(testimonial);
+  })
+);
+
+router.post(
+  "/fs",
   [auth, isAdmin, upload.single("profilePhoto")],
   tryCatch(async (req, res) => {
     const { error } = validate(req.body);
