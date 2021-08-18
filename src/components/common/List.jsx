@@ -7,7 +7,8 @@ function List({
   itemsStyle,
   title,
   titleStyle,
-  doToggleWindow,
+  doToggleLogin,
+  doToggleProfile,
   ...props
 }) {
   return (
@@ -31,7 +32,13 @@ function List({
                 <a href={i.linkPath}>{i.content ? i.content : i}</a>
               ) : (
                 <Link
-                  onClick={i.toggleWindow ? doToggleWindow : null}
+                  onClick={
+                    i.toggleLogin
+                      ? doToggleLogin
+                      : i.toggleProfile
+                      ? doToggleProfile
+                      : null
+                  }
                   to={i.linkPath ? i.linkPath : "/"}
                 >
                   {i.content ? i.content : i}
@@ -56,7 +63,8 @@ List.propTypes = {
   itemsStyle: PropTypes.string,
   title: PropTypes.string,
   titleStyle: PropTypes.string,
-  doToggleWindow: PropTypes.func,
+  doToggleLogin: PropTypes.func,
+  doToggleProfile: PropTypes.func,
 };
 
 export default List;

@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
+import Profile from "./Profile";
 import Container from "./common/Container";
 import Logo from "./common/Logo";
 import List from "./common/List";
@@ -9,19 +10,24 @@ import ToggleTheme from "./common/ToggleTheme";
 import PropTypes from "prop-types";
 
 function Navbar({ user }) {
-  const menuOff = "max-h-0 opacity-0";
-  const menuOn = "max-h-full opacity-100 transition-opacity";
-  const [menuState, setMenuState] = useState(menuOff);
+  const off = "max-h-0 opacity-0";
+  const on = "max-h-full opacity-100 transition-opacity";
+  const [menuState, setMenuState] = useState(off);
+  const [profileClicked, setProfileClicked] = useState(false);
   const [loginClicked, setLoginClicked] = useState(false);
   const [signupClicked, setSignupClicked] = useState(false);
 
   function toggleMenu() {
-    if (menuState === menuOff) setMenuState(menuOn);
-    else setMenuState(menuOff);
+    if (menuState === off) setMenuState(on);
+    else setMenuState(off);
   }
 
-  function toggleWindow() {
+  function toggleLogin() {
     if (!loginClicked) setLoginClicked(true);
+  }
+
+  function toggleProfile() {
+    if (!profileClicked) setProfileClicked(true);
   }
 
   function goToSignUp() {
@@ -33,6 +39,7 @@ function Navbar({ user }) {
     return () => {
       setLoginClicked(false);
       setSignupClicked(false);
+      setProfileClicked(false);
     };
   });
 
@@ -42,6 +49,7 @@ function Navbar({ user }) {
         <LoginForm goToSignUp={goToSignUp} toggleState={loginClicked} />
       )}
       <SignupForm toggleState={signupClicked} />
+      {user && <Profile toggleState={profileClicked} user={user} />}
       <Container
         tag="nav"
         stylesOutside={`sticky top-0 z-10 bg-blue-sky-1 dark:bg-blue-night-sky-1`}
@@ -50,7 +58,7 @@ function Navbar({ user }) {
         <Logo />
         <div className="flex flex-row space-x-4 justify-center items-center laptop:hidden">
           <List
-            doToggleWindow={toggleWindow}
+            doToggleLogin={toggleLogin}
             className="hidden tablet:flex tablet:flex-row tablet:space-x-4 tablet:justify-center tablet:items-center"
             itemsStyle="transition-colors hover:text-gray-200"
             items={[
@@ -61,7 +69,7 @@ function Navbar({ user }) {
                 linkPath: "#plans",
               },
               user && { content: "Logout", linkPath: "/logout" },
-              !user && { content: "Login", toggleWindow: true },
+              !user && { content: "Login", toggleLogin: true },
             ]}
           />
           <ToggleTheme />
@@ -72,13 +80,15 @@ function Navbar({ user }) {
         </div>
         <div className="flex flex-row laptop:space-x-4 justify-center items-center w-full laptop:w-auto">
           <List
-            doToggleWindow={toggleWindow}
+            doToggleLogin={toggleLogin}
+            doToggleProfile={toggleProfile}
             className={`${menuState} w-full laptop:w-auto divide-y-2 divide-blue-sky-4 dark:divide-purple-700 overflow-hidden laptop:flex laptop:flex-row laptop:justify-center laptop:items-center laptop:space-x-4 laptop:max-h-full laptop:divide-y-0 laptop:opacity-100`}
             itemsStyle={"py-3 transition-colors hover:text-gray-200"}
             items={[
               user && {
                 content: user.username ? user.username : "Username missing",
                 specialStyle: "block laptop:hidden",
+                toggleProfile: true,
               },
               {
                 content: "Get VPN",
@@ -100,9 +110,10 @@ function Navbar({ user }) {
               user && {
                 content: user.username ? user.username : "No username",
                 specialStyle: "hidden laptop:block",
+                toggleProfile: true,
               },
               user && { content: "Logout", linkPath: "/logout" },
-              !user && { content: "Login", toggleWindow: true },
+              !user && { content: "Login", toggleLogin: true },
             ]}
           />
           <ToggleTheme styles="hidden laptop:block" />
@@ -117,7 +128,7 @@ Navbar.defaultProps = {
 };
 
 Navbar.propTypes = {
-  user: PropTypes.any,
+  user: PropTypes.object,
 };
 
 export default Navbar;

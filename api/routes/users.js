@@ -113,14 +113,15 @@ router.delete(
   })
 );
 
-//TODO: might have to move it into members model
 function validateInput(req) {
   const schema = Joi.object()
     .keys({
       newUsername: Joi.string().alphanum().min(5).max(30).label("New username"),
 
       newEmail: Joi.string().email().min(10).max(255).label("New e-mail"),
-      repeatNewEmail: Joi.valid(Joi.ref("newEmail")).label("Repeat new e-mail"),
+      repeatNewEmail: Joi.valid(Joi.ref("newEmail"))
+        .label("Repeat new e-mail")
+        .messages({ "any.only": "Repeat new e-mail must match new e-mail" }),
 
       currentPassword: Joi.string()
         .min(5)
@@ -141,9 +142,11 @@ function validateInput(req) {
           "string.pattern.base":
             "Password may only contain alphanumeric or special characters",
         }),
-      repeatNewPassword: Joi.valid(Joi.ref("newPassword")).label(
-        "Repeat new password"
-      ),
+      repeatNewPassword: Joi.valid(Joi.ref("newPassword"))
+        .label("Repeat new password")
+        .messages({
+          "any.only": "Repeat new password must match new password",
+        }),
     })
     .xor("newUsername", "newEmail", "currentPassword")
     .with("newEmail", "repeatNewEmail")
