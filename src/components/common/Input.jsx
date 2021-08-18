@@ -6,8 +6,6 @@ import PropTypes from "prop-types";
 function Input({ label, styles, alignLeft, linkPath, ...props }) {
   const { theme, setTheme } = useContext(ThemeContext);
 
-  //error message TODO:
-
   const transformOn =
     "transition-all transform -translate-y-3 text-smallest -translate-x-1 tablet:translate-x-0 tablet:-translate-y-4 tablet:text-xs";
   const transformOff =
