@@ -1,6 +1,7 @@
 import React, { useState, createContext } from "react";
 
 export const CartContext = createContext();
+CartContext.displayName = "CartContext";
 
 export function CartProvider({ children }) {
   const [total, setTotal] = useState(0);

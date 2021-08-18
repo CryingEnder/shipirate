@@ -20,6 +20,7 @@ function getInitialTheme() {
 }
 
 export const ThemeContext = createContext();
+ThemeContext.displayName = "ThemeContext";
 
 export function ThemeProvider({ initialTheme, children }) {
   const [theme, setTheme] = useState(getInitialTheme);
