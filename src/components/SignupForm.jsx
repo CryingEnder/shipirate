@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Joi from "joi";
 import Button from "./common/Button";
 import Input from "./common/Input";
 import FormContainer from "./common/FormContainer";
-import auth from "../services/authService";
 import userService from "../services/userService";
 import { removeCharacter } from "../utils/removeCharacter";
 
