@@ -4,13 +4,16 @@ import logger from "./services/logService";
 import "./index.css";
 import App from "./App";
 import { ThemeProvider } from "./components/context/ThemeContext";
+import { CartProvider } from "./components/context/CartContext";
 
 logger.init();
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider>
-      <App />
+      <CartProvider>
+        <App />
+      </CartProvider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")

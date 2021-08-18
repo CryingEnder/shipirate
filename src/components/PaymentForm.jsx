@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Container from "./common/Container";
 import Input from "./common/Input";
 import Button from "./common/Button";
 import PaymentMethod from "./common/PaymentMethod";
 import { ArrowBack } from "./common/Icons";
+import { CartContext } from "./context/CartContext";
 
 function PaymentForm(props) {
   const formOn = "visible opacity-100";
@@ -15,8 +16,7 @@ function PaymentForm(props) {
   const [opacityAnimation, setOpacityAnimation] = useState("");
   const [cardBorder, setCardBorder] = useState(borderOff);
   const [paypalBorder, setPaypalBorder] = useState(borderOff);
-  const total = 0;
-  const currency = "$";
+  const { total, setTotal } = useContext(CartContext);
 
   useEffect(() => {
     document.body.className =
@@ -55,8 +55,7 @@ function PaymentForm(props) {
       <form className="w-full tablet-small:max-w-lg p-4 flex flex-col space-y-6">
         <header className="text-center w-full">
           <h1 className="text-2xl text-blue-dark dark:text-purple-light-3">
-            Your total is {currency}
-            {total}
+            Your total is {total}
           </h1>
           <h2 className="text-lg text-blue-bird dark:text-blue-check">
             Choose a payment method
@@ -119,7 +118,7 @@ function PaymentForm(props) {
               fontColor="text-gray-25"
               type="submit"
               isGreen={true}
-              label={`Pay ${currency}${total}`}
+              label={`Pay ${total}`}
               fontSize="text-xl"
             />
             <Button
@@ -160,7 +159,7 @@ function PaymentForm(props) {
               fontColor="text-gray-25"
               type="submit"
               isGreen={true}
-              label={`Pay ${currency}${total}`}
+              label={`Pay ${total}`}
               fontSize="text-xl"
             />
             <Button

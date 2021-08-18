@@ -17,6 +17,7 @@ import Button from "./Button";
 import Badge from "./Badge";
 import { showTwoDecimals } from "./../../utils/showTwoDecimals";
 import { ThemeContext } from "./../context/ThemeContext";
+import { CartContext } from "./../context/CartContext";
 
 function Plan({
   planFeatures,
@@ -28,6 +29,7 @@ function Plan({
   ...props
 }) {
   const { theme, setTheme } = useContext(ThemeContext);
+  const { total, setTotal } = useContext(CartContext);
 
   const price = discountPercentage
     ? showTwoDecimals(initialPrice - (discountPercentage / 100) * initialPrice)
@@ -45,6 +47,7 @@ function Plan({
     <article>
       <div
         {...props}
+        onClick={() => setTotal(`${currency}${totalPrice}`)}
         className="relative cursor-pointer text-center rounded-2xl p-2 mx-auto shadow-md bg-gradient-to-b from-gray-25 to-gray-30 dark:from-purple-light-1 dark:to-purple-light-2 text-blue-bird dark:text-purple-light-3 w-4/5 tablet:w-3/5 tablet-small:w-4/6 tablet:max-w-md laptop:w-full tablet:transform tablet:ease-out tablet:duration-200 tablet:hover:scale-105"
       >
         {isPopular && (
