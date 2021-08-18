@@ -21,7 +21,12 @@ export function register(user) {
   });
 }
 
+export function updateAccount(input) {
+  return http.put(apiEndpoint + "/me", input);
+}
+
 export default {
   getCurrentUser,
   register,
+  updateAccount,
 };
