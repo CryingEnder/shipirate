@@ -67,9 +67,14 @@ function Navbar({ user }) {
                 specialStyle:
                   "py-1 px-3 rounded-xl bg-blue-sky-3 dark:bg-purple-700",
                 linkPath: "#plans",
+                key: "getvpn1",
               },
-              user && { content: "Logout", linkPath: "/logout" },
-              !user && { content: "Login", toggleLogin: true },
+              user && {
+                content: "Logout",
+                linkPath: "/logout",
+                key: "logout1",
+              },
+              !user && { content: "Login", toggleLogin: true, key: "login1" },
             ]}
           />
           <ToggleTheme />
@@ -87,36 +92,53 @@ function Navbar({ user }) {
             itemsStyle={"py-3 transition-colors hover:text-gray-200"}
             items={[
               user && {
-                content: user.username ? user.username : "Username missing",
+                content: user.username ? user.username : "No username",
                 specialStyle: "block laptop:hidden",
                 toggleProfile: true,
+                key: user._id + "1",
               },
               {
                 content: "Get VPN",
                 specialStyle:
                   "transition-colors hover:text-gray-200 laptop:bg-blue-sky-3 laptop:py-1 laptop:px-3 laptop:rounded-xl laptop:dark:bg-purple-700",
                 linkPath: "#plans",
+                key: "getvpn2",
               },
-              "What is VPN?",
-              !user && { content: "Features", linkPath: "#features" },
-              !user && { content: "Servers", linkPath: "#servers" },
+              { content: "What is VPN?", key: "whatisvpn" },
+              !user && {
+                content: "Features",
+                linkPath: "#features",
+                key: "features1",
+              },
+              !user && {
+                content: "Servers",
+                linkPath: "#servers",
+                key: "servers1",
+              },
               user && {
                 content: "Features",
                 specialStyle: "hidden desktop:block",
                 linkPath: "#features",
+                key: "features2",
               },
               user && {
                 content: "Servers",
                 specialStyle: "hidden desktop:block",
                 linkPath: "#servers",
+                key: "servers2",
               },
               user && {
                 content: user.username ? user.username : "No username",
                 specialStyle: "hidden laptop:block",
                 toggleProfile: true,
+                key: user._id + "2",
               },
-              user && { content: "Logout", linkPath: "/logout" },
-              !user && { content: "Login", toggleLogin: true },
+              user && {
+                content: "Logout",
+                linkPath: "/logout",
+                key: "logout2",
+              },
+              !user && { content: "Login", toggleLogin: true, key: "login2" },
             ]}
           />
           <ToggleTheme styles="hidden laptop:block" />

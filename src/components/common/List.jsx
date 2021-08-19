@@ -30,6 +30,7 @@ function List({
         (i) =>
           i && (
             <li
+              key={i.key}
               onClick={doToggleMenu ? doToggleMenu : null}
               className={
                 i.specialStyle

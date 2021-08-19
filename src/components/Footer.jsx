@@ -20,19 +20,39 @@ function Footer(props) {
         <div className="grid grid-cols-auto gap-y-6 mb-10 tablet:justify-items-center">
           <List
             title="Shipirate"
-            items={["About Us", "Careers", "Affiliates", "Reviews"]}
+            items={[
+              { content: "About Us", key: "aboutus" },
+              { content: "Careers", key: "careers" },
+              { content: "Affiliates", key: "affiliates" },
+              { content: "Reviews", key: "reviews" },
+            ]}
           />
           <List
             title="Support"
-            items={["Contact us", "FAQ", "Terms of Service", "Privacy Policy"]}
+            items={[
+              { content: "Contact us", key: "contactus" },
+              { content: "FAQ", key: "faq" },
+              { content: "Terms of Service", key: "termsofservice" },
+              { content: "Privacy Policy", key: "privacypolicy" },
+            ]}
           />
           <List
             title="Engage"
-            items={["What is VPN", "What is my IP", "Donate"]}
+            items={[
+              { content: "What is VPN", key: "whatisvpn123" },
+              { content: "What is my IP", key: "whatismyip" },
+              { content: "Donate", key: "donate" },
+            ]}
           />
           <List
             title="Follow us"
-            items={["Facebook", "Twitter", "Instagram", "Linkedin", "Youtube"]}
+            items={[
+              { content: "Facebook", key: "facebookkey" },
+              { content: "Twitter", key: "twitterkey" },
+              { content: "Instagram", key: "instagramkey" },
+              { content: "Linkedin", key: "linkedinkey" },
+              { content: "Youtube", key: "youtubekey" },
+            ]}
           />
         </div>
         <div className="flex flex-col justify-between space-y-6 tablet:flex-row tablet:space-y-0 tablet:items-center">
