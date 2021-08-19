@@ -3,6 +3,7 @@ import Logo from "./common/Logo";
 import ChangeEmailForm from "./ChangeEmailForm";
 import ChangeUsernameForm from "./ChangeUsernameForm";
 import ChangePasswordForm from "./ChangePasswordForm";
+import DeleteAccount from "./DeleteAccount";
 import { Cross } from "./common/Icons";
 import Button from "./common/Button";
 import PropTypes from "prop-types";
@@ -18,6 +19,7 @@ function Profile({ children, toggleState, user, ...props }) {
   const [emailFormStyle, setEmailFormStyle] = useState(notVisible);
   const [usernameFormStyle, setUsernameFormStyle] = useState(notVisible);
   const [passwordFormStyle, setPasswordFormStyle] = useState(notVisible);
+  const [deleteAccountStyle, setDeleteAccountStyle] = useState(notVisible);
   const [message, setMessage] = useState(
     `Hi, ${user.username ? user.username : "No username"}`
   );
@@ -53,10 +55,17 @@ function Profile({ children, toggleState, user, ...props }) {
     setMessage(`New password`);
   }
 
+  function handleDeleteAccount() {
+    handleButtonClick();
+    setDeleteAccountStyle(visibleFormStyle);
+    setMessage(`Are you sure you want to delete your account?`);
+  }
+
   function resetProfile() {
     setEmailFormStyle(notVisible);
     setUsernameFormStyle(notVisible);
     setPasswordFormStyle(notVisible);
+    setDeleteAccountStyle(notVisible);
     setButtonVisibilityStyle(visible);
     setMessage(`Hi, ${user.username}`);
   }
@@ -95,7 +104,7 @@ function Profile({ children, toggleState, user, ...props }) {
           {...props}
           className="flex flex-col justify-center items-center w-full"
         >
-          <p className="overflow-ellipsis px-4 tablet:px-6 overflow-hidden font-semibold text-center text-base mb-6 w-64 tablet:-mt-2 tablet:mb-8 tablet:w-80 tablet:text-xl laptop:text-1.5xl">
+          <p className="overflow-ellipsis px-4 tablet:px-6 overflow-hidden font-semibold text-center text-base mb-6 w-64 tablet:-mt-1 tablet:mb-8 tablet:w-80 tablet:text-xl laptop:text-1.5xl">
             {message}
           </p>
           <div className="w-44 tablet:w-52">
@@ -118,20 +127,35 @@ function Profile({ children, toggleState, user, ...props }) {
               label="Change password"
               type="button"
               fontSize="text-base tablet:text-xl"
+              styles={`w-full py-1 tablet:py-3 mb-4 tablet:mb-5 ${buttonVisibilityStyle}`}
+            />
+            <Button
+              onClick={handleDeleteAccount}
+              label="Delete account"
+              type="button"
+              fontSize="text-base tablet:text-xl"
               styles={`w-full py-1 tablet:py-3 ${buttonVisibilityStyle}`}
             />
           </div>
           <ChangeEmailForm
             className={emailFormStyle}
             resetProfile={resetProfile}
+            toggleState={toggleState}
           />
           <ChangeUsernameForm
             className={usernameFormStyle}
             resetProfile={resetProfile}
+            toggleState={toggleState}
           />
           <ChangePasswordForm
             className={passwordFormStyle}
             resetProfile={resetProfile}
+            toggleState={toggleState}
+          />
+          <DeleteAccount
+            className={deleteAccountStyle}
+            resetProfile={resetProfile}
+            toggleState={toggleState}
           />
         </div>
       </div>
