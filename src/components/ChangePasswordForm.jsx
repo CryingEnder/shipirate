@@ -120,7 +120,10 @@ function ChangePasswordForm({ resetProfile, toggleState, ...props }) {
 
       window.location = "/";
     } catch (ex) {
-      if (ex.response && ex.response.status === 400) {
+      if (
+        (ex.response && ex.response.status === 400) ||
+        ex.response.status === 401
+      ) {
         const newErrors = removeCharacter(/"/g, ex.response.data);
         setServerErrors(newErrors);
       }
