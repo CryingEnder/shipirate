@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import Joi from "joi";
 import Logo from "./common/Logo";
-import { Cross, ArrowBack } from "./common/Icons";
-import { removeCharacter } from "../utils/removeCharacter";
-import userService from "../services/userService";
-import Input from "./common/Input";
+import ChangeEmailForm from "./ChangeEmailForm";
+import ChangeUsernameForm from "./ChangeUsernameForm";
+import ChangePasswordForm from "./ChangePasswordForm";
+import { Cross } from "./common/Icons";
 import Button from "./common/Button";
 import PropTypes from "prop-types";
 
-function Profile({ toggleState, user, ...props }) {
+function Profile({ children, toggleState, user, ...props }) {
   const ref = useRef(null);
   const visibleFormStyle =
     "w-full flex flex-col justify-center items-center space-y-3 tablet:space-y-4 visible opacity-100 animate-opacity-slow";
@@ -22,289 +21,6 @@ function Profile({ toggleState, user, ...props }) {
   const [message, setMessage] = useState(
     `Hi, ${user.username ? user.username : "No username"}`
   );
-  const [emailData, setEmailData] = useState({
-    newEmail: "",
-    repeatNewEmail: "",
-  });
-  const [usernameData, setUsernameData] = useState({
-    newUsername: "",
-  });
-  const [passwordData, setPasswordData] = useState({
-    currentPassword: "",
-    newPassword: "",
-    repeatNewPassword: "",
-  });
-  const [errors, setErrors] = useState({});
-  const [serverErrors, setServerErrors] = useState("");
-
-  const emailSchema = {
-    newEmail: Joi.string()
-      .email({ tlds: { allow: false } })
-      .required()
-      .label("New e-mail"),
-    repeatNewEmail: Joi.valid(Joi.ref("newEmail"))
-      .required()
-      .label("Repeat new e-mail")
-      .messages({ "any.only": "Repeat new e-mail must match new e-mail" }),
-  };
-
-  const usernameSchema = {
-    newUsername: Joi.string()
-      .alphanum()
-      .min(5)
-      .max(30)
-      .required()
-      .label("New username"),
-  };
-
-  const passwordSchema = {
-    currentPassword: Joi.string()
-      .min(5)
-      .required()
-      .label("Current password")
-      .pattern(new RegExp("^[a-zA-Z0-9!@#$%^&*()]{3,30}$"))
-      .messages({
-        "string.pattern.base":
-          "Password may only contain alphanumeric or special characters",
-      }),
-    newPassword: Joi.string()
-      .min(5)
-      .disallow(Joi.ref("currentPassword"))
-      .required()
-      .label("New password")
-      .pattern(new RegExp("^[a-zA-Z0-9!@#$%^&*()]{3,30}$"))
-      .messages({
-        "string.pattern.base":
-          "Password may only contain alphanumeric or special characters",
-        "any.only": "New password must not match current password",
-      }),
-    repeatNewPassword: Joi.valid(Joi.ref("newPassword"))
-      .required()
-      .label("Repeat new password")
-      .messages({ "any.only": "Repeat new password must match new password" }),
-  };
-
-  function validateEmail() {
-    const { error } = Joi.object(emailSchema).validate(emailData, {
-      abortEarly: false,
-    });
-    if (!error) return null;
-
-    const foundErrors = { ...error };
-    const newErrors = {};
-    foundErrors.details.map(
-      (e) => (newErrors[e.path[0]] = removeCharacter(/"/g, e.message))
-    );
-    return newErrors;
-  }
-
-  function validateUsername() {
-    const { error } = Joi.object(usernameSchema).validate(usernameData, {
-      abortEarly: false,
-    });
-    if (!error) return null;
-
-    const foundErrors = { ...error };
-    const newErrors = {};
-    foundErrors.details.map(
-      (e) => (newErrors[e.path[0]] = removeCharacter(/"/g, e.message))
-    );
-    return newErrors;
-  }
-
-  function validatePassword() {
-    const { error } = Joi.object(passwordSchema).validate(passwordData, {
-      abortEarly: false,
-    });
-    if (!error) return null;
-
-    const foundErrors = { ...error };
-    const newErrors = {};
-    foundErrors.details.map(
-      (e) => (newErrors[e.path[0]] = removeCharacter(/"/g, e.message))
-    );
-    return newErrors;
-  }
-
-  function validateOneEmail(input) {
-    const inputObject =
-      input.target.name === "repeatNewEmail"
-        ? {
-            newEmail: emailData.newEmail,
-            [input.target.name]: input.target.value,
-          }
-        : {
-            [input.target.name]: input.target.value,
-          };
-    const schemaProps =
-      input.target.name === "repeatNewEmail"
-        ? Joi.object({
-            newEmail: emailSchema["newEmail"],
-            [input.target.name]: emailSchema[input.target.name],
-          })
-        : Joi.object({
-            [input.target.name]: emailSchema[input.target.name],
-          });
-
-    const { error } = schemaProps.validate(inputObject);
-    return error ? error.details[0].message : null;
-  }
-
-  function validateOneUsername(input) {
-    const inputObject = {
-      [input.target.name]: input.target.value,
-    };
-    const schemaProps = Joi.object({
-      [input.target.name]: usernameSchema[input.target.name],
-    });
-
-    const { error } = schemaProps.validate(inputObject);
-    return error ? error.details[0].message : null;
-  }
-
-  function validateOnePassword(input) {
-    const inputObject =
-      input.target.name === "repeatNewPassword"
-        ? {
-            newPassword: passwordData.newPassword,
-            [input.target.name]: input.target.value,
-          }
-        : {
-            [input.target.name]: input.target.value,
-          };
-    const schemaProps =
-      input.target.name === "repeatNewPassword"
-        ? Joi.object({
-            newPassword: passwordSchema["newPassword"],
-            [input.target.name]: passwordSchema[input.target.name],
-          })
-        : Joi.object({
-            [input.target.name]: passwordSchema[input.target.name],
-          });
-
-    const { error } = schemaProps.validate(inputObject);
-    return error ? error.details[0].message : null;
-  }
-
-  function handleChangeEmailForm(e) {
-    const newErrors = { ...errors };
-    const newErrMessage = validateOneEmail(e);
-    if (newErrMessage) {
-      newErrors[e.target.name] = removeCharacter(/"/g, newErrMessage);
-    } else delete newErrors[e.target.name];
-
-    const newData = { ...emailData };
-    newData[e.target.name] = e.target.value;
-
-    setEmailData(newData);
-    setErrors(newErrors);
-  }
-
-  function handleChangeUsernameForm(e) {
-    const newErrors = { ...errors };
-    const newErrMessage = validateOneUsername(e);
-    if (newErrMessage) {
-      newErrors[e.target.name] = removeCharacter(/"/g, newErrMessage);
-    } else delete newErrors[e.target.name];
-
-    const newData = { ...usernameData };
-    newData[e.target.name] = e.target.value;
-
-    setUsernameData(newData);
-    setErrors(newErrors);
-  }
-
-  function handleChangePasswordForm(e) {
-    const newErrors = { ...errors };
-    const newErrMessage = validateOnePassword(e);
-    if (newErrMessage) {
-      newErrors[e.target.name] = removeCharacter(/"/g, newErrMessage);
-    } else delete newErrors[e.target.name];
-
-    const newData = { ...passwordData };
-    newData[e.target.name] = e.target.value;
-
-    setPasswordData(newData);
-    setErrors(newErrors);
-  }
-
-  function handleEmailSubmit(e) {
-    e.preventDefault();
-
-    const foundErrors = validateEmail();
-    setErrors(foundErrors || {});
-    if (foundErrors) return;
-
-    doEmailSubmit();
-  }
-
-  function handleUsernameSubmit(e) {
-    e.preventDefault();
-
-    const foundErrors = validateUsername();
-    setErrors(foundErrors || {});
-    if (foundErrors) return;
-
-    doUsernameSubmit();
-  }
-
-  function handlePasswordSubmit(e) {
-    e.preventDefault();
-
-    const foundErrors = validatePassword();
-    setErrors(foundErrors || {});
-    if (foundErrors) return;
-
-    doPasswordSubmit();
-  }
-
-  async function doEmailSubmit() {
-    try {
-      const userData = { ...emailData };
-      delete userData.agree;
-
-      await userService.updateAccount(userData);
-
-      window.location = "/";
-    } catch (ex) {
-      if (ex.response && ex.response.status === 400) {
-        const newErrors = removeCharacter(/"/g, ex.response.data);
-        setServerErrors(newErrors);
-      }
-    }
-  }
-
-  async function doUsernameSubmit() {
-    try {
-      const userData = { ...usernameData };
-      delete userData.agree;
-
-      await userService.updateAccount(userData);
-
-      window.location = "/";
-    } catch (ex) {
-      if (ex.response && ex.response.status === 400) {
-        const newErrors = removeCharacter(/"/g, ex.response.data);
-        setServerErrors(newErrors);
-      }
-    }
-  }
-
-  async function doPasswordSubmit() {
-    try {
-      const userData = { ...passwordData };
-      delete userData.agree;
-
-      await userService.updateAccount(userData);
-
-      window.location = "/";
-    } catch (ex) {
-      if (ex.response && ex.response.status === 400) {
-        const newErrors = removeCharacter(/"/g, ex.response.data);
-        setServerErrors(newErrors);
-      }
-    }
-  }
 
   function closeWindow() {
     setIsVisible(notVisible);
@@ -342,7 +58,6 @@ function Profile({ toggleState, user, ...props }) {
     setUsernameFormStyle(notVisible);
     setPasswordFormStyle(notVisible);
     setButtonVisibilityStyle(visible);
-    setServerErrors("");
     setMessage(`Hi, ${user.username}`);
   }
 
@@ -406,117 +121,18 @@ function Profile({ toggleState, user, ...props }) {
               styles={`w-full py-1 tablet:py-3 ${buttonVisibilityStyle}`}
             />
           </div>
-          <form
-            onChange={handleChangeEmailForm}
-            onSubmit={handleEmailSubmit}
+          <ChangeEmailForm
             className={emailFormStyle}
-          >
-            <Input
-              type="text"
-              label="New e-mail"
-              id="newemail"
-              name="newEmail"
-              error={errors.newEmail}
-            />
-            <Input
-              type="text"
-              label="Repeat new e-mail"
-              id="repeatnewemail"
-              name="repeatNewEmail"
-              error={errors.repeatNewEmail}
-            />
-            <div className="flex flex-row justify-between items-center space-x-4 relative pt-4">
-              <Button
-                type="button"
-                onClick={resetProfile}
-                label="Back"
-                labelIcon={ArrowBack}
-                labelIconSize="w-5 tablet:w-6"
-                fontSize="text-base tablet:text-xl"
-              />
-              <Button
-                type="submit"
-                label="Change"
-                fontSize="text-base tablet:text-xl"
-                disabled={validateEmail()}
-                error={serverErrors}
-              />
-            </div>
-          </form>
-          <form
-            onChange={handleChangeUsernameForm}
-            onSubmit={handleUsernameSubmit}
+            resetProfile={resetProfile}
+          />
+          <ChangeUsernameForm
             className={usernameFormStyle}
-          >
-            <Input
-              type="text"
-              label="New username"
-              id="newusername"
-              name="newUsername"
-              error={errors.newUsername}
-            />
-            <div className="flex flex-row justify-between items-center space-x-4 pt-4">
-              <Button
-                type="button"
-                onClick={resetProfile}
-                label="Back"
-                labelIcon={ArrowBack}
-                labelIconSize="w-5 tablet:w-6"
-                fontSize="text-base tablet:text-xl"
-              />
-              <Button
-                type="submit"
-                label="Change"
-                fontSize="text-base tablet:text-xl"
-                disabled={validateUsername()}
-                error={serverErrors}
-              />
-            </div>
-          </form>
-          <form
-            onChange={handleChangePasswordForm}
-            onSubmit={handlePasswordSubmit}
+            resetProfile={resetProfile}
+          />
+          <ChangePasswordForm
             className={passwordFormStyle}
-          >
-            <Input
-              type="password"
-              label="Current password"
-              id="currentpassword"
-              name="currentPassword"
-              error={errors.currentPassword}
-            />
-            <Input
-              type="password"
-              label="New password"
-              id="newpassword"
-              name="newPassword"
-              error={errors.newPassword}
-            />
-            <Input
-              type="password"
-              label="Repeat new password"
-              id="repeatnewpassword"
-              name="repeatNewPassword"
-              error={errors.repeatNewPassword}
-            />
-            <div className="flex flex-row justify-between items-center space-x-4 pt-4">
-              <Button
-                type="button"
-                onClick={resetProfile}
-                label="Back"
-                labelIcon={ArrowBack}
-                labelIconSize="w-5 tablet:w-6"
-                fontSize="text-base tablet:text-xl"
-              />
-              <Button
-                type="submit"
-                label="Change"
-                fontSize="text-base tablet:text-xl"
-                disabled={validatePassword()}
-                error={serverErrors}
-              />
-            </div>
-          </form>
+            resetProfile={resetProfile}
+          />
         </div>
       </div>
     </div>
