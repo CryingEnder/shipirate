@@ -10,9 +10,11 @@ function Feature({
   buttonLabel,
   picture: Picture,
   reversedOrder,
+  ...props
 }) {
   return (
-    <div className="grid gap-y-8 laptop:items-center laptop:grid-cols-2">
+    <div className="relative grid gap-y-8 laptop:items-center laptop:grid-cols-2">
+      <div {...props} className="w-0 h-0 absolute top-0 -mt-24"></div>
       <article className={reversedOrder ? "px-6 laptop:order-1" : "px-6"}>
         <img className="w-12" src={logoSrc} alt={logoAlt} />
         <h2 className="mt-2 text-shadow text-blue-dark dark:text-blue-whiteish-1">
@@ -34,6 +36,7 @@ Feature.propTypes = {
   buttonLabel: PropTypes.string.isRequired,
   picture: PropTypes.func.isRequired,
   reversedOrder: PropTypes.bool,
+  id: PropTypes.string,
 };
 
 export default Feature;

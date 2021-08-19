@@ -80,6 +80,7 @@ function Navbar({ user }) {
         </div>
         <div className="flex flex-row laptop:space-x-4 justify-center items-center w-full laptop:w-auto">
           <List
+            doToggleMenu={toggleMenu}
             doToggleLogin={toggleLogin}
             doToggleProfile={toggleProfile}
             className={`${menuState} w-full laptop:w-auto divide-y-2 divide-blue-sky-4 dark:divide-purple-700 overflow-hidden laptop:flex laptop:flex-row laptop:justify-center laptop:items-center laptop:space-x-4 laptop:max-h-full laptop:divide-y-0 laptop:opacity-100`}
@@ -97,15 +98,17 @@ function Navbar({ user }) {
                 linkPath: "#plans",
               },
               "What is VPN?",
-              !user && "Features",
-              !user && "Servers",
+              !user && { content: "Features", linkPath: "#features" },
+              !user && { content: "Servers", linkPath: "#servers" },
               user && {
                 content: "Features",
                 specialStyle: "hidden desktop:block",
+                linkPath: "#features",
               },
               user && {
                 content: "Servers",
                 specialStyle: "hidden desktop:block",
+                linkPath: "#servers",
               },
               user && {
                 content: user.username ? user.username : "No username",

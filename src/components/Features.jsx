@@ -43,6 +43,7 @@ function Features(props) {
         reversedOrder={true}
       />
       <Feature
+        id="features"
         logoSrc={theme !== "dark" ? shield : shieldDark}
         logoAlt="A pirate themed security icon"
         heading="Secure access to the Internet"
@@ -56,6 +57,7 @@ function Features(props) {
         picture={theme !== "dark" ? FeatureTwoLight : FeatureTwoDark}
       />
       <Feature
+        id="servers"
         logoSrc={theme !== "dark" ? compass : compassDark}
         logoAlt="A compass icon"
         heading="Use our VPN services in any location"
