@@ -23,12 +23,17 @@ function Testimonials(props) {
   const [opacityAnimation, setOpacityAnimation] = useState("");
 
   useEffect(() => {
+    let isMounted = true;
     async function getTestimonials() {
       const testimonialsFound = await testimonialService.getTestimonials();
-      setTestimonials(testimonialsFound);
+      if (isMounted) setTestimonials(testimonialsFound);
     }
 
     getTestimonials();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   function addOpacityAnimation() {
