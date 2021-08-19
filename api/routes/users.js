@@ -55,7 +55,7 @@ router.post(
   })
 );
 
-router.put(
+router.patch(
   "/me",
   [auth, validator(validateInput)],
   tryCatch(async (req, res) => {

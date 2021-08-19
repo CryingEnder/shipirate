@@ -22,7 +22,7 @@ export function register(user) {
 }
 
 export function updateAccount(input) {
-  return http.put(apiEndpoint + "/me", input);
+  return http.patch(apiEndpoint + "/me", input);
 }
 
 export default {

@@ -169,8 +169,8 @@ describe("api/users", () => {
     });
   });
 
-  describe("PUT /me", () => {
-    describe("PUT /me input", () => {
+  describe("PATCH /me", () => {
+    describe("PATCH /me input", () => {
       beforeEach(async () => {
         user = {
           username: "user1",
@@ -188,7 +188,7 @@ describe("api/users", () => {
 
       it("should return 401 if the user is not logged in", async () => {
         const res = await request(server)
-          .put("/api/users/me")
+          .patch("/api/users/me")
           .set("Cookie", `${tokenKey}=`)
           .send({ newUsername: "user2" });
 
@@ -197,7 +197,7 @@ describe("api/users", () => {
 
       it("should return 400 if the input is empty", async () => {
         const res = await request(server)
-          .put("/api/users/me")
+          .patch("/api/users/me")
           .set("Cookie", `${tokenKey}=${token}`)
           .send({});
 
@@ -206,7 +206,7 @@ describe("api/users", () => {
 
       it("should return 400 if the input is invalid", async () => {
         const res = await request(server)
-          .put("/api/users/me")
+          .patch("/api/users/me")
           .set("Cookie", `${tokenKey}=${token}`)
           .send({ newUsername: "user2", currentPassword: "12345" });
 
@@ -215,7 +215,7 @@ describe("api/users", () => {
 
       it("should return 400 if the new username is less than 5 characters", async () => {
         const res = await request(server)
-          .put("/api/users/me")
+          .patch("/api/users/me")
           .set("Cookie", `${tokenKey}=${token}`)
           .send({ newUsername: "user" });
 
@@ -224,7 +224,7 @@ describe("api/users", () => {
 
       it("should return 400 if the new username is more than 30 characters", async () => {
         const res = await request(server)
-          .put("/api/users/me")
+          .patch("/api/users/me")
           .set("Cookie", `${tokenKey}=${token}`)
           .send({ newUsername: new Array(32).join("a") });
 
@@ -233,7 +233,7 @@ describe("api/users", () => {
 
       it("should return 400 if the new e-mail is less than 10 characters", async () => {
         const res = await request(server)
-          .put("/api/users/me")
+          .patch("/api/users/me")
           .set("Cookie", `${tokenKey}=${token}`)
           .send({
             newEmail: "ab@cb.com",
@@ -245,7 +245,7 @@ describe("api/users", () => {
 
       it("should return 400 if the new e-mail is more than 255 characters", async () => {
         const res = await request(server)
-          .put("/api/users/me")
+          .patch("/api/users/me")
           .set("Cookie", `${tokenKey}=${token}`)
           .send({
             newEmail: `${new Array(257).join("a")}@domain.com`,
@@ -257,7 +257,7 @@ describe("api/users", () => {
 
       it("should return 400 if the new e-mail is not spelled correctly twice", async () => {
         const res = await request(server)
-          .put("/api/users/me")
+          .patch("/api/users/me")
           .set("Cookie", `${tokenKey}=${token}`)
           .send({
             newEmail: "example2@domain.com",
@@ -269,7 +269,7 @@ describe("api/users", () => {
 
       it("should return 400 if the new password is less than 5 characters", async () => {
         const res = await request(server)
-          .put("/api/users/me")
+          .patch("/api/users/me")
           .set("Cookie", `${tokenKey}=${token}`)
           .send({
             currentPassword: user.password,
@@ -282,7 +282,7 @@ describe("api/users", () => {
 
       it("should return 400 if the new password is more than 1024 characters", async () => {
         const res = await request(server)
-          .put("/api/users/me")
+          .patch("/api/users/me")
           .set("Cookie", `${tokenKey}=${token}`)
           .send({
             currentPassword: user.password,
@@ -295,7 +295,7 @@ describe("api/users", () => {
 
       it("should return 400 if the new password is the same as the current password", async () => {
         const res = await request(server)
-          .put("/api/users/me")
+          .patch("/api/users/me")
           .set("Cookie", `${tokenKey}=${token}`)
           .send({
             currentPassword: user.password,
@@ -308,7 +308,7 @@ describe("api/users", () => {
 
       it("should return 400 if the new password is not spelled correctly twice", async () => {
         const res = await request(server)
-          .put("/api/users/me")
+          .patch("/api/users/me")
           .set("Cookie", `${tokenKey}=${token}`)
           .send({
             currentPassword: user.password,
@@ -320,7 +320,7 @@ describe("api/users", () => {
       });
     });
 
-    describe("PUT /me username", () => {
+    describe("PATCH /me username", () => {
       beforeEach(async () => {
         user = {
           username: "user1",
@@ -338,7 +338,7 @@ describe("api/users", () => {
 
       it("should return 400 if the new username is the same as the current username", async () => {
         const res = await request(server)
-          .put("/api/users/me")
+          .patch("/api/users/me")
           .set("Cookie", `${tokenKey}=${token}`)
           .send({ newUsername: "user1" });
 
@@ -347,7 +347,7 @@ describe("api/users", () => {
 
       it("should update the username if the input was valid", async () => {
         const res = await request(server)
-          .put("/api/users/me")
+          .patch("/api/users/me")
           .set("Cookie", `${tokenKey}=${token}`)
           .send({ newUsername: "user2" });
 
@@ -358,7 +358,7 @@ describe("api/users", () => {
       });
     });
 
-    describe("PUT /me e-mail", () => {
+    describe("PATCH /me e-mail", () => {
       beforeEach(async () => {
         user = {
           username: "user1",
@@ -376,7 +376,7 @@ describe("api/users", () => {
 
       it("should return 400 if the new e-mail is the same as the current e-mail", async () => {
         const res = await request(server)
-          .put("/api/users/me")
+          .patch("/api/users/me")
           .set("Cookie", `${tokenKey}=${token}`)
           .send({
             newEmail: "example1@domain.com",
@@ -401,7 +401,7 @@ describe("api/users", () => {
         );
 
         const res = await request(server)
-          .put("/api/users/me")
+          .patch("/api/users/me")
           .set("Cookie", `${tokenKey}=${token}`)
           .send({
             newEmail: "example1@domain.com",
@@ -413,7 +413,7 @@ describe("api/users", () => {
 
       it("should update the e-mail if the input was valid", async () => {
         const res = await request(server)
-          .put("/api/users/me")
+          .patch("/api/users/me")
           .set("Cookie", `${tokenKey}=${token}`)
           .send({
             newEmail: "example2@domain.com",
@@ -427,7 +427,7 @@ describe("api/users", () => {
       });
     });
 
-    describe("PUT /me password", () => {
+    describe("PATCH /me password", () => {
       beforeEach(async () => {
         user = {
           username: "user1",
@@ -445,7 +445,7 @@ describe("api/users", () => {
 
       it("should return 400 if the current password is not the same as the current password", async () => {
         const res = await request(server)
-          .put("/api/users/me")
+          .patch("/api/users/me")
           .set("Cookie", `${tokenKey}=${token}`)
           .send({
             currentPassword: "123456",
@@ -458,7 +458,7 @@ describe("api/users", () => {
 
       it("should update the password if the input was valid", async () => {
         const res = await request(server)
-          .put("/api/users/me")
+          .patch("/api/users/me")
           .set("Cookie", `${tokenKey}=${token}`)
           .send({
             currentPassword: "12345",
