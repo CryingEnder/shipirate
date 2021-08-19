@@ -21,7 +21,7 @@ function Profile({ children, toggleState, user, ...props }) {
   const [passwordFormStyle, setPasswordFormStyle] = useState(notVisible);
   const [deleteAccountStyle, setDeleteAccountStyle] = useState(notVisible);
   const [message, setMessage] = useState(
-    `Hi, ${user.username ? user.username : "No username"}`
+    `Hello, ${user.username ? user.username : "No username"}`
   );
 
   function closeWindow() {
@@ -67,7 +67,7 @@ function Profile({ children, toggleState, user, ...props }) {
     setPasswordFormStyle(notVisible);
     setDeleteAccountStyle(notVisible);
     setButtonVisibilityStyle(visible);
-    setMessage(`Hi, ${user.username}`);
+    setMessage(`Hello, ${user.username ? user.username : "No username"}`);
   }
 
   useEffect(() => {
@@ -104,7 +104,7 @@ function Profile({ children, toggleState, user, ...props }) {
           {...props}
           className="flex flex-col justify-center items-center w-full"
         >
-          <p className="overflow-ellipsis px-4 tablet:px-6 overflow-hidden font-semibold text-center text-base mb-6 w-64 tablet:-mt-1 tablet:mb-8 tablet:w-80 tablet:text-xl laptop:text-1.5xl">
+          <p className="overflow-ellipsis px-4 tablet:px-6 overflow-hidden font-semibold text-center text-lg mb-6 w-64 tablet:-mt-1 tablet:mb-8 tablet:w-80 tablet:text-xl laptop:text-1.5xl">
             {message}
           </p>
           <div className="w-44 tablet:w-52">
