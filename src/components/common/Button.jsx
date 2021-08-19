@@ -76,6 +76,14 @@ function Button({
             )}
             {!LabelIcon && <p className={fontSize ? fontSize : ""}>{label}</p>}
           </button>
+          {props.error && (
+            <div className="relative flex flex-row justify-start items-center mt-4 w-full h-auto select-none rounded-lg font-bold text-shadow border-3 border-solid border-yellow-pirate-ring bg-yellow-pirate text-blue-dark dark:bg-gray-25 dark:border-gray-bluegray-300 dark:text-red-sky-error tablet:bottom-0 tablet:top-0 tablet:my-auto tablet:min-w-max tablet:absolute tablet:left-full tablet:ml-7 tablet:rounded-xl">
+              <div className="absolute left-0 right-0 mx-auto -top-3 w-3 h-3 clip-top-triangle bg-yellow-pirate-ring dark:bg-gray-bluegray-300 tablet:top-auto tablet:-left-4 tablet:right-auto tablet:m-auto tablet:w-4 tablet:h-4 tablet:clip-left-triangle" />
+              <p className="text-xs mx-2 my-1 tablet:m-4 tablet:max-w-small">
+                {props.error}
+              </p>
+            </div>
+          )}
         </Link>
       )}
       {!goBack && linkPath.search("#") === 0 && type !== "submit" && (
@@ -92,6 +100,14 @@ function Button({
             )}
             {!LabelIcon && <p className={fontSize ? fontSize : ""}>{label}</p>}
           </button>
+          {props.error && (
+            <div className="relative flex flex-row justify-start items-center mt-4 w-full h-auto select-none rounded-lg font-bold text-shadow border-3 border-solid border-yellow-pirate-ring bg-yellow-pirate text-blue-dark dark:bg-gray-25 dark:border-gray-bluegray-300 dark:text-red-sky-error tablet:bottom-0 tablet:top-0 tablet:my-auto tablet:min-w-max tablet:absolute tablet:left-full tablet:ml-7 tablet:rounded-xl">
+              <div className="absolute left-0 right-0 mx-auto -top-3 w-3 h-3 clip-top-triangle bg-yellow-pirate-ring dark:bg-gray-bluegray-300 tablet:top-auto tablet:-left-4 tablet:right-auto tablet:m-auto tablet:w-4 tablet:h-4 tablet:clip-left-triangle" />
+              <p className="text-xs mx-2 my-1 tablet:m-4 tablet:max-w-small">
+                {props.error}
+              </p>
+            </div>
+          )}
         </a>
       )}
       {goBack && type !== "submit" && (
