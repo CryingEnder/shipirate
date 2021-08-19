@@ -3,10 +3,8 @@ import { apiUrl } from "../../config.json";
 
 const apiEndpoint = apiUrl + "/auth";
 
-export async function login(email, password, rememberMe) {
-  try {
-    await http.post(apiEndpoint, { email, password, rememberMe });
-  } catch (ex) {}
+export function login(email, password, rememberMe) {
+  return http.post(apiEndpoint, { email, password, rememberMe });
 }
 
 export function logout() {
