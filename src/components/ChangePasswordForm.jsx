@@ -3,6 +3,7 @@ import { removeCharacter } from "../utils/removeCharacter";
 import { ArrowBack } from "./common/Icons";
 import Input from "./common/Input";
 import Button from "./common/Button";
+import ErrorBox from "./common/ErrorBox";
 import userService from "../services/userService";
 import Joi from "joi";
 import PropTypes from "prop-types";
@@ -169,9 +170,9 @@ function ChangePasswordForm({ resetProfile, toggleState, ...props }) {
           label="Change"
           fontSize="text-base tablet:text-xl"
           disabled={validate()}
-          error={serverErrors}
         />
       </div>
+      <ErrorBox error={serverErrors} />
     </form>
   );
 }

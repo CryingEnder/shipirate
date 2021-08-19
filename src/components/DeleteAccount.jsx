@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Button from "./common/Button";
 import { ArrowBack } from "./common/Icons";
 import { removeCharacter } from "../utils/removeCharacter";
+import ErrorBox from "./common/ErrorBox";
 import userService from "../services/userService";
 import auth from "../services/authService";
 import PropTypes from "prop-types";
@@ -53,9 +54,9 @@ function DeleteAccount({ resetProfile, toggleState, ...props }) {
           onClick={deleteAccount}
           label="Delete"
           fontSize="text-base tablet:text-xl"
-          error={serverErrors}
         />
       </div>
+      <ErrorBox error={serverErrors} />
     </div>
   );
 }
