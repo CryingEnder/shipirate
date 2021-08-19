@@ -9,8 +9,16 @@ function List({
   titleStyle,
   doToggleLogin,
   doToggleProfile,
+  doToggleMenu,
   ...props
 }) {
+  function triggerAction(item) {
+    if (item.toggleLogin) doToggleLogin();
+    else if (item.toggleProfile) doToggleProfile();
+
+    if (doToggleMenu) doToggleMenu();
+  }
+
   return (
     <ul {...props}>
       {title && (
@@ -22,6 +30,7 @@ function List({
         (i) =>
           i && (
             <li
+              onClick={doToggleMenu ? doToggleMenu : null}
               className={
                 i.specialStyle
                   ? `${i.specialStyle}${itemsStyle ? ` ${itemsStyle}` : ""}`
@@ -32,13 +41,7 @@ function List({
                 <a href={i.linkPath}>{i.content ? i.content : i}</a>
               ) : (
                 <Link
-                  onClick={
-                    i.toggleLogin
-                      ? doToggleLogin
-                      : i.toggleProfile
-                      ? doToggleProfile
-                      : null
-                  }
+                  onClick={() => triggerAction(i)}
                   to={i.linkPath ? i.linkPath : "/"}
                 >
                   {i.content ? i.content : i}
@@ -65,6 +68,7 @@ List.propTypes = {
   titleStyle: PropTypes.string,
   doToggleLogin: PropTypes.func,
   doToggleProfile: PropTypes.func,
+  doToggleMenu: PropTypes.func,
 };
 
 export default List;
