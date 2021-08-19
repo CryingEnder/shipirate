@@ -25,8 +25,13 @@ export function updateAccount(input) {
   return http.patch(apiEndpoint + "/me", input);
 }
 
+export function deleteAccount() {
+  return http.delete(apiEndpoint + "/me");
+}
+
 export default {
   getCurrentUser,
   register,
   updateAccount,
+  deleteAccount,
 };
