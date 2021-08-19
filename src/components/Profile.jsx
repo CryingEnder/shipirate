@@ -40,7 +40,7 @@ function Profile({ children, toggleState, user, ...props }) {
   function handleEmailForm() {
     handleButtonClick();
     setEmailFormStyle(visibleFormStyle);
-    setMessage(`Current e-mail: ${user.email}`);
+    setMessage(`Current email: ${user.email}`);
   }
 
   function handleUsernameForm() {
@@ -110,7 +110,7 @@ function Profile({ children, toggleState, user, ...props }) {
           <div className="w-44 tablet:w-52">
             <Button
               onClick={handleEmailForm}
-              label="Change e-mail"
+              label="Change email"
               type="button"
               fontSize="text-base tablet:text-xl"
               styles={`w-full py-1 tablet:py-3 mb-4 tablet:mb-5 ${buttonVisibilityStyle}`}

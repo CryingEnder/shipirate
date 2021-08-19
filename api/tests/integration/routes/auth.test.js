@@ -34,7 +34,7 @@ describe("/api/auth", () => {
       await User.deleteMany({});
     });
 
-    it("should return 400 if the e-mail is less than 10 characters", async () => {
+    it("should return 400 if the email is less than 10 characters", async () => {
       user.email = "ab@bc.com";
 
       const res = await exec();
@@ -42,7 +42,7 @@ describe("/api/auth", () => {
       expect(res.status).toBe(400);
     });
 
-    it("should return 400 if the e-mail is more than 255 characters", async () => {
+    it("should return 400 if the email is more than 255 characters", async () => {
       user.email = `${new Array(257).join("a")}@domain.com`;
 
       const res = await exec();
@@ -50,7 +50,7 @@ describe("/api/auth", () => {
       expect(res.status).toBe(400);
     });
 
-    it("should return 400 if the e-mail is invalid", async () => {
+    it("should return 400 if the email is invalid", async () => {
       user.email = "123456789a";
 
       const res = await exec();
@@ -74,7 +74,7 @@ describe("/api/auth", () => {
       expect(res.status).toBe(400);
     });
 
-    it("should return 400 if the e-mail does not exist", async () => {
+    it("should return 400 if the email does not exist", async () => {
       user.email = "example2@domain.com";
 
       const res = await exec();

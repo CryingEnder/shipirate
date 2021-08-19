@@ -23,7 +23,7 @@ function SignupForm({ toggleState, ...props }) {
     email: Joi.string()
       .email({ tlds: { allow: false } })
       .required()
-      .label("E-mail"),
+      .label("Email"),
     password: Joi.string()
       .min(5)
       .required()
@@ -146,7 +146,7 @@ function SignupForm({ toggleState, ...props }) {
       />
       <Input
         type="text"
-        label="E-mail"
+        label="Email"
         id="emailnew"
         name="email"
         error={errors.email}

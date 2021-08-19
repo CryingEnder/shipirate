@@ -14,7 +14,7 @@ router.post(
   validator(validate),
   tryCatch(async (req, res) => {
     let user = await User.findOne({ email: req.body.email });
-    if (!user) return res.status(400).send("E-mail does not exist");
+    if (!user) return res.status(400).send("Email does not exist");
 
     const validPassword = await bcrypt.compare(
       req.body.password,
@@ -52,7 +52,7 @@ router.delete(
 
 function validate(req) {
   const schema = Joi.object().keys({
-    email: Joi.string().email().min(10).max(255).required().label("E-mail"),
+    email: Joi.string().email().min(10).max(255).required().label("Email"),
     password: Joi.string().min(5).max(1024).required().label("Password"),
     rememberMe: Joi.bool().required().label("Remember me"),
   });

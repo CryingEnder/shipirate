@@ -21,7 +21,7 @@ function LoginForm({ toggleState, goToSignUp, ...props }) {
     email: Joi.string()
       .email({ tlds: { allow: false } })
       .required()
-      .label("E-mail"),
+      .label("Email"),
     password: Joi.string().min(5).required().label("Password"),
     rememberMe: Joi.bool().required(),
   };
@@ -109,7 +109,7 @@ function LoginForm({ toggleState, goToSignUp, ...props }) {
     >
       <Input
         type="text"
-        label="E-mail"
+        label="Email"
         id="email"
         name="email"
         error={errors.email}

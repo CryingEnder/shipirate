@@ -20,11 +20,11 @@ function ChangeEmailForm({ resetProfile, toggleState, ...props }) {
     newEmail: Joi.string()
       .email({ tlds: { allow: false } })
       .required()
-      .label("New e-mail"),
+      .label("New email"),
     repeatNewEmail: Joi.valid(Joi.ref("newEmail"))
       .required()
-      .label("Repeat new e-mail")
-      .messages({ "any.only": "Repeat new e-mail must match new e-mail" }),
+      .label("Repeat new email")
+      .messages({ "any.only": "Repeat new email must match new email" }),
   };
 
   function reset() {
@@ -123,14 +123,14 @@ function ChangeEmailForm({ resetProfile, toggleState, ...props }) {
     <form {...props} onChange={handleChange} onSubmit={handleSubmit}>
       <Input
         type="text"
-        label="New e-mail"
+        label="New email"
         id="newemail"
         name="newEmail"
         error={errors.newEmail}
       />
       <Input
         type="text"
-        label="Repeat new e-mail"
+        label="Repeat new email"
         id="repeatnewemail"
         name="repeatNewEmail"
         error={errors.repeatNewEmail}

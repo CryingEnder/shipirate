@@ -84,7 +84,7 @@ describe("api/users", () => {
       expect(res.status).toBe(400);
     });
 
-    it("should return 400 if the e-mail is invalid", async () => {
+    it("should return 400 if the email is invalid", async () => {
       user.email = "123456789a";
 
       const res = await execPost();
@@ -92,7 +92,7 @@ describe("api/users", () => {
       expect(res.status).toBe(400);
     });
 
-    it("should return 400 if the e-mail is less than 10 characters", async () => {
+    it("should return 400 if the email is less than 10 characters", async () => {
       user.email = "123456789";
 
       const res = await execPost();
@@ -100,7 +100,7 @@ describe("api/users", () => {
       expect(res.status).toBe(400);
     });
 
-    it("should return 400 if the e-mail is more than 255 characters", async () => {
+    it("should return 400 if the email is more than 255 characters", async () => {
       user.email = new Array(257).join("a");
 
       const res = await execPost();
@@ -132,7 +132,7 @@ describe("api/users", () => {
       expect(res.status).toBe(400);
     });
 
-    it("should return 400 if the e-mail already exists", async () => {
+    it("should return 400 if the email already exists", async () => {
       await execPost();
 
       const res = await execPost();
@@ -231,7 +231,7 @@ describe("api/users", () => {
         expect(res.status).toBe(400);
       });
 
-      it("should return 400 if the new e-mail is less than 10 characters", async () => {
+      it("should return 400 if the new email is less than 10 characters", async () => {
         const res = await request(server)
           .patch("/api/users/me")
           .set("Cookie", `${tokenKey}=${token}`)
@@ -243,7 +243,7 @@ describe("api/users", () => {
         expect(res.status).toBe(400);
       });
 
-      it("should return 400 if the new e-mail is more than 255 characters", async () => {
+      it("should return 400 if the new email is more than 255 characters", async () => {
         const res = await request(server)
           .patch("/api/users/me")
           .set("Cookie", `${tokenKey}=${token}`)
@@ -255,7 +255,7 @@ describe("api/users", () => {
         expect(res.status).toBe(400);
       });
 
-      it("should return 400 if the new e-mail is not spelled correctly twice", async () => {
+      it("should return 400 if the new email is not spelled correctly twice", async () => {
         const res = await request(server)
           .patch("/api/users/me")
           .set("Cookie", `${tokenKey}=${token}`)
@@ -358,7 +358,7 @@ describe("api/users", () => {
       });
     });
 
-    describe("PATCH /me e-mail", () => {
+    describe("PATCH /me email", () => {
       beforeEach(async () => {
         user = {
           username: "user1",
@@ -374,7 +374,7 @@ describe("api/users", () => {
         await User.deleteMany({});
       });
 
-      it("should return 400 if the new e-mail is the same as the current e-mail", async () => {
+      it("should return 400 if the new email is the same as the current email", async () => {
         const res = await request(server)
           .patch("/api/users/me")
           .set("Cookie", `${tokenKey}=${token}`)
@@ -386,7 +386,7 @@ describe("api/users", () => {
         expect(res.status).toBe(400);
       });
 
-      it("should return 403 if the new e-mail has already been used", async () => {
+      it("should return 403 if the new email has already been used", async () => {
         user = {
           username: "user2",
           email: "example2@domain.com",
@@ -411,7 +411,7 @@ describe("api/users", () => {
         expect(res.status).toBe(403);
       });
 
-      it("should update the e-mail if the input was valid", async () => {
+      it("should update the email if the input was valid", async () => {
         const res = await request(server)
           .patch("/api/users/me")
           .set("Cookie", `${tokenKey}=${token}`)

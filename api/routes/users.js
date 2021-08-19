@@ -24,7 +24,7 @@ router.post(
   validator(validate),
   tryCatch(async (req, res) => {
     let user = await User.findOne({ email: req.body.email });
-    if (user) return res.status(400).send("E-mail already exists.");
+    if (user) return res.status(400).send("Email already exists.");
 
     user = new User({
       username: req.body.username,
@@ -74,14 +74,14 @@ router.patch(
       if (user.email === req.body.newEmail)
         return res
           .status(400)
-          .send("The new e-mail is not different from the current e-mail.");
+          .send("The new email is not different from the current email.");
 
       const emailWasUsed = await User.findOne({ email: req.body.newEmail });
       if (emailWasUsed)
-        return res.status(403).send("The new e-mail has already been used.");
+        return res.status(403).send("The new email has already been used.");
 
       await User.updateOne(user, { email: req.body.newEmail });
-      return res.status(200).send("The e-mail has been updated.");
+      return res.status(200).send("The email has been updated.");
     }
 
     if (req.body.currentPassword && req.body.newPassword) {
@@ -118,10 +118,10 @@ function validateInput(req) {
     .keys({
       newUsername: Joi.string().alphanum().min(5).max(30).label("New username"),
 
-      newEmail: Joi.string().email().min(10).max(255).label("New e-mail"),
+      newEmail: Joi.string().email().min(10).max(255).label("New email"),
       repeatNewEmail: Joi.valid(Joi.ref("newEmail"))
-        .label("Repeat new e-mail")
-        .messages({ "any.only": "Repeat new e-mail must match new e-mail" }),
+        .label("Repeat new email")
+        .messages({ "any.only": "Repeat new email must match new email" }),
 
       currentPassword: Joi.string()
         .min(5)
