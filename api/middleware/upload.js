@@ -1,7 +1,6 @@
 const multer = require("multer");
 
 const storage = multer.diskStorage({
-  //TODO: add await
   destination: function (req, file, callback) {
     callback(null, "./public/images");
   },

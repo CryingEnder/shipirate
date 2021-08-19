@@ -1,4 +1,4 @@
-const { User, validate } = require("../models/user"); // = x.User and x.validate
+const { User, validate } = require("../models/user");
 const tryCatch = require("../middleware/async");
 const auth = require("../middleware/auth");
 const validator = require("../middleware/validate");

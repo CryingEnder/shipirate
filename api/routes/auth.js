@@ -1,5 +1,4 @@
-//Authentication
-const { User } = require("../models/user"); // = x.User and x.validate
+const { User } = require("../models/user");
 const tryCatch = require("../middleware/async");
 const validator = require("../middleware/validate");
 const auth = require("../middleware/auth");
