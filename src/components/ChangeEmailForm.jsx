@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { removeCharacter } from "../utils/removeCharacter";
 import { ArrowBack } from "./common/Icons";
 import Input from "./common/Input";
@@ -7,7 +7,7 @@ import userService from "../services/userService";
 import Joi from "joi";
 import PropTypes from "prop-types";
 
-function ChangeEmailForm({ resetProfile, ...props }) {
+function ChangeEmailForm({ resetProfile, toggleState, ...props }) {
   const [errors, setErrors] = useState({});
   const [serverErrors, setServerErrors] = useState("");
   const [data, setData] = useState({
@@ -109,6 +109,12 @@ function ChangeEmailForm({ resetProfile, ...props }) {
     }
   }
 
+  useEffect(() => {
+    return () => {
+      reset();
+    };
+  }, [toggleState]);
+
   return (
     <form {...props} onChange={handleChange} onSubmit={handleSubmit}>
       <Input
@@ -148,6 +154,7 @@ function ChangeEmailForm({ resetProfile, ...props }) {
 
 ChangeEmailForm.propTypes = {
   resetProfile: PropTypes.func.isRequired,
+  toggleState: PropTypes.bool.isRequired,
 };
 
 export default ChangeEmailForm;
