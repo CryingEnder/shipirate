@@ -14,6 +14,7 @@ import {
 import Container from "./common/Container";
 import { ThemeContext } from "./context/ThemeContext";
 import testimonialService from "../services/testimonialService";
+import { apiUrl } from "../../config.json";
 
 function Testimonials(props) {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -120,7 +121,11 @@ function Testimonials(props) {
               >
                 <img
                   className="rounded-full w-20 laptop:w-24 desktop:w-28"
-                  src={`../api/${testimonials[currentUser].profilePhoto}`}
+                  src={
+                    testimonials[currentUser].profilePhoto.search("//") === -1
+                      ? `${apiUrl}/${testimonials[currentUser].profilePhoto}`
+                      : testimonials[currentUser].profilePhoto
+                  }
                   alt="A profile photo"
                 />
                 {testimonials[currentUser].socialPlatform && (

@@ -39,7 +39,7 @@ router.post(
   [auth, isAdmin, upload.single("profilePhoto")],
   tryCatch(async (req, res) => {
     const { error } = validate(req.body);
-    const path = `public/images/${req.file.filename}`;
+    const path = `images/${req.file.filename}`;
     if (error) {
       await unlink(path);
       return res.status(400).send(error.details[0].message);

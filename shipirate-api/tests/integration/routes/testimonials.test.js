@@ -320,7 +320,7 @@ describe("api/testimonials", () => {
       expect(typeof res.body).toBe("object");
       expect(res.status).toBe(200);
 
-      const path = res.body.profilePhoto;
+      const path = `public/${res.body.profilePhoto}`;
       await unlink(path);
     });
   });
