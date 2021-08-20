@@ -27,16 +27,22 @@ function List({
           i && (
             <li
               key={i.key}
-              onClick={doToggleMenu ? doToggleMenu : null}
               className={
                 i.specialStyle ? `${i.specialStyle} ${itemsStyle}` : itemsStyle
               }
             >
               {i.linkPath && i.linkPath.search("#") === 0 ? (
-                <a href={i.linkPath}>{i.content ? i.content : i}</a>
+                <a
+                  onClick={() => triggerAction(i)}
+                  className="inline-block"
+                  href={i.linkPath}
+                >
+                  {i.content ? i.content : i}
+                </a>
               ) : (
                 <Link
                   onClick={() => triggerAction(i)}
+                  className="inline-block"
                   to={i.linkPath ? i.linkPath : "/"}
                 >
                   {i.content ? i.content : i}
