@@ -1,0 +1,6 @@
+{
+  "jwtPrivateKey": "",
+  "jwtTimer": 300,
+  "db": "mongodb://localhost:27017/api",
+  "securedCookies": false
+}

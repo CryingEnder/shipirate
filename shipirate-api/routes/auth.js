@@ -34,10 +34,10 @@ router.post(
     res
       .cookie("jwt", token, {
         httpOnly: true,
-        secure: false,
+        secure: config.get("securedCookies"),
         expires: expirationTime,
       })
-      .send("You have logged in"); //TODO: add secure: true on HTTPS)
+      .send("You have logged in");
   })
 );
 

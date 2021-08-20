@@ -44,14 +44,14 @@ router.post(
     res
       .cookie("jwt", token, {
         httpOnly: true,
-        secure: false,
+        secure: config.get("securedCookies"),
         expires: expirationTime,
       })
       .send({
         _id: user._id,
         username: user.username,
         email: user.email,
-      }); //TODO: add secure: true on HTTPS
+      });
   })
 );
 
