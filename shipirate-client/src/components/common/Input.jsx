@@ -31,7 +31,7 @@ function Input({ label, styles, alignLeft, linkPath, ...props }) {
   return (
     <Fragment>
       {props.type !== "checkbox" && props.type !== "radio" && (
-        <div className={`w-full relative${styles ? ` ${styles}` : ""}`}>
+        <div className={`w-full relative ${styles}`}>
           <input
             onChange={handleChange}
             onFocus={toggleTransform}
@@ -58,7 +58,7 @@ function Input({ label, styles, alignLeft, linkPath, ...props }) {
         <div
           className={`w-full flex flex-row items-center ${
             alignLeft ? "justify-start" : "justify-center"
-          }${styles ? ` ${styles}` : ""}`}
+          } ${styles}`}
         >
           <input
             {...props}

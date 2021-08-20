@@ -18,11 +18,9 @@ function Button({
     "bg-green-normal ring ring-green-ring transition-colors hover:bg-green-hover hover:ring-green-hover-ring ";
   const normalStyle =
     "transition-colors bg-yellow-pirate ring ring-yellow-pirate-ring disabled:opacity-80 disabled:pointer-events-none hover:bg-yellow-pirate-hover hover:ring-yellow-pirate-hover-ring dark:bg-red-sky-1 dark:ring-red-sky-2 dark:hover:bg-red-sky-3 dark:hover:ring-red-sky-4 ";
-  const buttonStyle = `${fontColor ? `${fontColor} ` : ""}${
-    styles ? `${styles} ` : ""
-  }${
+  const buttonStyle = `${fontColor} ${styles} ${
     isGreen ? greenStyle : normalStyle
-  }rounded-2xl shadow-md font-semibold focus:outline-none px-4 py-2`;
+  } rounded-2xl shadow-md font-semibold focus:outline-none px-4 py-2`;
 
   let history = goBack ? useHistory() : null;
 
@@ -47,10 +45,10 @@ function Button({
                   className={`fill-current ${labelIconSize}`}
                   alt="Label icon"
                 />
-                <p className={fontSize ? fontSize : ""}>{label}</p>
+                <p className={fontSize}>{label}</p>
               </div>
             )}
-            {!LabelIcon && <p className={fontSize ? fontSize : ""}>{label}</p>}
+            {!LabelIcon && <p className={fontSize}>{label}</p>}
           </button>
           {props.error && (
             <div className="relative flex flex-row justify-start items-center mt-4 w-full h-auto select-none rounded-lg font-bold text-shadow border-3 border-solid border-yellow-pirate-ring bg-yellow-pirate text-blue-dark dark:bg-gray-25 dark:border-gray-bluegray-300 dark:text-red-sky-error tablet:bottom-0 tablet:top-0 tablet:my-auto tablet:min-w-max tablet:absolute tablet:left-full tablet:ml-7 tablet:rounded-xl">
@@ -71,10 +69,10 @@ function Button({
                   className={`fill-current ${labelIconSize}`}
                   alt="Label icon"
                 />
-                <p className={fontSize ? fontSize : ""}>{label}</p>
+                <p className={fontSize}>{label}</p>
               </div>
             )}
-            {!LabelIcon && <p className={fontSize ? fontSize : ""}>{label}</p>}
+            {!LabelIcon && <p className={fontSize}>{label}</p>}
           </button>
           {props.error && (
             <div className="relative flex flex-row justify-start items-center mt-4 w-full h-auto select-none rounded-lg font-bold text-shadow border-3 border-solid border-yellow-pirate-ring bg-yellow-pirate text-blue-dark dark:bg-gray-25 dark:border-gray-bluegray-300 dark:text-red-sky-error tablet:bottom-0 tablet:top-0 tablet:my-auto tablet:min-w-max tablet:absolute tablet:left-full tablet:ml-7 tablet:rounded-xl">
@@ -95,10 +93,10 @@ function Button({
                   className={`fill-current ${labelIconSize}`}
                   alt="Label icon"
                 />
-                <p className={fontSize ? fontSize : ""}>{label}</p>
+                <p className={fontSize}>{label}</p>
               </div>
             )}
-            {!LabelIcon && <p className={fontSize ? fontSize : ""}>{label}</p>}
+            {!LabelIcon && <p className={fontSize}>{label}</p>}
           </button>
           {props.error && (
             <div className="relative flex flex-row justify-start items-center mt-4 w-full h-auto select-none rounded-lg font-bold text-shadow border-3 border-solid border-yellow-pirate-ring bg-yellow-pirate text-blue-dark dark:bg-gray-25 dark:border-gray-bluegray-300 dark:text-red-sky-error tablet:bottom-0 tablet:top-0 tablet:my-auto tablet:min-w-max tablet:absolute tablet:left-full tablet:ml-7 tablet:rounded-xl">
@@ -123,10 +121,10 @@ function Button({
                 className={`fill-current ${labelIconSize}`}
                 alt="Label icon"
               />
-              <p className={fontSize ? fontSize : ""}>{label}</p>
+              <p className={fontSize}>{label}</p>
             </div>
           )}
-          {!LabelIcon && <p className={fontSize ? fontSize : ""}>{label}</p>}
+          {!LabelIcon && <p className={fontSize}>{label}</p>}
         </button>
       )}
     </Fragment>
@@ -136,6 +134,7 @@ function Button({
 Button.defaultProps = {
   fontColor: "text-blue-dark dark:text-blue-whiteish-2",
   fontStyle: "",
+  fontSize: "",
   goBack: false,
   isGreen: false,
   labelIcon: "",

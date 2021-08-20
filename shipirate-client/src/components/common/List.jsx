@@ -21,11 +21,7 @@ function List({
 
   return (
     <ul {...props}>
-      {title && (
-        <strong className={`block${titleStyle ? ` ${titleStyle}` : ""}`}>
-          {title}
-        </strong>
-      )}
+      {title && <strong className={`block ${titleStyle}`}>{title}</strong>}
       {items.map(
         (i) =>
           i && (
@@ -33,9 +29,7 @@ function List({
               key={i.key}
               onClick={doToggleMenu ? doToggleMenu : null}
               className={
-                i.specialStyle
-                  ? `${i.specialStyle}${itemsStyle ? ` ${itemsStyle}` : ""}`
-                  : itemsStyle
+                i.specialStyle ? `${i.specialStyle} ${itemsStyle}` : itemsStyle
               }
             >
               {i.linkPath && i.linkPath.search("#") === 0 ? (

@@ -52,8 +52,8 @@ function Navbar({ user }) {
       {user && <Profile toggleState={profileClicked} user={user} />}
       <Container
         tag="nav"
-        stylesOutside={`sticky top-0 z-10 bg-blue-sky-1 dark:bg-blue-night-sky-1`}
-        stylesInside={`flex flex-row flex-wrap justify-between py-3 px-3 tablet:px-6 text-shadow tracking-wide-2 font-semibold text-gray-100 dark:bg-blue-night-sky-1`}
+        stylesOutside="sticky top-0 z-10 bg-blue-sky-1 dark:bg-blue-night-sky-1"
+        stylesInside="flex flex-row flex-wrap justify-between py-3 px-3 tablet:px-6 text-shadow tracking-wide-2 font-semibold text-gray-100 dark:bg-blue-night-sky-1"
       >
         <Logo />
         <div className="flex flex-row space-x-4 justify-center items-center laptop:hidden">

@@ -12,10 +12,7 @@ class Container extends Component {
     } = this.props;
 
     return (
-      <Tag
-        className={`w-full ${stylesOutside ? stylesOutside : ""}`}
-        {...props}
-      >
+      <Tag className={`w-full ${stylesOutside}`} {...props}>
         <div
           className={`${
             marginBottom && Tag !== "nav" && Tag !== "footer"
@@ -23,9 +20,7 @@ class Container extends Component {
               : !marginBottom && (Tag === "nav" || Tag === "footer")
               ? ""
               : "mb-16"
-          } mx-auto max-w-screen-desktop-big ${
-            stylesInside ? stylesInside : ""
-          }`}
+          } mx-auto max-w-screen-desktop-big ${stylesInside}`}
         >
           {children}
         </div>

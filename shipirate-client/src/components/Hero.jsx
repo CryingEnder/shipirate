@@ -13,9 +13,9 @@ function Hero(props) {
       tag="section"
       stylesOutside={`${
         theme !== "dark"
-          ? "tablet:bg-gradient-to-b tablet:clip-bottom-point "
+          ? "tablet:bg-gradient-to-b tablet:clip-bottom-point"
           : ""
-      }tablet:from-blue-sky-1 tablet:via-blue-sky-2 tablet:to-blue-water tablet:dark:bg-blue-night-sky-1`}
+      } tablet:from-blue-sky-1 tablet:via-blue-sky-2 tablet:to-blue-water tablet:dark:bg-blue-night-sky-1`}
       stylesInside="tablet:pb-10"
       marginBottom="mb-0"
     >
@@ -39,13 +39,13 @@ function Hero(props) {
         </header>
         <div className="flex items-center">
           <HeroPictureLight
-            className={`tablet:m-6 tablet:rounded-b-x2 tablet:overflow-hidden tablet:shadow-md${
-              theme === "light" ? "" : " hidden"
+            className={`tablet:m-6 tablet:rounded-b-x2 tablet:overflow-hidden tablet:shadow-md ${
+              theme === "light" ? "" : "hidden"
             }`}
           />
           <HeroPictureDark
-            className={`tablet:m-6 tablet:rounded-b-x2 tablet:overflow-hidden tablet:shadow-md${
-              theme === "dark" ? "" : " hidden"
+            className={`tablet:m-6 tablet:rounded-b-x2 tablet:overflow-hidden tablet:shadow-md ${
+              theme === "dark" ? "" : "hidden"
             }`}
           />
         </div>

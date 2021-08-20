@@ -74,8 +74,8 @@ function Testimonials(props) {
         <div className="relative rounded-2xl mx-auto shadow-lg dark:shadow-xl w-full bg-gray-25 dark:bg-blue-night-sky-3 laptop:rounded-x2 tablet:w-11/12 laptop:bg-gradient-to-br laptop:from-blue-sky-1 laptop:via-blue-sky-2 laptop:to-blue-water laptop:dark:from-blue-night-sky-1 laptop:dark:to-blue-night-sky-1 laptop:w-3/5">
           <div
             className={`px-7 pt-4 pb-14 rounded-t-2xl ${
-              theme !== "dark" ? "bg-gradient-to-br " : ""
-            }from-blue-sky-1 via-blue-sky-2 to-blue-water dark:bg-blue-night-sky-1 laptop:inline-block laptop:px-14 laptop:py-8 laptop:pb-10 laptop:bg-none laptop:bg-gray-25 laptop:dark:bg-blue-night-sky-3 laptop:mt-2 laptop:mx-2 laptop:rounded-t-x1.5 desktop:py-12`}
+              theme !== "dark" ? "bg-gradient-to-br" : ""
+            } from-blue-sky-1 via-blue-sky-2 to-blue-water dark:bg-blue-night-sky-1 laptop:inline-block laptop:px-14 laptop:py-8 laptop:pb-10 laptop:bg-none laptop:bg-gray-25 laptop:dark:bg-blue-night-sky-3 laptop:mt-2 laptop:mx-2 laptop:rounded-t-x1.5 desktop:py-12`}
           >
             <div className="absolute max-h-14 w-full flex flex-row justify-center rounded-full left-0 -top-7 laptop:top-0">
               <div className="text-gray-25 dark:text-purple-light-3 py-2 px-4 flex flex-row justify-center space-x-6 border-6 border-solid border-gray-25 dark:border-blue-night-sky-1 rounded-full bg-blue-sky-1 dark:bg-blue-night-sky-2 laptop:hidden">

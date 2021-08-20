@@ -15,9 +15,7 @@ function Logo({ styles, fontColor, fontSize, phoneLogoSize, disableClick }) {
       className={`flex flex-row items-center space-x-3 ${styles}`}
     >
       <img
-        className={`${
-          phoneLogoSize ? `${phoneLogoSize} ` : ""
-        }w-10 laptop:w-12`}
+        className={`${phoneLogoSize} w-10 laptop:w-12`}
         src={logo}
         alt="A pirate ship logo"
       />

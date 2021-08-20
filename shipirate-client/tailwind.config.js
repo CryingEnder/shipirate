@@ -89,12 +89,11 @@ module.exports = {
         "wide-2": ".04em",
       },
       backgroundImage: (theme) => ({
-        "checkbox-unchecked": "url('./src/css/images/checkbox-unchecked.svg')",
-        "checkbox-checked": "url('./src/css/images/checkbox-checked.svg')",
+        "checkbox-unchecked": "url('css/images/checkbox-unchecked.svg')",
+        "checkbox-checked": "url('css/images/checkbox-checked.svg')",
         "checkbox-unchecked-dark":
-          "url('./src/css/images/checkbox-unchecked-dark.svg')",
-        "checkbox-checked-dark":
-          "url('./src/css/images/checkbox-checked-dark.svg')",
+          "url('css/images/checkbox-unchecked-dark.svg')",
+        "checkbox-checked-dark": "url('css/images/checkbox-checked-dark.svg')",
       }),
       borderRadius: {
         x2: "3rem",

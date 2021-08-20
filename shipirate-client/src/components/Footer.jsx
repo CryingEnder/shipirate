@@ -12,8 +12,8 @@ function Footer(props) {
     <Container
       tag="footer"
       stylesOutside={`${
-        theme !== "dark" ? "bg-gradient-to-b " : ""
-      }from-blue-sky-1 via-blue-sky-2 to-blue-water dark:bg-blue-night-sky-1`}
+        theme !== "dark" ? "bg-gradient-to-b" : ""
+      } from-blue-sky-1 via-blue-sky-2 to-blue-water dark:bg-blue-night-sky-1`}
       stylesInside="px-6 py-12"
     >
       <div className="flex flex-col">
