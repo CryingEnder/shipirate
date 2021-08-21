@@ -116,10 +116,10 @@ function PaymentForm(props) {
           <div className="flex flex-col justify-center items-start space-y-6 tablet-small:space-y-0 tablet-small:flex-row tablet-small:justify-between">
             <Button
               fontColor="text-gray-25"
-              type="submit"
               isGreen={true}
               label={`Pay ${total}`}
               fontSize="text-xl"
+              linkPath="/"
             />
             <Button
               goBack={true}
@@ -157,10 +157,10 @@ function PaymentForm(props) {
           <div className="flex flex-col justify-center items-start space-y-6 tablet-small:space-y-0 tablet-small:flex-row tablet-small:justify-between">
             <Button
               fontColor="text-gray-25"
-              type="submit"
               isGreen={true}
               label={`Pay ${total}`}
               fontSize="text-xl"
+              linkPath="/"
             />
             <Button
               goBack={true}
