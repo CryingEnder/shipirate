@@ -1,15 +1,24 @@
 # shipirate
-This is my first major personal project.
-Shipirate is a website that serves for an imaginary VPN service with a pirate theme.
+
+Shipirate is a personal project.
+It represents an imaginary VPN service which was built for fun with the intention of exercising my programming skills and does not provide any real services.
+
 The website is divided in 5 sections:
-- Banner / Hero
+
+- Banner
 - Features
 - Subscription plans
 - Testimonials
 - Footer
-Login, Signup, Payment form and 404 are also present (on the front end).
 
-A mention about the commits history:  The initial commit already had code written in it, that's because when I started the project i didn't know how to use git, but later on in the development i learned how to use it. 
+Website features:
 
-The technologies I use are: HTML, CSS, JS, React.js, Tailwindcss, node.js, Vite and (soon) Docker.
-Major functionality that I currently work on: API (using node.js, followed by Docker in the future)
+- Dark mode
+- Authentication
+- User profile with options such as changing the user's email
+- Payment form (by this time without validation since it doesn't actually execute any purchases)
+- Admin-only routes for modifying the page content such as adding a new subscription plan
+
+Technologies used:
+
+- HTML, CSS, Tailwindcss, Javascript, React.js, Node.js, Vite (planning to also use Docker in the future).
