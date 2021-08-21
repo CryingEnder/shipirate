@@ -11,46 +11,6 @@
     font-style: normal;
   }
 
-  @font-face {
-    font-family: "pirate_inlineregular";
-    src: url("css/fonts/pirateinline-webfont.woff2") format("woff2"),
-      url("css/fonts/pirateinline-webfont.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: "pirate_inline__grungeregular";
-    src: url("css/fonts/pirateinlinegrunge-webfont.woff2") format("woff2"),
-      url("css/fonts/pirateinlinegrunge-webfont.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: "pirate_regularregular";
-    src: url("css/fonts/pirateregular-webfont.woff2") format("woff2"),
-      url("css/fonts/pirateregular-webfont.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: "pirate_shadowregular";
-    src: url("css/fonts/pirateshadow-webfont.woff2") format("woff2"),
-      url("css/fonts/pirateshadow-webfont.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: "pirate_shadow_grungeregular";
-    src: url("css/fonts/pirateshadowgrunge-webfont.woff2") format("woff2"),
-      url("css/fonts/pirateshadowgrunge-webfont.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-  }
-
   html {
     scroll-behavior: smooth;
   }
