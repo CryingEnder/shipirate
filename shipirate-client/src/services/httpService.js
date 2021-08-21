@@ -1,6 +1,7 @@
 import axios from "axios";
 import logger from "./logService";
 
+axios.defaults.baseURL = import.meta.env.VITE_APP_API_URL;
 axios.defaults.withCredentials = true;
 axios.interceptors.response.use(null, (error) => {
   const expectedError =

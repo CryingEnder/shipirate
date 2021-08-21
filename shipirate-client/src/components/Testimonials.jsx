@@ -14,7 +14,6 @@ import {
 import Container from "./common/Container";
 import { ThemeContext } from "./context/ThemeContext";
 import testimonialService from "../services/testimonialService";
-import { apiUrl } from "../../config.json";
 
 function Testimonials(props) {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -123,7 +122,9 @@ function Testimonials(props) {
                   className="rounded-full w-20 laptop:w-24 desktop:w-28"
                   src={
                     testimonials[currentUser].profilePhoto.search("//") === -1
-                      ? `${apiUrl}/${testimonials[currentUser].profilePhoto}`
+                      ? `${import.meta.env.VITE_APP_API_URL}/${
+                          testimonials[currentUser].profilePhoto
+                        }`
                       : testimonials[currentUser].profilePhoto
                   }
                   alt="A profile photo"
