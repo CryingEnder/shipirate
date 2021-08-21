@@ -7,11 +7,11 @@ function PlanSection(props) {
   const [plans, setPlans] = useState(null);
   const [gridStyle, setGridStyle] = useState("");
 
-  function getGridStyle() {
-    if (plans) {
-      if (plans.length > 2)
+  function getGridStyle(plansArray) {
+    if (plansArray) {
+      if (plansArray.length > 2)
         setGridStyle("laptop:grid-cols-2 desktop:grid-cols-3");
-      else if (plans.length > 1)
+      else if (plansArray.length > 1)
         setGridStyle("laptop:grid-cols-2 desktop:grid-cols-2");
     }
   }
@@ -20,16 +20,18 @@ function PlanSection(props) {
     let isMounted = true;
     async function getPlans() {
       const plansFound = await planService.getPlans();
-      if (isMounted) setPlans(plansFound);
+      if (isMounted) {
+        setPlans(plansFound);
+        getGridStyle(plansFound);
+      }
     }
 
     getPlans();
-    getGridStyle();
 
     return () => {
       isMounted = false;
     };
-  }, [plans]);
+  }, []);
 
   return (
     <Fragment>
