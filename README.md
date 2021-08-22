@@ -3,6 +3,8 @@
 Shipirate is a personal project.
 It represents an imaginary VPN service which was built for fun with the intention of exercising my programming skills and does not provide any real services.
 
+You can find it here: https://shipirate.netlify.app/
+
 The website is divided in 5 sections:
 
 - Banner
