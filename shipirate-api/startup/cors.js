@@ -1,7 +1,8 @@
 const cors = require("cors");
+const config = require("config");
 
-const corsOptions = {
-  origin: "http://localhost:3001",
+let corsOptions = {
+  origin: config.get("origin"),
   credentials: true,
 };
 

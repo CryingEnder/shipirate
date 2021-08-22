@@ -1,4 +1,5 @@
 {
   "jwtPrivateKey": "shipirate_jwtPrivateKey",
-  "db": "shipirate_db"
+  "db": "shipirate_db",
+  "origin": "shipirate_origin"
 }
