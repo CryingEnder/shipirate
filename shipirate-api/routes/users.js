@@ -46,6 +46,7 @@ router.post(
         httpOnly: true,
         secure: config.get("securedCookies"),
         expires: expirationTime,
+        sameSite: "None",
       })
       .send({
         _id: user._id,

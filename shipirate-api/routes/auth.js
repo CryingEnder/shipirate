@@ -36,6 +36,7 @@ router.post(
         httpOnly: true,
         secure: config.get("securedCookies"),
         expires: expirationTime,
+        sameSite: "None",
       })
       .send("You have logged in");
   })
@@ -45,7 +46,12 @@ router.delete(
   "/logout",
   auth,
   tryCatch((req, res) => {
-    res.clearCookie("jwt").send("You have successfully logged out");
+    res
+      .clearCookie("jwt", {
+        secure: config.get("securedCookies"),
+        sameSite: "None",
+      })
+      .send("You have successfully logged out");
   })
 );
 
