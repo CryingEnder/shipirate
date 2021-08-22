@@ -36,7 +36,7 @@ router.post(
         httpOnly: true,
         secure: config.get("securedCookies"),
         expires: expirationTime,
-        sameSite: "None",
+        sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
       })
       .send("You have logged in");
   })
@@ -49,7 +49,7 @@ router.delete(
     res
       .clearCookie("jwt", {
         secure: config.get("securedCookies"),
-        sameSite: "None",
+        sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
       })
       .send("You have successfully logged out");
   })

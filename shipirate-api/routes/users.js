@@ -46,7 +46,7 @@ router.post(
         httpOnly: true,
         secure: config.get("securedCookies"),
         expires: expirationTime,
-        sameSite: "None",
+        sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
       })
       .send({
         _id: user._id,
