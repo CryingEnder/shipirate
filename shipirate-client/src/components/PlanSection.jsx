@@ -37,7 +37,7 @@ function PlanSection(props) {
     <Fragment>
       <Container
         tag="section"
-        stylesInside={`relative px-8 mt-24 grid grid-cols-1 gap-y-36 laptop:gap-x-0 laptop:gap-y-32 desktop:gap-x-12 ${gridStyle}`}
+        stylesInside={`relative mt-24 grid grid-cols-1 gap-y-36 laptop:px-8 laptop:gap-x-0 laptop:gap-y-32 desktop:gap-x-12 ${gridStyle}`}
       >
         <div
           id="plans"
