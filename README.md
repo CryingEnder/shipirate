@@ -22,3 +22,7 @@ Website features:
 Technologies used:
 
 - HTML, CSS, Tailwindcss, Javascript, React.js, Node.js, Vite (planning to also use Docker in the future).
+
+Known issues:
+
+- Brave browser: If you use Brave browser and try to authenticate it won't work since by default Brave disables cross-site cookies. The workaround is to disable the shields of Brave by clicking on the Brave icon on the search bar, or a more specific approach is after pressing on the icon get over to Advanced View and set "All cookies allowed" instead of "Cross-site cookies blocked".
