@@ -59,7 +59,7 @@ function Plan({
         )}
         <header className="mb-6">
           <img
-            className="mx-auto mb-2 -mt-20 w-1/3"
+            className="mx-auto mb-2 -mt-16 w-37/100 tablet:-mt-20 tablet:w-1/3"
             src={tier}
             alt="A pirate hat"
           />
