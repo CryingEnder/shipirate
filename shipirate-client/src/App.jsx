@@ -15,17 +15,12 @@ function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    let isMounted = true;
     async function getUser() {
       const userFound = await userService.getCurrentUser();
-      if (isMounted) setUser(userFound);
+      setUser(userFound);
     }
 
     getUser();
-
-    return () => {
-      isMounted = false;
-    };
   }, []);
 
   return (
