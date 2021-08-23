@@ -8,16 +8,25 @@ describe("auth middleware", () => {
 
   const exec = () => {
     return request(server)
-      .get("/api/users/me")
+      .delete("/api/auth/logout")
       .set("Cookie", `${tokenKey}=${token}`);
   };
 
-  beforeEach(() => {
+  beforeEach(async () => {
     server = require("../../../index");
 
-    token = new User().generateAuthToken();
+    user = {
+      username: "user1",
+      email: "example1@domain.com",
+      password: "12345",
+      repeatPassword: "12345",
+    };
+    const response = await request(server).post("/api/users").send(user);
+    token = response.headers["set-cookie"][0].replace(`${tokenKey}=`, "");
   });
-  afterEach(() => {
+  afterEach(async () => {
+    await User.deleteMany({});
+
     server.close();
   });
 

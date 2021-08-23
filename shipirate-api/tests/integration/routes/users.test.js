@@ -32,14 +32,15 @@ describe("api/users", () => {
       await User.deleteMany({});
     });
 
-    it("should return 401 if the user is not logged in", async () => {
+    it("should not return user's data the user is not logged in", async () => {
       token = "";
 
       const res = await request(server)
         .get("/api/users/me")
         .set("Cookie", `${tokenKey}=${token}`);
 
-      expect(res.status).toBe(401);
+      expect(res.status).toBe(200);
+      expect(res.body).not.toHaveProperty("_id");
     });
 
     it("should return current user information", async () => {
@@ -50,8 +51,8 @@ describe("api/users", () => {
         .get("/api/users/me")
         .set("Cookie", `${tokenKey}=${token}`);
 
-      expect(res.body).toHaveProperty("email");
       expect(res.status).toBe(200);
+      expect(res.body).toHaveProperty("_id");
     });
   });
 

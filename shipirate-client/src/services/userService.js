@@ -4,8 +4,9 @@ const apiEndpoint = "/users";
 
 export async function getCurrentUser() {
   try {
-    const { data: user } = await http.get(apiEndpoint + "/me");
-    return user;
+    const user = await http.get(apiEndpoint + "/me");
+    if (user.data._id) return user.data;
+    else return null;
   } catch (ex) {
     return null;
   }

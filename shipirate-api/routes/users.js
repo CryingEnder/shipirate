@@ -2,6 +2,7 @@ const { User, validate } = require("../models/user");
 const tryCatch = require("../middleware/async");
 const auth = require("../middleware/auth");
 const validator = require("../middleware/validate");
+const jwt = require("jsonwebtoken");
 const Joi = require("joi");
 const bcrypt = require("bcrypt");
 const config = require("config");
@@ -10,12 +11,21 @@ const router = express.Router();
 
 router.get(
   "/me",
-  auth,
   tryCatch(async (req, res) => {
-    const user = await User.findById(req.user._id).select(
-      "-password -_id -__v"
-    );
-    res.status(200).send(user);
+    if (!req.cookies.jwt) res.status(200).send("You are not logged in");
+    else {
+      try {
+        const token = req.cookies.jwt;
+        const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
+        req.user = decoded;
+        const userData = await User.findById(req.user._id).select(
+          "-password -__v"
+        );
+        res.status(200).send(userData);
+      } catch (ex) {
+        res.status(400).send("Invalid token.");
+      }
+    }
   })
 );
 
