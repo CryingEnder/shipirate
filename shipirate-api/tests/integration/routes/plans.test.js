@@ -1,4 +1,5 @@
 const request = require("supertest");
+const config = require("config");
 const { Plan } = require("../../../models/plan");
 const { User } = require("../../../models/user");
 
@@ -22,7 +23,12 @@ describe("api/plans", () => {
   };
 
   beforeEach(() => {
-    server = require("../../../index");
+    if (config.get("db") === "mongodb://localhost:27017/api_tests")
+      server = require("../../../index");
+    else
+      throw new Error(
+        "Fatal error: The connection string of the test database was changed!"
+      );
   });
   afterEach(() => {
     server.close();

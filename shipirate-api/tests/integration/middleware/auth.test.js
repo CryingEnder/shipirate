@@ -1,4 +1,5 @@
 const request = require("supertest");
+const config = require("config");
 const { User } = require("../../../models/user");
 
 describe("auth middleware", () => {
@@ -13,7 +14,12 @@ describe("auth middleware", () => {
   };
 
   beforeEach(async () => {
-    server = require("../../../index");
+    if (config.get("db") === "mongodb://localhost:27017/api_tests")
+      server = require("../../../index");
+    else
+      throw new Error(
+        "Fatal error: The connection string of the test database was changed!"
+      );
 
     user = {
       username: "user1",
