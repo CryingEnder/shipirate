@@ -23,7 +23,7 @@ Website features:
 
 Technologies used:
 
-- HTML, CSS, Tailwindcss, Javascript, React.js, Node.js, Vite (planning to also use Docker in the future)
+- HTML, CSS, Tailwindcss, Javascript, React.js, Node.js, MongoDB and Vite (planning to also use Docker in the future)
 
 Known issues:
 
