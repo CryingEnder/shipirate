@@ -17,20 +17,13 @@ function PlanSection(props) {
   }
 
   useEffect(() => {
-    let isMounted = true;
     async function getPlans() {
       const plansFound = await planService.getPlans();
-      if (isMounted) {
-        setPlans(plansFound);
-        getGridStyle(plansFound);
-      }
+      setPlans(plansFound);
+      getGridStyle(plansFound);
     }
 
     getPlans();
-
-    return () => {
-      isMounted = false;
-    };
   }, []);
 
   return (
