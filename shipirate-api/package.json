@@ -23,6 +23,7 @@
     "helmet": "^4.6.0",
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
+    "migrate-mongo": "^8.2.3",
     "mongoose": "^5.13.7",
     "multer": "^1.4.3",
     "winston": "^3.3.3"
