@@ -10,7 +10,7 @@ require("./startup/config")();
 
 if (process.env.NODE_ENV === "production") require("./startup/prod")(app);
 
-const port = process.env.PORT || 3000;
+const port = process.env.NODE_ENV === "test" ? 3002 : process.env.PORT || 3000;
 
 const server = app.listen(port, () => {
   winston.info(`Connected to port ${port}`);
