@@ -28,27 +28,29 @@ function PlanSection(props) {
 
   return (
     <Fragment>
-      <Container
-        tag="section"
-        stylesInside={`relative mt-24 grid grid-cols-1 gap-y-36 laptop:px-8 laptop:gap-x-0 laptop:gap-y-32 desktop:gap-x-12 ${gridStyle}`}
-      >
-        <div
-          id="plans"
-          className="absolute bg-none w-0 h-0 -mt-36 laptop:-mt-40"
-        />
-        {plans &&
-          plans.map((plan) => (
-            <Plan
-              key={plan._id}
-              planFeatures={plan.features}
-              numberOfMonths={plan.months}
-              price={plan.price}
-              discountPercentage={plan.discount}
-              currency={plan.currency}
-              isPopular={plan.popular}
-            />
-          ))}
-      </Container>
+      {plans && (
+        <Container
+          tag="section"
+          stylesInside={`relative mt-24 grid grid-cols-1 gap-y-36 laptop:px-8 laptop:gap-x-0 laptop:gap-y-32 desktop:gap-x-12 ${gridStyle}`}
+        >
+          <div
+            id="plans"
+            className="absolute bg-none w-0 h-0 -mt-36 laptop:-mt-40"
+          />
+          {plans &&
+            plans.map((plan) => (
+              <Plan
+                key={plan._id}
+                planFeatures={plan.features}
+                numberOfMonths={plan.months}
+                price={plan.price}
+                discountPercentage={plan.discount}
+                currency={plan.currency}
+                isPopular={plan.popular}
+              />
+            ))}
+        </Container>
+      )}
     </Fragment>
   );
 }
