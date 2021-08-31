@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watchAll --verbose --runInBand",
-    "start": "node index.js"
+    "start": "nodemon --ignore './tests' index.js"
   },
   "engines": {
     "node": "14.17.5"
@@ -23,7 +23,6 @@
     "helmet": "^4.6.0",
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
-    "migrate-mongo": "^8.2.3",
     "mongoose": "^5.13.7",
     "multer": "^1.4.3",
     "winston": "^3.3.3"
@@ -31,6 +30,7 @@
   "devDependencies": {
     "jest": "^27.0.6",
     "jest-each": "^27.0.6",
+    "migrate-mongo": "^8.2.3",
     "supertest": "^6.1.6"
   },
   "jest": {
