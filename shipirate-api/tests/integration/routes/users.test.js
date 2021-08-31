@@ -13,7 +13,7 @@ describe("api/users", () => {
     return request(server).post("/api/users").send(user);
   };
 
-  beforeEach(() => {
+  beforeAll(() => {
     if (config.get("db") === "mongodb://localhost:27017/api_tests")
       server = require("../../../index");
     else
@@ -21,7 +21,7 @@ describe("api/users", () => {
         "Fatal error: The connection string of the test database was changed!"
       );
   });
-  afterEach(() => {
+  afterAll(() => {
     server.close();
   });
 

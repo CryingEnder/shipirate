@@ -13,14 +13,19 @@ describe("auth middleware", () => {
       .set("Cookie", `${tokenKey}=${token}`);
   };
 
-  beforeEach(async () => {
+  beforeAll(() => {
     if (config.get("db") === "mongodb://localhost:27017/api_tests")
       server = require("../../../index");
     else
       throw new Error(
         "Fatal error: The connection string of the test database was changed!"
       );
+  });
+  afterAll(() => {
+    server.close();
+  });
 
+  beforeEach(async () => {
     user = {
       username: "user1",
       email: "example1@domain.com",
@@ -32,8 +37,6 @@ describe("auth middleware", () => {
   });
   afterEach(async () => {
     await User.deleteMany({});
-
-    server.close();
   });
 
   it("should return 401 if no token is provided", async () => {
