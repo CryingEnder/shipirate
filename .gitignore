@@ -1,4 +1,5 @@
 node_modules
+desktop.ini
 coverage
 .DS_Store
 dist
