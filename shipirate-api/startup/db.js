@@ -8,8 +8,6 @@ module.exports = function () {
     .connect(db, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
     })
     .then(() => winston.info(`Connected to ${db}...`));
 };

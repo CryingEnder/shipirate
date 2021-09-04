@@ -24,13 +24,13 @@
     "helmet": "^4.6.0",
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.13.7",
+    "mongoose": "^6.0.4",
     "multer": "^1.4.3",
     "winston": "^3.3.3"
   },
   "devDependencies": {
-    "jest": "^27.0.6",
-    "jest-each": "^27.0.6",
+    "jest": "^27.1.0",
+    "jest-each": "^27.1.0",
     "migrate-mongo": "^8.2.3",
     "nodemon": "^2.0.12",
     "supertest": "^6.1.6"
