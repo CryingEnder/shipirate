@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  client:
+    build: ./shipirate-client
+    ports:
+      - 3001:3001
+    volumes:
+      - ./shipirate-client:/app
+    command: ./docker-entrypoint.sh
+  api:
+    build: ./shipirate-api
+    ports:
+      - 3000:3000
+    environment:
+      shipirate_jwtPrivateKey: 12345
+      shipirate_db: mongodb://db/api
+    volumes:
+      - ./shipirate-api:/app
+    command: ./docker-entrypoint.sh
+  db:
+    image: mongo:4.4.6-bionic
+    ports:
+      - 27017:27017
+    volumes:
+      - shipirate:/data/db
+
+volumes:
+  shipirate:

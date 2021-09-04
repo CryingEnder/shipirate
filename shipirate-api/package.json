@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll --verbose --runInBand",
-    "start": "nodemon --ignore './tests' index.js"
+    "start": "nodemon --legacy-watch --ignore './tests' index.js",
+    "db:up": "migrate-mongo up",
+    "test": "jest --watchAll --verbose --runInBand"
   },
   "engines": {
     "node": "14.17.5"
@@ -31,6 +32,7 @@
     "jest": "^27.0.6",
     "jest-each": "^27.0.6",
     "migrate-mongo": "^8.2.3",
+    "nodemon": "^2.0.12",
     "supertest": "^6.1.6"
   },
   "jest": {
