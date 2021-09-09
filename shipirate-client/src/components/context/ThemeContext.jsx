@@ -9,11 +9,6 @@ function getInitialTheme() {
         window.localStorage.setItem("color-theme", "light");
       return storedPrefs;
     }
-
-    const userMedia = window.matchMedia("(prefers-color-scheme: dark)");
-    if (userMedia.matches) {
-      return "dark";
-    }
   }
 
   return "light";
