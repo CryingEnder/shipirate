@@ -6,9 +6,9 @@ function Logout(props) {
   useEffect(() => {
     async function logout() {
       await auth.logout();
+      window.location = "/";
     }
 
-    window.location = "/";
     logout();
   }, []);
 
