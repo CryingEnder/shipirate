@@ -12,7 +12,7 @@ function Footer(props) {
     <Container
       tag="footer"
       stylesOutside={`${
-        theme !== "dark" ? "bg-gradient-to-b" : ""
+        theme !== "dark" ? "bg-gradient-to-r" : ""
       } from-blue-sky-1 via-blue-sky-2 to-blue-water dark:bg-blue-night-sky-1`}
       stylesInside="px-6 py-12"
     >
