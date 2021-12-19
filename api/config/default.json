@@ -2,6 +2,5 @@
   "jwtPrivateKey": "",
   "jwtTimer": 300,
   "db": "mongodb://localhost:27017/api",
-  "origin": "http://localhost:3001",
   "securedCookies": false
 }
