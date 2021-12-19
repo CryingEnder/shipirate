@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "vite --host",
-    "build": "vite build",
-    "serve": "vite preview"
+    "build": "vite build && (cd api && npm install)",
+    "serve": "vite preview",
+    "start": "cd api && npm start"
   },
   "dependencies": {
     "@sentry/react": "^6.13.3",
