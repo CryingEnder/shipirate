@@ -29,6 +29,7 @@
     "nodemon": "^2.0.13"
   },
   "devDependencies": {
+    "cors": "^2.8.5",
     "jest": "^27.2.4",
     "jest-each": "^27.2.4",
     "migrate-mongo": "^8.2.3",
