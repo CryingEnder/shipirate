@@ -67,7 +67,7 @@ function Testimonials(props) {
               sint.
             </p>
           </header>
-          <div className="relative rounded-2xl mx-auto shadow-lg dark:shadow-xl w-full bg-gray-25 dark:bg-blue-night-sky-3 laptop:rounded-x2 tablet:w-11/12 laptop:bg-gradient-to-br laptop:from-blue-sky-1 laptop:via-blue-sky-2 laptop:to-blue-water laptop:dark:from-blue-night-sky-1 laptop:dark:to-blue-night-sky-1 laptop:w-3/5">
+          <div className="relative select-none rounded-2xl mx-auto shadow-lg dark:shadow-xl w-full bg-gray-25 dark:bg-blue-night-sky-3 laptop:rounded-x2 tablet:w-11/12 laptop:bg-gradient-to-br laptop:from-blue-sky-1 laptop:via-blue-sky-2 laptop:to-blue-water laptop:dark:from-blue-night-sky-1 laptop:dark:to-blue-night-sky-1 laptop:w-3/5">
             <div
               className={`px-7 pt-4 pb-14 rounded-t-2xl ${
                 theme !== "dark" ? "bg-gradient-to-br" : ""
