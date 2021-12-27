@@ -8,7 +8,6 @@ const cookieParser = require("cookie-parser");
 module.exports = function (app) {
   app.use(express.json());
   app.use(cookieParser());
-  app.use("/", express.static("../dist"));
   app.use("/api", express.static("public"));
   app.use("/api/users", users);
   app.use("/api/auth", auth);
