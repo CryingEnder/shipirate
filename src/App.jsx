@@ -40,6 +40,7 @@ function App() {
         </Route>
         <Redirect from="/login" exact to="/" />
         <Redirect from="/signup" exact to="/" />
+        <Redirect from="/logout" exact to="/" />
         <Redirect to="/404" />
       </Switch>
     </Router>
