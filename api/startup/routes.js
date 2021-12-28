@@ -13,4 +13,7 @@ module.exports = function (app) {
   app.use("/api/auth", auth);
   app.use("/api/plans", plans);
   app.use("/api/testimonials", testimonials);
+  app.get("*", function (req, res) {
+    res.redirect("/404");
+  });
 };
