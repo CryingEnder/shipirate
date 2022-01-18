@@ -5,6 +5,7 @@ import Loading from "./common/Loading";
 function Logout(props) {
   useEffect(() => {
     async function logout() {
+      window.location = "/";
       await auth.logout();
       window.location = "/";
     }
