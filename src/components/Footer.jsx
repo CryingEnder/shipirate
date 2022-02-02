@@ -66,7 +66,7 @@ function Footer(props) {
           <div>
             <Logo styles="mb-2" />
             <p className="text-lg text-blue-dark dark:text-blue-whiteish-2 font-normal">
-              Copyright &copy; 2021 Cristian Botez
+              Copyright &copy; 2021-2022 Cristian Botez
             </p>
           </div>
         </div>
